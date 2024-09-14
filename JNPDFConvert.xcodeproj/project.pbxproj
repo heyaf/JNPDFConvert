@@ -21,6 +21,16 @@
 		0401C1C02C95D55200542AB3 /* WRCustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1BF2C95D55200542AB3 /* WRCustomNavigationBar.swift */; };
 		0401C1C22C95D62C00542AB3 /* importHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1C12C95D62C00542AB3 /* importHeader.swift */; };
 		0401C1C42C95D6BD00542AB3 /* VC+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1C32C95D6BD00542AB3 /* VC+Extion.swift */; };
+		0401C1C92C95DB5500542AB3 /* TabBarConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1C52C95DB5500542AB3 /* TabBarConfigure.swift */; };
+		0401C1CA2C95DB5500542AB3 /* TabBarControllerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1C62C95DB5500542AB3 /* TabBarControllerConfig.swift */; };
+		0401C1CB2C95DB5500542AB3 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1C72C95DB5500542AB3 /* TabBar.swift */; };
+		0401C1CC2C95DB5500542AB3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1C82C95DB5500542AB3 /* TabBarController.swift */; };
+		0401C1CE2C95DBC800542AB3 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1CD2C95DBC800542AB3 /* BaseNavigationController.swift */; };
+		0401C1D02C95DCCA00542AB3 /* UIFastCreatTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1CF2C95DCCA00542AB3 /* UIFastCreatTool.swift */; };
+		0401C1D22C95DDCB00542AB3 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1D12C95DDCB00542AB3 /* HomeVC.swift */; };
+		0401C1D42C95DDDC00542AB3 /* AllToolsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1D32C95DDDC00542AB3 /* AllToolsVC.swift */; };
+		0401C1D62C95DDF000542AB3 /* JNHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1D52C95DDF000542AB3 /* JNHistoryVC.swift */; };
+		0401C1D82C95DE8E00542AB3 /* NSString+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1D72C95DE8E00542AB3 /* NSString+Extion.swift */; };
 		04934BB82C957FE000A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB72C957FE000A05D31 /* Base */; };
 		04934BBA2C957FE200A05D31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB92C957FE200A05D31 /* Assets.xcassets */; };
 		04934BBD2C957FE200A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BBC2C957FE200A05D31 /* Base */; };
@@ -46,6 +56,16 @@
 		0401C1BF2C95D55200542AB3 /* WRCustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRCustomNavigationBar.swift; sourceTree = "<group>"; };
 		0401C1C12C95D62C00542AB3 /* importHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = importHeader.swift; sourceTree = "<group>"; };
 		0401C1C32C95D6BD00542AB3 /* VC+Extion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+Extion.swift"; sourceTree = "<group>"; };
+		0401C1C52C95DB5500542AB3 /* TabBarConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarConfigure.swift; sourceTree = "<group>"; };
+		0401C1C62C95DB5500542AB3 /* TabBarControllerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerConfig.swift; sourceTree = "<group>"; };
+		0401C1C72C95DB5500542AB3 /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		0401C1C82C95DB5500542AB3 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		0401C1CD2C95DBC800542AB3 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		0401C1CF2C95DCCA00542AB3 /* UIFastCreatTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFastCreatTool.swift; sourceTree = "<group>"; };
+		0401C1D12C95DDCB00542AB3 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		0401C1D32C95DDDC00542AB3 /* AllToolsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllToolsVC.swift; sourceTree = "<group>"; };
+		0401C1D52C95DDF000542AB3 /* JNHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNHistoryVC.swift; sourceTree = "<group>"; };
+		0401C1D72C95DE8E00542AB3 /* NSString+Extion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+Extion.swift"; sourceTree = "<group>"; };
 		04934BAD2C957FE000A05D31 /* JNPDFConvert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JNPDFConvert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04934BB72C957FE000A05D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04934BB92C957FE200A05D31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,6 +104,8 @@
 				0401C1AD2C95D1FF00542AB3 /* UILabel+Extion.swift */,
 				0401C1C32C95D6BD00542AB3 /* VC+Extion.swift */,
 				0401C1C12C95D62C00542AB3 /* importHeader.swift */,
+				0401C1CF2C95DCCA00542AB3 /* UIFastCreatTool.swift */,
+				0401C1D72C95DE8E00542AB3 /* NSString+Extion.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -110,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				0401C1BF2C95D55200542AB3 /* WRCustomNavigationBar.swift */,
+				0401C1CD2C95DBC800542AB3 /* BaseNavigationController.swift */,
 			);
 			path = Nav;
 			sourceTree = "<group>";
@@ -117,6 +140,10 @@
 		0401C1BC2C95D44700542AB3 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
+				0401C1C72C95DB5500542AB3 /* TabBar.swift */,
+				0401C1C52C95DB5500542AB3 /* TabBarConfigure.swift */,
+				0401C1C82C95DB5500542AB3 /* TabBarController.swift */,
+				0401C1C62C95DB5500542AB3 /* TabBarControllerConfig.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -157,6 +184,7 @@
 		04934BC42C95814F00A05D31 /* All Tools */ = {
 			isa = PBXGroup;
 			children = (
+				0401C1D32C95DDDC00542AB3 /* AllToolsVC.swift */,
 			);
 			path = "All Tools";
 			sourceTree = "<group>";
@@ -179,6 +207,7 @@
 		04934BC92C95814F00A05D31 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				0401C1D52C95DDF000542AB3 /* JNHistoryVC.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -203,6 +232,7 @@
 		04934BCC2C95814F00A05D31 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				0401C1D12C95DDCB00542AB3 /* HomeVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -339,23 +369,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0401C1CE2C95DBC800542AB3 /* BaseNavigationController.swift in Sources */,
 				04934BD12C9583F200A05D31 /* JNDefine.swift in Sources */,
 				0401C1C42C95D6BD00542AB3 /* VC+Extion.swift in Sources */,
 				04934BCF2C95814F00A05D31 /* ViewController.swift in Sources */,
+				0401C1C92C95DB5500542AB3 /* TabBarConfigure.swift in Sources */,
 				0401C1AA2C95CE2300542AB3 /* UIView+Extion.swift in Sources */,
+				0401C1CA2C95DB5500542AB3 /* TabBarControllerConfig.swift in Sources */,
+				0401C1CB2C95DB5500542AB3 /* TabBar.swift in Sources */,
 				0401C1C22C95D62C00542AB3 /* importHeader.swift in Sources */,
+				0401C1D02C95DCCA00542AB3 /* UIFastCreatTool.swift in Sources */,
 				04934BCD2C95814F00A05D31 /* AppDelegate.swift in Sources */,
 				0401C1AE2C95D1FF00542AB3 /* UILabel+Extion.swift in Sources */,
 				0401C1BE2C95D44700542AB3 /* BaseViewController.swift in Sources */,
 				0401C1B62C95D30C00542AB3 /* Storage.swift in Sources */,
 				0401C1B12C95D29500542AB3 /* NSObject+Extension.swift in Sources */,
+				0401C1CC2C95DB5500542AB3 /* TabBarController.swift in Sources */,
 				0401C1A82C959D2000542AB3 /* UIConfig.swift in Sources */,
 				0401C1A62C959A7100542AB3 /* AppUtil.swift in Sources */,
+				0401C1D82C95DE8E00542AB3 /* NSString+Extion.swift in Sources */,
 				0401C1BD2C95D44700542AB3 /* BaseSimpleViewController.swift in Sources */,
+				0401C1D62C95DDF000542AB3 /* JNHistoryVC.swift in Sources */,
 				0401C1AC2C95CED800542AB3 /* UIColor+Extion.swift in Sources */,
 				04934BCE2C95814F00A05D31 /* SceneDelegate.swift in Sources */,
+				0401C1D22C95DDCB00542AB3 /* HomeVC.swift in Sources */,
 				0401C1B22C95D29500542AB3 /* UIimage+Extension.swift in Sources */,
 				0401C1B72C95D30C00542AB3 /* StorageManager.swift in Sources */,
+				0401C1D42C95DDDC00542AB3 /* AllToolsVC.swift in Sources */,
 				0401C1C02C95D55200542AB3 /* WRCustomNavigationBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

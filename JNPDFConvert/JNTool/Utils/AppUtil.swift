@@ -171,3 +171,15 @@ public class AppUtil {
     }
     
 }
+//回到主线程
+func MainThread (completion: (() -> Void)? = nil) {
+    DispatchQueue.main.async {
+        completion!()
+    }
+}
+//延迟执行
+func delayGCD (timeInval:CGFloat, completion: (() -> Void)? = nil) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + timeInval) {
+        completion!()
+    }
+}
