@@ -7,16 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0401C1A62C959A7100542AB3 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1A52C959A7100542AB3 /* AppUtil.swift */; };
+		0401C1A82C959D2000542AB3 /* UIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1A72C959D2000542AB3 /* UIConfig.swift */; };
 		04934BB82C957FE000A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB72C957FE000A05D31 /* Base */; };
 		04934BBA2C957FE200A05D31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB92C957FE200A05D31 /* Assets.xcassets */; };
 		04934BBD2C957FE200A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BBC2C957FE200A05D31 /* Base */; };
 		04934BCD2C95814F00A05D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04934BC52C95814F00A05D31 /* AppDelegate.swift */; };
 		04934BCE2C95814F00A05D31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04934BC62C95814F00A05D31 /* SceneDelegate.swift */; };
 		04934BCF2C95814F00A05D31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04934BC72C95814F00A05D31 /* ViewController.swift */; };
+		04934BD12C9583F200A05D31 /* JNDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04934BD02C9583F200A05D31 /* JNDefine.swift */; };
 		F50FA60A2CF6BFCB400179CE /* Pods_JNPDFConvert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF8042F63AC894EFCC32842 /* Pods_JNPDFConvert.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0401C1A52C959A7100542AB3 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
+		0401C1A72C959D2000542AB3 /* UIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConfig.swift; sourceTree = "<group>"; };
 		04934BAD2C957FE000A05D31 /* JNPDFConvert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JNPDFConvert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04934BB72C957FE000A05D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04934BB92C957FE200A05D31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -25,6 +30,7 @@
 		04934BC52C95814F00A05D31 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04934BC62C95814F00A05D31 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04934BC72C95814F00A05D31 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04934BD02C9583F200A05D31 /* JNDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNDefine.swift; sourceTree = "<group>"; };
 		4415FF95B5387420C938B269 /* Pods-JNPDFConvert.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JNPDFConvert.debug.xcconfig"; path = "Target Support Files/Pods-JNPDFConvert/Pods-JNPDFConvert.debug.xcconfig"; sourceTree = "<group>"; };
 		4F6A63501624F15E5B73DFDB /* Pods-JNPDFConvert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JNPDFConvert.release.xcconfig"; path = "Target Support Files/Pods-JNPDFConvert/Pods-JNPDFConvert.release.xcconfig"; sourceTree = "<group>"; };
 		5CF8042F63AC894EFCC32842 /* Pods_JNPDFConvert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JNPDFConvert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +48,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0401C1A42C959A5A00542AB3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0401C1A52C959A7100542AB3 /* AppUtil.swift */,
+				0401C1A72C959D2000542AB3 /* UIConfig.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		04934BA42C957FE000A05D31 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +119,8 @@
 		04934BCA2C95814F00A05D31 /* JNTool */ = {
 			isa = PBXGroup;
 			children = (
+				0401C1A42C959A5A00542AB3 /* Utils */,
+				04934BD02C9583F200A05D31 /* JNDefine.swift */,
 			);
 			path = JNTool;
 			sourceTree = "<group>";
@@ -254,8 +271,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04934BD12C9583F200A05D31 /* JNDefine.swift in Sources */,
 				04934BCF2C95814F00A05D31 /* ViewController.swift in Sources */,
 				04934BCD2C95814F00A05D31 /* AppDelegate.swift in Sources */,
+				0401C1A82C959D2000542AB3 /* UIConfig.swift in Sources */,
+				0401C1A62C959A7100542AB3 /* AppUtil.swift in Sources */,
 				04934BCE2C95814F00A05D31 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
