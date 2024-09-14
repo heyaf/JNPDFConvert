@@ -23,24 +23,24 @@ public let kHeightScale =  UIScreen.main.bounds.size.height/667.0
 //返回状态栏高度
 
 var statusBarHeight: CGFloat {
-        if #available(iOS 13.0, *) {
-            let statusManager = UIApplication.shared.windows.first?.windowScene?.statusBarManager
-            return statusManager?.statusBarFrame.height ?? 20.0
-        } else {
-            return UIApplication.shared.statusBarFrame.height
-        }
+    if #available(iOS 13.0, *) {
+        let statusManager = UIApplication.shared.windows.first?.windowScene?.statusBarManager
+        return statusManager?.statusBarFrame.height ?? 20.0
+    } else {
+        return UIApplication.shared.statusBarFrame.height
     }
+}
 
 
 //返回状态栏和导航栏的高度
-let KNavAndstatusBarHeight = statusBarHeight + 44
+let kNavBarHeight = statusBarHeight + 44
 // 获取刘海屏底部home键高度,  34或0  普通屏为0
-public let KBottomSafeHeight = AppUtil.getWindow()?.safeAreaInsets.bottom ?? 0
+public let kBottomSafeHeight = AppUtil.getWindow()?.safeAreaInsets.bottom ?? 0
 
 
 public func JNPrint(_ items: Any..., fileName: String = #file, methodName: String = #function, lineNumber: Int = #line){
     
-    #if DEBUG
+#if DEBUG
     print("""
         -------------------------------------------
         \((fileName as NSString).lastPathComponent)
@@ -49,5 +49,5 @@ public func JNPrint(_ items: Any..., fileName: String = #file, methodName: Strin
         \(items)
         -------------------------------------------
         """)
-    #endif
+#endif
 }

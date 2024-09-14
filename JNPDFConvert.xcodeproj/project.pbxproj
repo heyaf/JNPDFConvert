@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		0401C1A62C959A7100542AB3 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1A52C959A7100542AB3 /* AppUtil.swift */; };
 		0401C1A82C959D2000542AB3 /* UIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1A72C959D2000542AB3 /* UIConfig.swift */; };
+		0401C1AA2C95CE2300542AB3 /* UIView+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1A92C95CE2300542AB3 /* UIView+Extion.swift */; };
+		0401C1AC2C95CED800542AB3 /* UIColor+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1AB2C95CED800542AB3 /* UIColor+Extion.swift */; };
+		0401C1AE2C95D1FF00542AB3 /* UILabel+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1AD2C95D1FF00542AB3 /* UILabel+Extion.swift */; };
+		0401C1B12C95D29500542AB3 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1AF2C95D29500542AB3 /* NSObject+Extension.swift */; };
+		0401C1B22C95D29500542AB3 /* UIimage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1B02C95D29500542AB3 /* UIimage+Extension.swift */; };
+		0401C1B62C95D30C00542AB3 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1B32C95D30C00542AB3 /* Storage.swift */; };
+		0401C1B72C95D30C00542AB3 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1B42C95D30C00542AB3 /* StorageManager.swift */; };
+		0401C1BD2C95D44700542AB3 /* BaseSimpleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1B82C95D44700542AB3 /* BaseSimpleViewController.swift */; };
+		0401C1BE2C95D44700542AB3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1B92C95D44700542AB3 /* BaseViewController.swift */; };
+		0401C1C02C95D55200542AB3 /* WRCustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1BF2C95D55200542AB3 /* WRCustomNavigationBar.swift */; };
+		0401C1C22C95D62C00542AB3 /* importHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1C12C95D62C00542AB3 /* importHeader.swift */; };
+		0401C1C42C95D6BD00542AB3 /* VC+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1C32C95D6BD00542AB3 /* VC+Extion.swift */; };
 		04934BB82C957FE000A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB72C957FE000A05D31 /* Base */; };
 		04934BBA2C957FE200A05D31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB92C957FE200A05D31 /* Assets.xcassets */; };
 		04934BBD2C957FE200A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BBC2C957FE200A05D31 /* Base */; };
@@ -22,6 +34,18 @@
 /* Begin PBXFileReference section */
 		0401C1A52C959A7100542AB3 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
 		0401C1A72C959D2000542AB3 /* UIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConfig.swift; sourceTree = "<group>"; };
+		0401C1A92C95CE2300542AB3 /* UIView+Extion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extion.swift"; sourceTree = "<group>"; };
+		0401C1AB2C95CED800542AB3 /* UIColor+Extion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extion.swift"; sourceTree = "<group>"; };
+		0401C1AD2C95D1FF00542AB3 /* UILabel+Extion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extion.swift"; sourceTree = "<group>"; };
+		0401C1AF2C95D29500542AB3 /* NSObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		0401C1B02C95D29500542AB3 /* UIimage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIimage+Extension.swift"; sourceTree = "<group>"; };
+		0401C1B32C95D30C00542AB3 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		0401C1B42C95D30C00542AB3 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		0401C1B82C95D44700542AB3 /* BaseSimpleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSimpleViewController.swift; sourceTree = "<group>"; };
+		0401C1B92C95D44700542AB3 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		0401C1BF2C95D55200542AB3 /* WRCustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRCustomNavigationBar.swift; sourceTree = "<group>"; };
+		0401C1C12C95D62C00542AB3 /* importHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = importHeader.swift; sourceTree = "<group>"; };
+		0401C1C32C95D6BD00542AB3 /* VC+Extion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+Extion.swift"; sourceTree = "<group>"; };
 		04934BAD2C957FE000A05D31 /* JNPDFConvert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JNPDFConvert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04934BB72C957FE000A05D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04934BB92C957FE200A05D31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,10 +75,50 @@
 		0401C1A42C959A5A00542AB3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0401C1AF2C95D29500542AB3 /* NSObject+Extension.swift */,
+				0401C1B02C95D29500542AB3 /* UIimage+Extension.swift */,
 				0401C1A52C959A7100542AB3 /* AppUtil.swift */,
 				0401C1A72C959D2000542AB3 /* UIConfig.swift */,
+				0401C1A92C95CE2300542AB3 /* UIView+Extion.swift */,
+				0401C1AB2C95CED800542AB3 /* UIColor+Extion.swift */,
+				0401C1AD2C95D1FF00542AB3 /* UILabel+Extion.swift */,
+				0401C1C32C95D6BD00542AB3 /* VC+Extion.swift */,
+				0401C1C12C95D62C00542AB3 /* importHeader.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		0401C1B52C95D30C00542AB3 /* Caches */ = {
+			isa = PBXGroup;
+			children = (
+				0401C1B32C95D30C00542AB3 /* Storage.swift */,
+				0401C1B42C95D30C00542AB3 /* StorageManager.swift */,
+			);
+			path = Caches;
+			sourceTree = "<group>";
+		};
+		0401C1BA2C95D44700542AB3 /* baseVC */ = {
+			isa = PBXGroup;
+			children = (
+				0401C1B82C95D44700542AB3 /* BaseSimpleViewController.swift */,
+				0401C1B92C95D44700542AB3 /* BaseViewController.swift */,
+			);
+			path = baseVC;
+			sourceTree = "<group>";
+		};
+		0401C1BB2C95D44700542AB3 /* Nav */ = {
+			isa = PBXGroup;
+			children = (
+				0401C1BF2C95D55200542AB3 /* WRCustomNavigationBar.swift */,
+			);
+			path = Nav;
+			sourceTree = "<group>";
+		};
+		0401C1BC2C95D44700542AB3 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tabbar;
 			sourceTree = "<group>";
 		};
 		04934BA42C957FE000A05D31 = {
@@ -100,6 +164,9 @@
 		04934BC82C95814F00A05D31 /* BaseModule */ = {
 			isa = PBXGroup;
 			children = (
+				0401C1BA2C95D44700542AB3 /* baseVC */,
+				0401C1BB2C95D44700542AB3 /* Nav */,
+				0401C1BC2C95D44700542AB3 /* Tabbar */,
 				04934BB62C957FE000A05D31 /* Main.storyboard */,
 				04934BBB2C957FE200A05D31 /* LaunchScreen.storyboard */,
 				04934BC52C95814F00A05D31 /* AppDelegate.swift */,
@@ -119,6 +186,7 @@
 		04934BCA2C95814F00A05D31 /* JNTool */ = {
 			isa = PBXGroup;
 			children = (
+				0401C1B52C95D30C00542AB3 /* Caches */,
 				0401C1A42C959A5A00542AB3 /* Utils */,
 				04934BD02C9583F200A05D31 /* JNDefine.swift */,
 			);
@@ -272,11 +340,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				04934BD12C9583F200A05D31 /* JNDefine.swift in Sources */,
+				0401C1C42C95D6BD00542AB3 /* VC+Extion.swift in Sources */,
 				04934BCF2C95814F00A05D31 /* ViewController.swift in Sources */,
+				0401C1AA2C95CE2300542AB3 /* UIView+Extion.swift in Sources */,
+				0401C1C22C95D62C00542AB3 /* importHeader.swift in Sources */,
 				04934BCD2C95814F00A05D31 /* AppDelegate.swift in Sources */,
+				0401C1AE2C95D1FF00542AB3 /* UILabel+Extion.swift in Sources */,
+				0401C1BE2C95D44700542AB3 /* BaseViewController.swift in Sources */,
+				0401C1B62C95D30C00542AB3 /* Storage.swift in Sources */,
+				0401C1B12C95D29500542AB3 /* NSObject+Extension.swift in Sources */,
 				0401C1A82C959D2000542AB3 /* UIConfig.swift in Sources */,
 				0401C1A62C959A7100542AB3 /* AppUtil.swift in Sources */,
+				0401C1BD2C95D44700542AB3 /* BaseSimpleViewController.swift in Sources */,
+				0401C1AC2C95CED800542AB3 /* UIColor+Extion.swift in Sources */,
 				04934BCE2C95814F00A05D31 /* SceneDelegate.swift in Sources */,
+				0401C1B22C95D29500542AB3 /* UIimage+Extension.swift in Sources */,
+				0401C1B72C95D30C00542AB3 /* StorageManager.swift in Sources */,
+				0401C1C02C95D55200542AB3 /* WRCustomNavigationBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

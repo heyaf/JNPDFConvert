@@ -8,7 +8,8 @@
 import Foundation
 import UIKit
 
-
+//登录颜色
+public let MainColor = UIColor.hexString("FF2424")
 public func boldSystemFont(ofSize fontSize: CGFloat) -> UIFont {
     return .boldSystemFont(ofSize: fontSize)
 }
