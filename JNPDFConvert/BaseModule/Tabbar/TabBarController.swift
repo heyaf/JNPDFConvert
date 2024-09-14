@@ -57,8 +57,7 @@ extension TabBarController {
         myTabBar.delegate = self
         setValue(myTabBar, forKeyPath: "tabBar")
         //        tabBar.addObserver(self, forKeyPath: "tabImageViewDefaultOffset", options: .new, context: nil)
-        selectedIndex = 2
-        selectedIndex = 0
+        selectedIndex = 1
 
         
         
@@ -136,7 +135,7 @@ extension TabBarController {
 //        tabBar.tintColor = .white//UIConfig.hexString("#1D152E")//UIConfig.hexString("#194CD5")
 //        
 //        //        childVc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIConfig.hexString("#1246D9").withAlphaComponent(0.8)], for: .selected)
-//        TabBar.setupTabBarAttribute(.white, UIConfig.hexString("#14D2B8"), nil)
+        TabBar.setupTabBarAttribute(BlackColor, MainColor, boldSystemFont(ofSize: 11))
 //        self.tabBar.unselectedItemTintColor = .white
 //        childVc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
     }

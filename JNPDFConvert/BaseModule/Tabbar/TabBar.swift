@@ -28,28 +28,16 @@ class TabBar: UITabBar {
         super.init(frame: frame)
 //        tintColor = UIConfig.hexString("#8F61FF")
 //        self.shadowImage = UIImage()
-        self.tintColor = .hexString("#14D2B8")
+        self.tintColor = .white
         self.unselectedItemTintColor = UIColor.white.withAlphaComponent(0.6)
-        self.backgroundColor = .hexString("#1D152E")
+        self.backgroundColor = .white
         self.layer.shadowOffset = CGSize(width: 0, height: -1)
-        self.layer.shadowColor = UIColor.hexString("#111111").withAlphaComponent(0.3).cgColor
+        self.layer.shadowColor = UIColor.hexString("#dddddd").withAlphaComponent(0.3).cgColor
         self.layer.shadowOpacity = 1
-        self.layer.shadowRadius = 10
+        self.layer.shadowRadius = 2
         
-//        redLabel.backgroundColor = UIConfig.hexString("#F74C31")
-//        self.addSubview(redLabel)
-//        redLabel.layer.cornerRadius = 9
-//        redLabel.layer.masksToBounds = true
-    }
-//    override init(frame: CGRect) {
-////        self.animations = animations
-//        super.init(frame: frame)
-//
-//        //添加阴影
 
-////
-////        self.tintColor = UIConfig.hexString("#19D5AE")
-//    }
+    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -31,11 +31,11 @@
 		0401C1D42C95DDDC00542AB3 /* AllToolsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1D32C95DDDC00542AB3 /* AllToolsVC.swift */; };
 		0401C1D62C95DDF000542AB3 /* JNHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1D52C95DDF000542AB3 /* JNHistoryVC.swift */; };
 		0401C1D82C95DE8E00542AB3 /* NSString+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1D72C95DE8E00542AB3 /* NSString+Extion.swift */; };
+		0401C1DD2C95DFB100542AB3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0401C1DB2C95DFB100542AB3 /* Localizable.strings */; };
 		04934BB82C957FE000A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB72C957FE000A05D31 /* Base */; };
 		04934BBA2C957FE200A05D31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB92C957FE200A05D31 /* Assets.xcassets */; };
 		04934BBD2C957FE200A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BBC2C957FE200A05D31 /* Base */; };
 		04934BCD2C95814F00A05D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04934BC52C95814F00A05D31 /* AppDelegate.swift */; };
-		04934BCE2C95814F00A05D31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04934BC62C95814F00A05D31 /* SceneDelegate.swift */; };
 		04934BCF2C95814F00A05D31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04934BC72C95814F00A05D31 /* ViewController.swift */; };
 		04934BD12C9583F200A05D31 /* JNDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04934BD02C9583F200A05D31 /* JNDefine.swift */; };
 		F50FA60A2CF6BFCB400179CE /* Pods_JNPDFConvert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF8042F63AC894EFCC32842 /* Pods_JNPDFConvert.framework */; };
@@ -66,13 +66,16 @@
 		0401C1D32C95DDDC00542AB3 /* AllToolsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllToolsVC.swift; sourceTree = "<group>"; };
 		0401C1D52C95DDF000542AB3 /* JNHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNHistoryVC.swift; sourceTree = "<group>"; };
 		0401C1D72C95DE8E00542AB3 /* NSString+Extion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+Extion.swift"; sourceTree = "<group>"; };
+		0401C1D92C95DF5A00542AB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		0401C1DA2C95DF5A00542AB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		0401C1DC2C95DFB100542AB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0401C1DE2C95DFCC00542AB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		04934BAD2C957FE000A05D31 /* JNPDFConvert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JNPDFConvert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04934BB72C957FE000A05D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04934BB92C957FE200A05D31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04934BBC2C957FE200A05D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04934BBE2C957FE200A05D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04934BC52C95814F00A05D31 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04934BC62C95814F00A05D31 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04934BC72C95814F00A05D31 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04934BD02C9583F200A05D31 /* JNDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNDefine.swift; sourceTree = "<group>"; };
 		4415FF95B5387420C938B269 /* Pods-JNPDFConvert.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JNPDFConvert.debug.xcconfig"; path = "Target Support Files/Pods-JNPDFConvert/Pods-JNPDFConvert.debug.xcconfig"; sourceTree = "<group>"; };
@@ -198,8 +201,8 @@
 				04934BB62C957FE000A05D31 /* Main.storyboard */,
 				04934BBB2C957FE200A05D31 /* LaunchScreen.storyboard */,
 				04934BC52C95814F00A05D31 /* AppDelegate.swift */,
-				04934BC62C95814F00A05D31 /* SceneDelegate.swift */,
 				04934BC72C95814F00A05D31 /* ViewController.swift */,
+				0401C1DB2C95DFB100542AB3 /* Localizable.strings */,
 			);
 			path = BaseModule;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 04934BA42C957FE000A05D31;
 			productRefGroup = 04934BAE2C957FE000A05D31 /* Products */;
@@ -315,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04934BBA2C957FE200A05D31 /* Assets.xcassets in Resources */,
+				0401C1DD2C95DFB100542AB3 /* Localizable.strings in Resources */,
 				04934BBD2C957FE200A05D31 /* Base in Resources */,
 				04934BB82C957FE000A05D31 /* Base in Resources */,
 			);
@@ -391,7 +396,6 @@
 				0401C1BD2C95D44700542AB3 /* BaseSimpleViewController.swift in Sources */,
 				0401C1D62C95DDF000542AB3 /* JNHistoryVC.swift in Sources */,
 				0401C1AC2C95CED800542AB3 /* UIColor+Extion.swift in Sources */,
-				04934BCE2C95814F00A05D31 /* SceneDelegate.swift in Sources */,
 				0401C1D22C95DDCB00542AB3 /* HomeVC.swift in Sources */,
 				0401C1B22C95D29500542AB3 /* UIimage+Extension.swift in Sources */,
 				0401C1B72C95D30C00542AB3 /* StorageManager.swift in Sources */,
@@ -403,10 +407,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		0401C1DB2C95DFB100542AB3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0401C1DC2C95DFB100542AB3 /* en */,
+				0401C1DE2C95DFCC00542AB3 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		04934BB62C957FE000A05D31 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				04934BB72C957FE000A05D31 /* Base */,
+				0401C1D92C95DF5A00542AB3 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -415,6 +429,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				04934BBC2C957FE200A05D31 /* Base */,
+				0401C1DA2C95DF5A00542AB3 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -427,6 +442,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -490,6 +506,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -565,9 +582,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = hebert.JNPDFConvert;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -595,9 +616,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = hebert.JNPDFConvert;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

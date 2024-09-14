@@ -30,9 +30,9 @@ class TabBarControllerConfig {
         let vc2 = HomeVC()
         let vc3 = JNHistoryVC()
 //
-        tabBarController.addChildVc(vc1, "Auto Click".local, "tab_autoclick", "tab_autoclick_hl", true, tag: 0)
-        tabBarController.addChildVc(vc2, "Auto Scroll".local, "tab_autoscroll", "tab_autoscroll_hl", true, tag: 1)
-        tabBarController.addChildVc(vc3, "Auto Save".local, "tab_autosave", "tab_autosave_hl", true, tag: 2)
+        tabBarController.addChildVc(vc1, "All Tools".local,"btn_alltools_unselect", "btn_alltools_selected",  true, tag: 0)
+        tabBarController.addChildVc(vc2, "Home".local, "btn_home_unselect","btn_home_selected",  true, tag: 1)
+        tabBarController.addChildVc(vc3, "History".local, "btn_history_unselect","btn_history_selected",  true, tag: 2)
 
         
  

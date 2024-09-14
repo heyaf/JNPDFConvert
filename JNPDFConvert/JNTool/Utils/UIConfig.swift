@@ -9,7 +9,10 @@ import Foundation
 import UIKit
 
 //登录颜色
-public let MainColor = UIColor.hexString("FF2424")
+public let MainColor = UIColor.hexString("#F90000")
+//#141416
+public let BlackColor = UIColor.hexString("#141416")
+
 public func boldSystemFont(ofSize fontSize: CGFloat) -> UIFont {
     return .boldSystemFont(ofSize: fontSize)
 }

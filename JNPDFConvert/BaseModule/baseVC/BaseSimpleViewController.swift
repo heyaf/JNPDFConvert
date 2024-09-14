@@ -52,7 +52,7 @@ open class BaseSimpleViewController: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .hexString("#1E152F")
+        view.backgroundColor = .hexString("#F9F9F9")
         setupNavBar()
         setupUI()
         bindData()
