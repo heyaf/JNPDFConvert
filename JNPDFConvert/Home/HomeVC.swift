@@ -67,21 +67,24 @@ class HomeVC: BaseViewController {
         topUI()
         setNav()
         bottomUI()
+        pdfList.removeAll()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
         tableView.register(PDFTableViewCell.self, forCellReuseIdentifier: "PDFCell")
     }
     
     func setNav(){
-        var titleL = UIFastCreatTool.createLabel("PDF Convert",fontSize: 26,textColor: .white)
+        let titleL = UIFastCreatTool.createLabel("PDF Convert",fontSize: 26,textColor: .white)
         titleL.font = .systemFont(ofSize: 26, weight: UIFont.Weight(rawValue: 900.0))
         view.addSubview(titleL)
         
-        var searchBtn = UIFastCreatTool.createButton(normalImage: UIImage(named: "Group 1000005307"))
+        let searchBtn = UIFastCreatTool.createButton(normalImage: UIImage(named: "Group 1000005307"))
         searchBtn.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
         view.addSubview(searchBtn)
         
-        var settingBtn = UIFastCreatTool.createButton(normalImage: UIImage(named: "Group 1000005306"))
+        let settingBtn = UIFastCreatTool.createButton(normalImage: UIImage(named: "Group 1000005306"))
         settingBtn.addTarget(self, action: #selector(settingAction), for: .touchUpInside)
         view.addSubview(settingBtn)
         
@@ -105,7 +108,7 @@ class HomeVC: BaseViewController {
         
     }
     func topUI(){
-        var bgImageV = UIFastCreatTool.createHeadImageView("bg_home")
+        let bgImageV = UIFastCreatTool.createHeadImageView("bg_home")
         self.view.addSubview(bgImageV)
         bgImageV.backgroundColor = MainColor
         bgImageV.snp.makeConstraints { make in
@@ -115,9 +118,9 @@ class HomeVC: BaseViewController {
         topbgimageV = bgImageV
         let corverImageV = UIFastCreatTool.createHeadImageView("img_banner")
         
-        var wordView = UIFastCreatTool.createView(backgroundColor: .white,cornerRadius: 18)
-        var scanView = UIFastCreatTool.createView(backgroundColor: .white,cornerRadius: 18)
-        var bottomView = UIFastCreatTool.createView(backgroundColor: .white,cornerRadius: 18)
+        let wordView = UIFastCreatTool.createView(backgroundColor: .white,cornerRadius: 18)
+        let scanView = UIFastCreatTool.createView(backgroundColor: .white,cornerRadius: 18)
+        let bottomView = UIFastCreatTool.createView(backgroundColor: .white,cornerRadius: 18)
         bgImageV.addSubviews([corverImageV,wordView,scanView,bottomView])
         
         corverImageV.snp.makeConstraints { make in
@@ -145,6 +148,10 @@ class HomeVC: BaseViewController {
         setmodule(view: wordView, title: "Word to PDF", Icon: "scan 877")
         setmodule(view: scanView, title: "Scan", Icon: "scan 879")
 
+        let corverTap = UITapGestureRecognizer(target: self, action: #selector(cotverImage(_:)))
+        corverImageV.addGestureRecognizer(corverTap)
+        bgImageV.isUserInteractionEnabled = true
+        corverImageV.isUserInteractionEnabled = true
         
         
     }
@@ -236,6 +243,36 @@ class HomeVC: BaseViewController {
     @objc func moreAction(){
         
     }
+    @objc func cotverImage(_ gesture: UITapGestureRecognizer) {
+        let menuBubble = BTBubble.makeMenuBubble()
+        
+        let item1 = BTBubble.Menu.Item(text: "Rename", identifier: "Rename", image: UIImage(named: "edit_edit"))
+        let item2 = BTBubble.Menu.Item(text: "Delete", identifier: "Delete", image: UIImage(named: "edit_del"))
+        let item3 = BTBubble.Menu.Item(text: "Share", identifier: "Share", image: UIImage(named: "edit_share"))
+  
+
+        
+        var config = BTBubble.Menu.Config()
+        config.width = .fixed(220)
+        let menuView = BTBubbleMenu(items: [item1, item2, item3], config: config)
+        menuView.selectItemBlock = { item in
+           
+            switch item.identifier {
+            case "Delete":
+                break
+            case "Share":
+                break
+           
+            default:
+                break
+            }
+            
+        }
+        
+        menuBubble.show(customView: menuView, direction: .auto, from:gesture.view! , duration: nil)
+        menuBubble.shouldShowMask = true
+        menuBubble.maskColor = .black.withAlphaComponent(0.2)
+    }
     @objc func segmentChanged(_ sender: UISegmentedControl) {
             // 处理切换逻辑
         let segmentWidth = (view.frame.width - 32) / 3
@@ -246,7 +283,7 @@ class HomeVC: BaseViewController {
         
         }
 }
-extension HomeVC :UITableViewDelegate, UITableViewDataSource{
+extension HomeVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSource, EmptyDataSetDelegate{
     // MARK: - UITableView DataSource & Delegate Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -266,12 +303,23 @@ extension HomeVC :UITableViewDelegate, UITableViewDataSource{
         
         return cell
     }
-    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let text = "No data".local
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.hex("#141416", alpha: 0.6)]
+        return NSAttributedString(string: text, attributes: attributes as [NSAttributedString.Key : Any])
+    }
+    ////空数据按钮图片
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        return UIImage(named: "Group 1000005413")
+    }
+    func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
+        return -80
+    }
     
 }
 // Custom UITableViewCell
 class PDFTableViewCell: UITableViewCell {
-    
+    let menuBubble = BTBubble()
     let bgview = UIView().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 15
@@ -307,6 +355,7 @@ class PDFTableViewCell: UITableViewCell {
         button.setTitle("...", for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 20)
         button.setTitleColor(.black, for: .normal)
+       
         return button
     }()
     
@@ -314,7 +363,12 @@ class PDFTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .white
         backgroundColor = .white
+        selectionStyle = .none
         setupUI()
+        moreButton.addTarget(self, action: #selector(moreAction(_:)), for: .touchUpInside)
+        menuBubble.shouldShowMask = true
+        menuBubble.maskColor = .hexString("#0C0C0C").withAlphaComponent(0.6)
+        menuBubble.cornerRadius = 20
     }
     
     required init?(coder: NSCoder) {
@@ -364,5 +418,45 @@ class PDFTableViewCell: UITableViewCell {
         titleLabel.text = title
         dateLabel.text = date
         
+    }
+    @objc func moreAction(_ button:UIButton){
+        
+        let item1 = BTBubble.Menu.Item(text: "Rename", identifier: "Rename", image: UIImage(named: "edit_edit"))
+        let item2 = BTBubble.Menu.Item(text: "Delete", identifier: "Delete", image: UIImage(named: "edit_del"))
+        let item3 = BTBubble.Menu.Item(text: "Share", identifier: "Share", image: UIImage(named: "edit_share"))
+  
+
+        
+        var config = BTBubble.Menu.Config()
+        config.width = .fixed(220)
+        let menuView = BTBubbleMenu(items: [item1, item2, item3], config: config)
+        menuView.selectItemBlock = { item in
+           
+            switch item.identifier {
+            case "Delete":
+                break
+            case "Share":
+                break
+           
+            default:
+                break
+            }
+            
+        }
+        
+        menuBubble.show(customView: menuView, direction: .auto, from: button, duration: nil)
+//        menuBubble.y = kScreenH - TabBarHeight - menuBubble.height - 10
+//        menuBubble.fillColor = UIColor.black.withAlphaComponent(0.2)
+//        addFullwithView(view: menuBubble)
+        
+//        let linv = UIFastCreatTool.getLine(UIColor.hexString("#545458").withAlphaComponent(0.7))
+//        linv.frame = CGRect(x: 0, y: 42, width: menuBubble.width, height: 0.5)
+//        
+//        let linv2 = UIFastCreatTool.getLine(UIColor.hexString("#545458").withAlphaComponent(0.7))
+//        linv2.frame = CGRect(x: 0, y: 84, width: menuBubble.width, height: 0.5)
+//        
+//        let linv3 = UIFastCreatTool.getLine(UIColor.hexString("#545458").withAlphaComponent(0.7))
+//        linv3.frame = CGRect(x: 0, y: 126, width: menuBubble.width, height: 0.5)
+//        menuBubble.addSubviews([linv,linv2,linv3])
     }
 }

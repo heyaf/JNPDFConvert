@@ -18,7 +18,7 @@ public func boldSystemFont(ofSize fontSize: CGFloat) -> UIFont {
 }
 
 public func middleFont(ofSize fontSize: CGFloat) -> UIFont {
-    return .systemFont(ofSize: fontSize, weight: UIFont.Weight(rawValue: 600))
+    return .systemFont(ofSize: fontSize, weight: UIFont.Weight(rawValue: 0.23))
 }
 
 public func font(size fontSize: CGFloat)-> UIFont {

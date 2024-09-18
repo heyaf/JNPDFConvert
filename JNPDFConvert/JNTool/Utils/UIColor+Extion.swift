@@ -100,7 +100,7 @@ extension UIColor{
     }
     
     ///hexColor(0xFF4500)
-    static func hexColor(_ hexColor : Int64) -> UIColor {
+    static func inthexColor(_ hexColor : Int64) -> UIColor {
         let red = ((CGFloat)((hexColor & 0xFF0000) >> 16))/255.0
         let green = ((CGFloat)((hexColor & 0xFF00) >> 8))/255.0
         let blue = ((CGFloat)(hexColor & 0xFF))/255.0
