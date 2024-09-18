@@ -23,39 +23,39 @@ class AllToolsVC: BaseViewController {
             ("Other app", "scan_menu")
         ]),
         ("PDF Toolbox", [
-           
+            
             ("Merge pdf files", "scan_copy"),
             ("Compress files", "scan_yasuo")
         ])
     ]
-
-        
-        let collectionView: UICollectionView = {
-            let layout = UICollectionViewFlowLayout()
-            let itemW = (kScreenWidth - 80)/3
-            layout.itemSize = CGSize(width: itemW, height: itemW) // 设置卡片的大小
-            layout.minimumLineSpacing = 16 // 设置卡片之间的行距
-            layout.minimumInteritemSpacing = 7 // 设置卡片之间的列间距
-            layout.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20) // 内边距
-            layout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 40) // 设置标题视图的高度
-            return UICollectionView(frame: .zero, collectionViewLayout: layout)
-        }()
-
+    
+    
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let itemW = (kScreenWidth - 80)/3
+        layout.itemSize = CGSize(width: itemW, height: itemW) // 设置卡片的大小
+        layout.minimumLineSpacing = 16 // 设置卡片之间的行距
+        layout.minimumInteritemSpacing = 7 // 设置卡片之间的列间距
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20) // 内边距
+        layout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 40) // 设置标题视图的高度
+        return UICollectionView(frame: .zero, collectionViewLayout: layout)
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .hex("f9f9f9")
         isHideCustomNav = true
         setupUI()
         setupCollectionView()
-            }
-            
-            // 设置 CollectionView
+    }
+    
+    // 设置 CollectionView
     func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
-
+        
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.backgroundColor = .hex("F9F9F9")
         
@@ -110,10 +110,10 @@ class AllToolsVC: BaseViewController {
         
     }
     @objc func event() {
-       
         
-       
-
+        
+        
+        
     }
     @objc func searchAction(){
         
@@ -121,35 +121,35 @@ class AllToolsVC: BaseViewController {
     @objc func settingAction(){
         
     }
-
+    
 }
 
 extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-            return sections.count
+        return sections.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return sections[section].1.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
+        let item = sections[indexPath.section].1[indexPath.item]
+        cell.configure(with: item.0, imageName: item.1)
+        return cell
+    }
+    
+    // MARK: - Section Header
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! SectionHeader
+            header.titleLabel.text = sections[indexPath.section].0
+            return header
         }
-        
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return sections[section].1.count
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
-            let item = sections[indexPath.section].1[indexPath.item]
-            cell.configure(with: item.0, imageName: item.1)
-            return cell
-        }
-        
-        // MARK: - Section Header
-        
-        func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-            if kind == UICollectionView.elementKindSectionHeader {
-                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! SectionHeader
-                header.titleLabel.text = sections[indexPath.section].0
-                return header
-            }
-            return UICollectionReusableView()
-        }
+        return UICollectionReusableView()
+    }
 }
 
 class CustomCollectionViewCell: UICollectionViewCell {

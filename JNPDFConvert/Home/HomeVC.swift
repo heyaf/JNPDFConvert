@@ -187,7 +187,7 @@ class HomeVC: BaseViewController {
         view.addSubview(moreBtn)
         moreBtn.snp.makeConstraints { make in
             make.right.equalToSuperview().inset(18)
-            make.centerY.equalTo(topbgimageV)
+            make.centerY.equalTo(moreL)
             make.size.equalTo(CGSize(width: 120, height: 20))
         }
         moreBtn.addTarget(self, action: #selector(moreAction), for: .touchUpInside)
@@ -241,7 +241,8 @@ class HomeVC: BaseViewController {
         
     }
     @objc func moreAction(){
-        
+       let tabbar = AppUtil.getWindow()?.rootViewController as? TabBarController
+        tabbar?.changeToIndex(index: 2)
     }
     @objc func cotverImage(_ gesture: UITapGestureRecognizer) {
         let menuBubble = BTBubble.makeMenuBubble()
@@ -417,6 +418,7 @@ class PDFTableViewCell: UITableViewCell {
     func configure(with title: String, date: String, size: String) {
         titleLabel.text = title
         dateLabel.text = date
+        pdfIconImageView.image = UIImage(named: "scan_word")
         
     }
     @objc func moreAction(_ button:UIButton){

@@ -33,7 +33,7 @@ class TabBar: UITabBar {
         self.backgroundColor = .white
         self.layer.shadowOffset = CGSize(width: 0, height: -1)
         self.layer.shadowColor = UIColor.hexString("#dddddd").withAlphaComponent(0.3).cgColor
-        self.layer.shadowOpacity = 1
+        self.layer.shadowOpacity = 5
         self.layer.shadowRadius = 2
         
 
