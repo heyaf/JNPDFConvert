@@ -11,9 +11,18 @@ import UIKit
 /// 不带ViewModel的基类控制器
 open class BaseSimpleViewController: UIViewController {
     ///是否隐藏导航栏
-    open var isHideCustomNav : Bool{
-        return false
+    open var isHideCustomNav: Bool {
+        get {
+            return _isHideCustomNav
+        }
+        set {
+            _isHideCustomNav = newValue
+        }
     }
+
+    // 需要引入一个存储属性来保存值
+    private var _isHideCustomNav: Bool = false
+
     open override var title: String?{
         didSet{
             isHideCustomNav ? nil : (customNav.title = title)

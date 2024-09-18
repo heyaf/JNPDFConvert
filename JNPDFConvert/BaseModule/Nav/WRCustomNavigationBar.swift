@@ -10,7 +10,7 @@ import UIKit
 
 fileprivate let WRDefaultTitleSize:CGFloat = 18
 fileprivate let WRDefaultTitleColor = UIColor.white
-fileprivate let WRDefaultBackgroundColor = UIColor.hexString("#1D152F") //UIColor.white
+fileprivate let WRDefaultBackgroundColor = MainColor //UIColor.white
 fileprivate let WRScreenWidth = UIScreen.main.bounds.size.width
 ///是否留海屏
 public  var kIsIphoneXSeries : Bool {

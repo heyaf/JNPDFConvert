@@ -38,6 +38,7 @@
 		04934BCD2C95814F00A05D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04934BC52C95814F00A05D31 /* AppDelegate.swift */; };
 		04934BCF2C95814F00A05D31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04934BC72C95814F00A05D31 /* ViewController.swift */; };
 		04934BD12C9583F200A05D31 /* JNDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04934BD02C9583F200A05D31 /* JNDefine.swift */; };
+		04DC758C2C9AC4CF00A70D5C /* UIimage+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DC758B2C9AC4CF00A70D5C /* UIimage+Extion.swift */; };
 		F50FA60A2CF6BFCB400179CE /* Pods_JNPDFConvert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF8042F63AC894EFCC32842 /* Pods_JNPDFConvert.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		04934BC52C95814F00A05D31 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04934BC72C95814F00A05D31 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04934BD02C9583F200A05D31 /* JNDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNDefine.swift; sourceTree = "<group>"; };
+		04DC758B2C9AC4CF00A70D5C /* UIimage+Extion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIimage+Extion.swift"; sourceTree = "<group>"; };
 		4415FF95B5387420C938B269 /* Pods-JNPDFConvert.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JNPDFConvert.debug.xcconfig"; path = "Target Support Files/Pods-JNPDFConvert/Pods-JNPDFConvert.debug.xcconfig"; sourceTree = "<group>"; };
 		4F6A63501624F15E5B73DFDB /* Pods-JNPDFConvert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JNPDFConvert.release.xcconfig"; path = "Target Support Files/Pods-JNPDFConvert/Pods-JNPDFConvert.release.xcconfig"; sourceTree = "<group>"; };
 		5CF8042F63AC894EFCC32842 /* Pods_JNPDFConvert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JNPDFConvert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +111,7 @@
 				0401C1C12C95D62C00542AB3 /* importHeader.swift */,
 				0401C1CF2C95DCCA00542AB3 /* UIFastCreatTool.swift */,
 				0401C1D72C95DE8E00542AB3 /* NSString+Extion.swift */,
+				04DC758B2C9AC4CF00A70D5C /* UIimage+Extion.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				0401C1AE2C95D1FF00542AB3 /* UILabel+Extion.swift in Sources */,
 				0401C1BE2C95D44700542AB3 /* BaseViewController.swift in Sources */,
 				0401C1B62C95D30C00542AB3 /* Storage.swift in Sources */,
+				04DC758C2C9AC4CF00A70D5C /* UIimage+Extion.swift in Sources */,
 				0401C1B12C95D29500542AB3 /* NSObject+Extension.swift in Sources */,
 				0401C1CC2C95DB5500542AB3 /* TabBarController.swift in Sources */,
 				0401C1A82C959D2000542AB3 /* UIConfig.swift in Sources */,
