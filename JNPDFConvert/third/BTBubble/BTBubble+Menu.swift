@@ -14,7 +14,7 @@ extension BTBubble {
         let bubble = BTBubble()
         bubble.arrowOffset = .center(0)
         bubble.edgeInsets = .init(top: 0, left: 16, bottom: 0, right: 16)
-        bubble.fillColor = UIColor.hex("212121")
+        bubble.fillColor = UIColor.hexString("212121")
         return bubble
     }
 }
