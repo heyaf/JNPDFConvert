@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Would you like to give us access to your camera in order to provide the image to PDF function?</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Would you like to give us access to your photo library in order to provide the image to PDF function?</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Would you like to give us access to your photo library in order to provide the image to PDF function?</string>
+</dict>
 </plist>

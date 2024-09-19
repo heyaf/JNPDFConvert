@@ -13,4 +13,5 @@ pod 'SwiftyUserDefaults'
 pod 'Kingfisher'
 pod 'EmptyDataSet-Swift'
 pod 'MBProgressHUD'
+pod 'CLImagePickerTool'
 end

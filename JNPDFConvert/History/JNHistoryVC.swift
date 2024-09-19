@@ -32,8 +32,8 @@ class JNHistoryVC: BaseViewController {
         button.semanticContentAttribute = .forceRightToLeft
         
         // 调整按钮图片和标题之间的间距
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: -8)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 8)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -8)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 5)
 
         // 边框和圆角设置
         button.layer.cornerRadius = 10
@@ -52,7 +52,7 @@ class JNHistoryVC: BaseViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
-    
+    var selectedOption = 0
     
     // Sample data
     var pdfList = [
@@ -93,6 +93,7 @@ class JNHistoryVC: BaseViewController {
             make.height.equalTo(30) // 设置按钮的高度
             make.width.equalTo(90)
         }
+        filterButton.addTarget(self, action: #selector(filterevent), for: .touchUpInside)
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
@@ -144,7 +145,14 @@ class JNHistoryVC: BaseViewController {
     }
     @objc func filterevent() {
         
+        // 初始化弹窗视图
+        let popup = PopupSelectionView(frame: self.view.bounds, selectedOption: selectedOption)
         
+        // 设置代理
+        popup.delegate = self
+        
+        // 添加到视图中
+        AppUtil.getWindow()?.rootViewController?.view.addSubview(popup)
         
         
     }
@@ -158,7 +166,7 @@ class JNHistoryVC: BaseViewController {
     
     
 }
-extension JNHistoryVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSource, EmptyDataSetDelegate{
+extension JNHistoryVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSource, EmptyDataSetDelegate,PopupSelectionDelegate{
     // MARK: - UITableView DataSource & Delegate Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -190,6 +198,11 @@ extension JNHistoryVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSo
     }
     func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
         return -20
+    }
+    func didSelectOption(_ option: Int) {
+        selectedOption = option
+//        let names = ["Newest","Name","Size"]
+//        self.filterButton .setTitle(names[selectedOption], for: .normal)
     }
     
 }

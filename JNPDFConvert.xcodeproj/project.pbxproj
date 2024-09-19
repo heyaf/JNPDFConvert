@@ -32,6 +32,7 @@
 		0401C1D62C95DDF000542AB3 /* JNHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1D52C95DDF000542AB3 /* JNHistoryVC.swift */; };
 		0401C1D82C95DE8E00542AB3 /* NSString+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1D72C95DE8E00542AB3 /* NSString+Extion.swift */; };
 		0401C1DD2C95DFB100542AB3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0401C1DB2C95DFB100542AB3 /* Localizable.strings */; };
+		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		04934BB82C957FE000A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB72C957FE000A05D31 /* Base */; };
 		04934BBA2C957FE200A05D31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB92C957FE200A05D31 /* Assets.xcassets */; };
 		04934BBD2C957FE200A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BBC2C957FE200A05D31 /* Base */; };
@@ -79,6 +80,7 @@
 		0401C1DA2C95DF5A00542AB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		0401C1DC2C95DFB100542AB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0401C1DE2C95DFCC00542AB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		04934BAD2C957FE000A05D31 /* JNPDFConvert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JNPDFConvert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04934BB72C957FE000A05D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04934BB92C957FE200A05D31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				0401C1D52C95DDF000542AB3 /* JNHistoryVC.swift */,
+				0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */,
 				0401C1CE2C95DBC800542AB3 /* BaseNavigationController.swift in Sources */,
 				04934BD12C9583F200A05D31 /* JNDefine.swift in Sources */,
 				0401C1C42C95D6BD00542AB3 /* VC+Extion.swift in Sources */,

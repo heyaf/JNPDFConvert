@@ -29,7 +29,7 @@ class AllToolsVC: BaseViewController {
         ])
     ]
     
-    
+    let imagePickTool = CLImagePickerTool()
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let itemW = (kScreenWidth - 80)/3
@@ -138,6 +138,24 @@ extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
         let item = sections[indexPath.section].1[indexPath.item]
         cell.configure(with: item.0, imageName: item.1)
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0,indexPath.row == 0 {
+            let imagePickTool = CLImagePickerTool()
+            imagePickTool.isHiddenVideo = true
+            imagePickTool.navColor = MainColor
+            imagePickTool.navTitleColor = .white
+            imagePickTool.statusBarType = .white
+            imagePickTool.showCamaroInPicture = false
+            imagePickTool.cl_setupImagePickerWith(MaxImagesCount: 9, superVC: self) { (asset,cutImage) in
+                print("返回的asset数组是\(asset)")
+             }
+        } else if indexPath.section == 1,indexPath.row == 2 {
+            imagePickTool.cameraOut = true
+                imagePickTool.cl_setupImagePickerWith(MaxImagesCount: 1, superVC: self) { (asset,cutImage) in
+                    print("返回的asset数组是\(asset)")
+                }
+        }
     }
     
     // MARK: - Section Header
