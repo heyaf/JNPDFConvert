@@ -155,6 +155,8 @@ extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
                 imagePickTool.cl_setupImagePickerWith(MaxImagesCount: 1, superVC: self) { (asset,cutImage) in
                     print("返回的asset数组是\(asset)")
                 }
+        }else if indexPath.section == 1,indexPath.row == 1 {
+            urlToPdf()
         }
     }
     
@@ -167,6 +169,17 @@ extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
             return header
         }
         return UICollectionReusableView()
+    }
+    func urlToPdf(){
+        let popupView = JNUrlPopView(frame: self.view.bounds, title: "URL to PDF", confirmButtonText: "Confirm")
+        
+        // 设置确定按钮的回调
+        popupView.onConfirm = { inputText in
+            print("User input: \(inputText ?? "")")
+        }
+        // 添加到视图中
+        AppUtil.getWindow()?.rootViewController?.view.addSubview(popupView)
+  
     }
 }
 
