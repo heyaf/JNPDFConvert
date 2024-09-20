@@ -99,8 +99,9 @@ open class BaseSimpleViewController: UIViewController {
         
         if navigationController?.viewControllers.count ?? 1 > 1 {
 //            let bundle = Bundle(path: (Bundle(for: BaseViewController.self).resourcePath ?? "") + "/LXBase.bundle")
-            customNav.wr_setLeftButton(image: UIImage(named:"back") ?? UIImage())
+            customNav.wr_setLeftButton(image: UIImage(named:"back_black") ?? UIImage())
 //            customNav.wr_setLeftButton(image: UIImage(named:"navbar_back_black",in: bundle, compatibleWith: nil) ?? UIImage())
+            customNav.barBackgroundImage = UIImage(color: .white)
         }
     }
     
@@ -108,7 +109,7 @@ open class BaseSimpleViewController: UIViewController {
         if customNav.leftButton.isHidden, navigationController?.viewControllers.count ?? 1 > 1 {
 //            let bundle = Bundle(path: (Bundle(for: BaseViewController.self).resourcePath ?? "") + "/LXBase.bundle")
 //            customNav.wr_setLeftButton(image: UIImage(named:"navbar_back_black",in: bundle, compatibleWith: nil) ?? UIImage())
-            customNav.wr_setLeftButton(image: UIImage(named:"back") ?? UIImage())
+            customNav.wr_setLeftButton(image: UIImage(named:"back_black") ?? UIImage())
 
         }
     }

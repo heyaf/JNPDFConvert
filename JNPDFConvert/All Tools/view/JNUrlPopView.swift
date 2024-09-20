@@ -9,7 +9,7 @@ import UIKit
 
 class JNUrlPopView: UIView {
 
-    
+   
     // UI元素
     private var dimmingView: UIView!
     private var popupView: UIView!
@@ -22,9 +22,9 @@ class JNUrlPopView: UIView {
     var onConfirm: ((String?) -> Void)?
     
     // 初始化方法
-    init(frame: CGRect, title: String, confirmButtonText: String) {
+    init(frame: CGRect, title: String,placeholder:String, confirmButtonText: String) {
         super.init(frame: frame)
-        setupUI(title: title, confirmButtonText: confirmButtonText)
+        setupUI(title: title, placeholder: placeholder,confirmButtonText: confirmButtonText)
     }
     
     required init?(coder: NSCoder) {
@@ -32,7 +32,7 @@ class JNUrlPopView: UIView {
     }
     
     // 初始化UI
-    private func setupUI(title: String, confirmButtonText: String) {
+    private func setupUI(title: String,placeholder:String, confirmButtonText: String) {
         // 创建遮罩层
         dimmingView = UIView(frame: self.bounds)
         dimmingView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
@@ -57,7 +57,7 @@ class JNUrlPopView: UIView {
         popupView.addSubview(titleLabel)
         
         // 添加关闭按钮 (叉号)
-        closeButton = UIButton(frame: CGRect(x: popupView.frame.width - 40, y: 10, width: 30, height: 30))
+        closeButton = UIButton(frame: CGRect(x: popupView.frame.width - 50, y: 15, width: 30, height: 30))
 //        closeButton.setTitle("✕", for: .normal)
 //        closeButton.setTitleColor(.black, for: .normal)
         closeButton.setBackgroundImage(UIImage(named: "url_pdf_close"), for: .normal)
@@ -67,10 +67,13 @@ class JNUrlPopView: UIView {
         // 添加输入框
         textField = UITextField(frame: CGRect(x: 20, y: 77, width: popupView.frame.width - 40, height: 50))
         textField.borderStyle = .roundedRect
-        textField.placeholder = "Enter URL"
+        textField.placeholder = placeholder
         textField.backgroundColor = .hex("#F3F3F3")
+        textField.layer.cornerRadius = 14
+        textField.layer.masksToBounds = true
         popupView.addSubview(textField)
-        
+        // 监听输入框文本变化
+                textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         // 添加确定按钮
         confirmButton = UIButton(frame: CGRect(x: 96, y: 170, width: popupView.frame.width - 192, height: 46))
         confirmButton.setTitle(confirmButtonText, for: .normal)
@@ -80,6 +83,9 @@ class JNUrlPopView: UIView {
         confirmButton.layer.cornerRadius = 16
         confirmButton.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
         popupView.addSubview(confirmButton)
+//        confirmButton.isEnabled = false
+        textField.text = "http://www.baidu.com"
+        confirmButton.alpha = 0.2  // 设为半透明，表示不可点击
     }
     
     // 确定按钮点击事件
@@ -97,5 +103,16 @@ class JNUrlPopView: UIView {
     func show(in view: UIView) {
         view.addSubview(self)
     }
+    // 监听输入框文本变化
+        @objc private func textFieldDidChange() {
+            // 如果输入框不为空，启用按钮；否则禁用按钮
+            if let text = textField.text, !text.isEmpty {
+                confirmButton.isEnabled = true
+                confirmButton.alpha = 1.0  // 恢复不透明，表示可点击
+            } else {
+                confirmButton.isEnabled = false
+                confirmButton.alpha = 0.2  // 设为半透明，表示不可点击
+            }
+        }
 
 }

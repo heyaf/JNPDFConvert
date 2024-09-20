@@ -9,7 +9,7 @@
 import UIKit
 
 fileprivate let WRDefaultTitleSize:CGFloat = 18
-fileprivate let WRDefaultTitleColor = UIColor.white
+fileprivate let WRDefaultTitleColor = UIColor.black
 fileprivate let WRDefaultBackgroundColor = MainColor //UIColor.white
 fileprivate let WRScreenWidth = UIScreen.main.bounds.size.width
 ///是否留海屏

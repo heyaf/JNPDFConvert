@@ -6,9 +6,9 @@
 //
 
 import UIKit
-
+import VisionKit
 class HomeVC: BaseViewController {
-    
+    let dcVc = VNDocumentCameraViewController()
     // UI Elements
     let segmentControl: UISegmentedControl = {
         let segment = UISegmentedControl(items: ["Last 3 days", "Month", "6 Month"])
@@ -245,34 +245,41 @@ class HomeVC: BaseViewController {
         tabbar?.changeToIndex(index: 2)
     }
     @objc func cotverImage(_ gesture: UITapGestureRecognizer) {
-        let menuBubble = BTBubble.makeMenuBubble()
-        
-        let item1 = BTBubble.Menu.Item(text: "Rename", identifier: "Rename", image: UIImage(named: "edit_edit"))
-        let item2 = BTBubble.Menu.Item(text: "Delete", identifier: "Delete", image: UIImage(named: "edit_del"))
-        let item3 = BTBubble.Menu.Item(text: "Share", identifier: "Share", image: UIImage(named: "edit_share"))
-  
-
-        
-        var config = BTBubble.Menu.Config()
-        config.width = .fixed(220)
-        let menuView = BTBubbleMenu(items: [item1, item2, item3], config: config)
-        menuView.selectItemBlock = { item in
-           
-            switch item.identifier {
-            case "Delete":
-                break
-            case "Share":
-                break
-           
-            default:
-                break
+        if #available(iOS 13.0, *) {
+            
+            // 判断当前设备是否支持 VNDocumentCameraViewController
+            if !VNDocumentCameraViewController.isSupported {
+                
+                let alertController = UIAlertController(title: "Confirm Delete", message: "", preferredStyle: .alert)
+                
+                if let view = alertController.view.subviews.first,
+                   let view1 = view.subviews.first,
+                   let view2 = view1.subviews.first {
+                    view2.backgroundColor = .hexString("#1E1E1E", alpha: 0.75)
+                }
+                
+                let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+                alertController.addAction(okAction)
+                
+                let str1 = "This device does not support it"
+                let titleText = NSMutableAttributedString(string: str1)
+                titleText.addAttributes([.font: UIFont.boldSystemFont(ofSize: 17), .foregroundColor: UIColor.white], range: NSRange(location: 0, length: str1.count))
+                
+                alertController.setValue(titleText, forKey: "attributedTitle")
+                
+                self.present(alertController, animated: true, completion: nil)
+                
+                return
             }
             
+           
+            dcVc.delegate = self
+            
+            self.present(dcVc, animated: true, completion: nil)
         }
-        
-        menuBubble.show(customView: menuView, direction: .auto, from:gesture.view! , duration: nil)
-        menuBubble.shouldShowMask = true
-        menuBubble.maskColor = .black.withAlphaComponent(0.2)
     }
     @objc func segmentChanged(_ sender: UISegmentedControl) {
             // 处理切换逻辑
@@ -284,7 +291,7 @@ class HomeVC: BaseViewController {
         
         }
 }
-extension HomeVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSource, EmptyDataSetDelegate{
+extension HomeVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSource, EmptyDataSetDelegate,VNDocumentCameraViewControllerDelegate{
     // MARK: - UITableView DataSource & Delegate Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -316,7 +323,30 @@ extension HomeVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSource,
     func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
         return -80
     }
-    
+
+
+    @available(iOS 13.0, *)
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+        
+        self.dcVc.dismiss(animated: true, completion: nil)
+        
+        if scan.pageCount < 1 {
+            return
+        }
+        
+        var images: [UIImage] = []
+        for i in 0..<scan.pageCount {
+            let img = scan.imageOfPage(at: i)
+            images.append(img)
+        }
+        // 后续处理 `images` 数组
+    }
+
+    @available(iOS 13.0, *)
+    func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
+        self.dcVc.dismiss(animated: true, completion: nil)
+    }
+
 }
 // Custom UITableViewCell
 class PDFTableViewCell: UITableViewCell {

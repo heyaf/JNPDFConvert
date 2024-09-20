@@ -45,7 +45,7 @@ class AllToolsVC: BaseViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .hex("f9f9f9")
-        isHideCustomNav = true
+//        isHideCustomNav = true
         setupUI()
         setupCollectionView()
     }
@@ -171,11 +171,14 @@ extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
         return UICollectionReusableView()
     }
     func urlToPdf(){
-        let popupView = JNUrlPopView(frame: self.view.bounds, title: "URL to PDF", confirmButtonText: "Confirm")
+        let popupView = JNUrlPopView(frame: self.view.bounds, title: "URL to PDF",placeholder: "Enter Url", confirmButtonText: "Confirm")
         
         // 设置确定按钮的回调
         popupView.onConfirm = { inputText in
             print("User input: \(inputText ?? "")")
+            let urlPdf = JNWebToPDFVC()
+            urlPdf.urlString = "\(inputText ?? "")"
+            self.navigationController?.pushViewController(urlPdf, animated: true)
         }
         // 添加到视图中
         AppUtil.getWindow()?.rootViewController?.view.addSubview(popupView)

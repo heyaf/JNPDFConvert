@@ -35,6 +35,8 @@
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB32C9D227B00890024 /* JNUrlPopView.swift */; };
+		0428AFB72C9D9FF300890024 /* JNWebToPDFVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB62C9D9FF300890024 /* JNWebToPDFVC.swift */; };
+		0428AFBE2C9DA1F400890024 /* NDHTMLtoPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFBD2C9DA1F400890024 /* NDHTMLtoPDF.m */; };
 		04934BB82C957FE000A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB72C957FE000A05D31 /* Base */; };
 		04934BBA2C957FE200A05D31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB92C957FE200A05D31 /* Assets.xcassets */; };
 		04934BBD2C957FE200A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BBC2C957FE200A05D31 /* Base */; };
@@ -85,6 +87,10 @@
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		0428AFB32C9D227B00890024 /* JNUrlPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNUrlPopView.swift; sourceTree = "<group>"; };
+		0428AFB62C9D9FF300890024 /* JNWebToPDFVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNWebToPDFVC.swift; sourceTree = "<group>"; };
+		0428AFB82C9DA1C200890024 /* JNPDFConvert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JNPDFConvert-Bridging-Header.h"; sourceTree = "<group>"; };
+		0428AFBC2C9DA1F400890024 /* NDHTMLtoPDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NDHTMLtoPDF.h; path = JNPDFConvert/third/NDHTMLtoPDF.h; sourceTree = SOURCE_ROOT; };
+		0428AFBD2C9DA1F400890024 /* NDHTMLtoPDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NDHTMLtoPDF.m; path = JNPDFConvert/third/NDHTMLtoPDF.m; sourceTree = SOURCE_ROOT; };
 		04934BAD2C957FE000A05D31 /* JNPDFConvert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JNPDFConvert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04934BB72C957FE000A05D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04934BB92C957FE200A05D31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -184,6 +190,14 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		0428AFB52C9D9FCC00890024 /* sub */ = {
+			isa = PBXGroup;
+			children = (
+				0428AFB62C9D9FF300890024 /* JNWebToPDFVC.swift */,
+			);
+			path = sub;
+			sourceTree = "<group>";
+		};
 		04934BA42C957FE000A05D31 = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				0401C1D32C95DDDC00542AB3 /* AllToolsVC.swift */,
+				0428AFB52C9D9FCC00890024 /* sub */,
 				0428AFB22C9D226600890024 /* view */,
 			);
 			path = "All Tools";
@@ -265,6 +280,9 @@
 			isa = PBXGroup;
 			children = (
 				04DC75952C9ADA8200A70D5C /* BTBubble */,
+				0428AFBC2C9DA1F400890024 /* NDHTMLtoPDF.h */,
+				0428AFBD2C9DA1F400890024 /* NDHTMLtoPDF.m */,
+				0428AFB82C9DA1C200890024 /* JNPDFConvert-Bridging-Header.h */,
 			);
 			path = third;
 			sourceTree = "<group>";
@@ -343,6 +361,7 @@
 				TargetAttributes = {
 					04934BAC2C957FE000A05D31 = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 				};
 			};
@@ -443,6 +462,7 @@
 				0401C1AE2C95D1FF00542AB3 /* UILabel+Extion.swift in Sources */,
 				04DC75AB2C9AE57D00A70D5C /* BTBubbleConfig.swift in Sources */,
 				04DC75A82C9AE57D00A70D5C /* BTBubble+Menu.swift in Sources */,
+				0428AFB72C9D9FF300890024 /* JNWebToPDFVC.swift in Sources */,
 				0401C1BE2C95D44700542AB3 /* BaseViewController.swift in Sources */,
 				04DC75AD2C9AE57D00A70D5C /* BTBubble+Location.swift in Sources */,
 				0401C1B62C95D30C00542AB3 /* Storage.swift in Sources */,
@@ -450,6 +470,7 @@
 				0401C1B12C95D29500542AB3 /* NSObject+Extension.swift in Sources */,
 				0401C1CC2C95DB5500542AB3 /* TabBarController.swift in Sources */,
 				04DC75A72C9AE57D00A70D5C /* BTBubble.swift in Sources */,
+				0428AFBE2C9DA1F400890024 /* NDHTMLtoPDF.m in Sources */,
 				0401C1A82C959D2000542AB3 /* UIConfig.swift in Sources */,
 				0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */,
 				04DC75A62C9AE57D00A70D5C /* BTBubble+Check.swift in Sources */,
@@ -628,6 +649,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -651,6 +673,8 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "JNPDFConvert/third/JNPDFConvert-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -662,6 +686,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -685,6 +710,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "JNPDFConvert/third/JNPDFConvert-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

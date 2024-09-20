@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Would you like to give us access to your camera in order to provide the image to PDF function?</string>
+	<string>Would like to access your camera in order to scan documents with your device.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Would you like to give us access to your photo library in order to provide the image to PDF function?</string>
+	<string>Would like to access your photo library in order to scan documents with your device.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Would you like to give us access to your photo library in order to provide the image to PDF function?</string>
+	<string>Would like to access your photo library in order to scan documents with your device.</string>
 </dict>
 </plist>
