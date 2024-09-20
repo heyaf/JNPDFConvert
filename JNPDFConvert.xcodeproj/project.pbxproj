@@ -33,6 +33,7 @@
 		0401C1D82C95DE8E00542AB3 /* NSString+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1D72C95DE8E00542AB3 /* NSString+Extion.swift */; };
 		0401C1DD2C95DFB100542AB3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0401C1DB2C95DFB100542AB3 /* Localizable.strings */; };
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
+		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		04934BB82C957FE000A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB72C957FE000A05D31 /* Base */; };
 		04934BBA2C957FE200A05D31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB92C957FE200A05D31 /* Assets.xcassets */; };
 		04934BBD2C957FE200A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BBC2C957FE200A05D31 /* Base */; };
@@ -81,6 +82,7 @@
 		0401C1DC2C95DFB100542AB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0401C1DE2C95DFCC00542AB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
+		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		04934BAD2C957FE000A05D31 /* JNPDFConvert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JNPDFConvert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04934BB72C957FE000A05D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04934BB92C957FE200A05D31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				0401C1D52C95DDF000542AB3 /* JNHistoryVC.swift */,
 				0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */,
+				0428AFB02C9D197C00890024 /* JNSearchViewController.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				0401C1CC2C95DB5500542AB3 /* TabBarController.swift in Sources */,
 				04DC75A72C9AE57D00A70D5C /* BTBubble.swift in Sources */,
 				0401C1A82C959D2000542AB3 /* UIConfig.swift in Sources */,
+				0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */,
 				04DC75A62C9AE57D00A70D5C /* BTBubble+Check.swift in Sources */,
 				0401C1A62C959A7100542AB3 /* AppUtil.swift in Sources */,
 				0401C1D82C95DE8E00542AB3 /* NSString+Extion.swift in Sources */,

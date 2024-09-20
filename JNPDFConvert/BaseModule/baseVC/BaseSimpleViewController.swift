@@ -95,6 +95,7 @@ open class BaseSimpleViewController: UIViewController {
 
             self?.onBackClick()
         }
+        customNav.barBackgroundImage = UIImage(named: "history_bg_title")
         
         if navigationController?.viewControllers.count ?? 1 > 1 {
 //            let bundle = Bundle(path: (Bundle(for: BaseViewController.self).resourcePath ?? "") + "/LXBase.bundle")

@@ -15,6 +15,7 @@ class JNHistoryVC: BaseViewController {
         label.textColor = .black
         return label
     }()
+    var bgHeader = UIFastCreatTool.createImageView("Rectangle 23309")
     let filterButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Filter", for: .normal)
@@ -60,8 +61,13 @@ class JNHistoryVC: BaseViewController {
         ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
         ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
         ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB")
+//        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+//        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+//        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+//        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+//        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+//        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+//        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
     ]
     
     override func viewDidLoad() {
@@ -100,6 +106,7 @@ class JNHistoryVC: BaseViewController {
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         tableView.register(PDFTableViewCell.self, forCellReuseIdentifier: "PDFCell")
+//        tableView.bounces = false
         tableView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.left.right.equalToSuperview()
@@ -107,7 +114,7 @@ class JNHistoryVC: BaseViewController {
         }
     }
     func setNav(){
-        let bgHeader = UIFastCreatTool.createImageView("Rectangle 23309")
+        
         view.addSubview(bgHeader)
         bgHeader.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kNavBarHeight + 10)
         
@@ -157,6 +164,9 @@ class JNHistoryVC: BaseViewController {
         
     }
     @objc func searchAction(){
+        let searchVC = JNSearchViewController()
+        searchVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(searchVC, animated: true)
         
     }
     @objc func settingAction(){
@@ -204,5 +214,23 @@ extension JNHistoryVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSo
 //        let names = ["Newest","Name","Size"]
 //        self.filterButton .setTitle(names[selectedOption], for: .normal)
     }
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print("height == \(bgHeader.height),\(scrollView.contentOffset.y)")
+        let tabviewHframe = CGFloat(pdfList.count * 84)
+        let tableviewHeight = kScreenHeight - kNavBarHeight - kBottomSafeHeight - 60
+        guard tabviewHframe > tableviewHeight else { return  }
+        if scrollView.contentOffset.y > 30 {
+            bgHeader.height = kNavBarHeight
+            titleLabel.snp.updateConstraints { make in
+                make.top.equalToSuperview().offset(kNavBarHeight + 20)
+            }
+            bgHeader.image = UIImage(named: "history_bg_title")
+        }else if bgHeader.height == kNavBarHeight{
+            bgHeader.height = kNavBarHeight + 10
+            bgHeader.image = UIImage(named: "Rectangle 23309")
+            titleLabel.snp.updateConstraints { make in
+                make.top.equalToSuperview().offset(kNavBarHeight + 30)
+            }
+        }
+    }
 }
