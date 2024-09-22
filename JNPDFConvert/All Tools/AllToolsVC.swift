@@ -6,8 +6,25 @@
 //
 
 import UIKit
+import UniformTypeIdentifiers
+import MobileCoreServices
 
 class AllToolsVC: BaseViewController {
+    private lazy var cycleView: ZCycleView = {
+        let width = view.bounds.width - 20
+        let cycleView1 = ZCycleView()
+        cycleView1.scrollDirection = .horizontal
+        cycleView1.delegate = self
+        cycleView1.reloadItemsCount(3)
+        cycleView1.itemZoomScale = 1.2
+        cycleView1.itemSpacing = 10
+        cycleView1.initialIndex = 1
+        cycleView1.isAutomatic = false
+//        cycleView1.isInfinite = false
+        cycleView1.itemSize = CGSize(width: width - 150, height: (width - 150) / 2.3333)
+        return cycleView1
+    }()
+    
     // 数据源
     let sections = [
         ("Help you get started", [
@@ -28,7 +45,8 @@ class AllToolsVC: BaseViewController {
             ("Compress files", "scan_yasuo")
         ])
     ]
-    
+    var images = [UIImage()]
+    var chooseFileType = 0
     let imagePickTool = CLImagePickerTool()
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -45,7 +63,7 @@ class AllToolsVC: BaseViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .hex("f9f9f9")
-//        isHideCustomNav = true
+        //        isHideCustomNav = true
         setupUI()
         setupCollectionView()
     }
@@ -121,7 +139,44 @@ class AllToolsVC: BaseViewController {
     @objc func settingAction(){
         
     }
-    
+    // 打开“文件”应用以选择 Word 文件
+    func openDocumentPicker(for type: Int) {
+        chooseFileType = type
+        let documentPicker: UIDocumentPickerViewController
+        
+        // 根据传入的参数设置支持的文件类型
+        var supportedTypes: [String] = []
+        
+        if type == 0 {
+            // Word 文件类型：.doc 和 .docx
+            if #available(iOS 14.0, *) {
+                let docTypes: [UTType] = [UTType("com.microsoft.word.doc")!, UTType("org.openxmlformats.wordprocessingml.document")!]
+                documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: docTypes, asCopy: true)
+            } else {
+                // iOS 14.0 之前使用 kUTType 常量
+                supportedTypes = [kUTTypeText as String, kUTTypeCompositeContent as String]
+                documentPicker = UIDocumentPickerViewController(documentTypes: supportedTypes, in: .import)
+            }
+        } else if type == 1 {
+            // PowerPoint 文件类型：.ppt 和 .pptx
+            if #available(iOS 14.0, *) {
+                let pptTypes: [UTType] = [UTType("com.microsoft.powerpoint.ppt")!, UTType("org.openxmlformats.presentationml.presentation")!]
+                documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: pptTypes, asCopy: true)
+            } else {
+                // iOS 14.0 之前使用 kUTType 常量
+                supportedTypes = [kUTTypePresentation as String, kUTTypeCompositeContent as String]
+                documentPicker = UIDocumentPickerViewController(documentTypes: supportedTypes, in: .import)
+            }
+        } else {
+            // 非法类型
+            print("未知的文件类型选择")
+            return
+        }
+        
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false
+        present(documentPicker, animated: true, completion: nil)
+    }
 }
 
 extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
@@ -149,14 +204,18 @@ extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
             imagePickTool.showCamaroInPicture = false
             imagePickTool.cl_setupImagePickerWith(MaxImagesCount: 9, superVC: self) { (asset,cutImage) in
                 print("返回的asset数组是\(asset)")
-             }
+            }
         } else if indexPath.section == 1,indexPath.row == 2 {
             imagePickTool.cameraOut = true
-                imagePickTool.cl_setupImagePickerWith(MaxImagesCount: 1, superVC: self) { (asset,cutImage) in
-                    print("返回的asset数组是\(asset)")
-                }
+            imagePickTool.cl_setupImagePickerWith(MaxImagesCount: 1, superVC: self) { (asset,cutImage) in
+                print("返回的asset数组是\(asset)")
+            }
         }else if indexPath.section == 1,indexPath.row == 1 {
             urlToPdf()
+        }else if indexPath.section == 0,indexPath.row == 1 {
+            openDocumentPicker(for: 0)
+        }else if indexPath.section == 1,indexPath.row == 0 {
+            openDocumentPicker(for: 1)
         }
     }
     
@@ -182,10 +241,64 @@ extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
         }
         // 添加到视图中
         AppUtil.getWindow()?.rootViewController?.view.addSubview(popupView)
-  
+        
     }
 }
+extension AllToolsVC: UIDocumentPickerDelegate {
 
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let selectedFileURL = urls.first else { return }
+        print("Selected file URL: \(selectedFileURL)")
+        
+        // 处理选择的文件
+        do {
+            let fileManager = FileManager.default
+            let destURL = fileManager.temporaryDirectory.appendingPathComponent(selectedFileURL.lastPathComponent)
+            if fileManager.fileExists(atPath: destURL.path) {
+                try fileManager.removeItem(at: destURL) // 确保目标路径没有同名文件
+            }
+            try fileManager.copyItem(at: selectedFileURL, to: destURL)
+            print("File copied to: \(destURL)")
+        let converter = JNFileToImageConverter(filepath: destURL.absoluteString, success: { images in
+            // 成功获取图片数组
+            print("生成的图片数量: \(images.count)")
+            // 处理生成的图片数组，比如展示或者保存
+        }, failure: { error in
+            ProgressHUD.showError("fail")
+            // 处理失败情况
+            print("转换失败: \(error)")
+        })
+        
+        // 开始文件处理流程
+        converter.startConversion()
+           
+
+        } catch {
+            print("文件复制失败: \(error)")
+        }
+    }
+
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        print("用户取消了选择")
+    }
+}
+extension AllToolsVC:ZCycleViewProtocol{
+    func cycleViewRegisterCellClasses() -> [String: AnyClass] {
+        return ["CustomCollectionViewCell": CustomCollectionViewCell.self]
+    }
+
+    func cycleViewConfigureCell(collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, realIndex: Int) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
+        cell.imageView.image = images[realIndex]
+        return cell
+    }
+    
+    func cycleViewDidScrollToIndex(_ cycleView: ZCycleView, index: Int) {
+        
+    }
+    
+    
+}
 class CustomCollectionViewCell: UICollectionViewCell {
     
     let imageView: UIImageView = {

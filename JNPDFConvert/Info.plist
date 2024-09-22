@@ -2,11 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Would like to access your camera in order to scan documents with your device.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Would like to access your photo library in order to scan documents with your device.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Would like to access your photo library in order to scan documents with your device.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

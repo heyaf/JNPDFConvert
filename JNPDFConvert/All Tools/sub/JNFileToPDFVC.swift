@@ -1,10 +1,18 @@
+//
+//  JNFileToPDFVC.swift
+//  JNPDFConvert
+//
+//  Created by hebert on 2024/9/21.
+//
+
 import UIKit
 import WebKit
-
-class JNWebToPDFVC: BaseViewController {
+class JNFileToPDFVC: BaseViewController {
+    
     var webView: WKWebView!
-    var progressView: UIProgressView!
-    var urlString: String?
+    var filepath: String!
+    private var pageCount: Int = 0             // PPT 页数
+    var callback: (([UIImage]) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -12,13 +20,15 @@ class JNWebToPDFVC: BaseViewController {
         
         // 设置界面
         setupWebView()
-        setupProgressView()
-        setupGeneratePDFButton()
+        //        setupProgressView()
         
         // 加载传入的 URL
-        if let urlString = urlString, let url = URL(string: urlString) {
-            let request = URLRequest(url: url)
+        // 将文件路径转换为 URL
+        if let fileURL = URL(string: filepath) {
+            let request = URLRequest(url: fileURL)
             webView.load(request)
+        } else {
+            print("无效的文件路径: \(filepath ?? "")")
         }
         
         // 添加观察者，监听进度变化
@@ -30,42 +40,25 @@ class JNWebToPDFVC: BaseViewController {
         webView = WKWebView()
         view.addSubview(webView)
         
-        // 使用 SnapKit 设置约束
         webView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(kNavBarHeight + 20)
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-180) // 留出按钮位置
         }
         
-        addShadowAndCornerRadiusToWebView()
     }
     
-    // 设置进度条
-    func setupProgressView() {
-        progressView = UIProgressView(progressViewStyle: .default)
-        progressView.progressTintColor = MainColor // 设置进度条颜色为红色
-        progressView.trackTintColor = .hex("eeeeee") // 设置背景颜色
-        
-        view.addSubview(progressView)
-        
-        // 使用 SnapKit 设置约束
-        progressView.snp.makeConstraints { make in
-            make.top.equalTo(webView.snp.top).offset(0) // 让进度条在 WebView 顶部
-            make.leading.trailing.equalTo(webView)
-            make.height.equalTo(2) // 设置进度条高度
-        }
-    }
+    
     
     // KVO 观察到进度变化时的处理
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
-            progressView.progress = Float(webView.estimatedProgress)
             
             // 隐藏进度条，当加载完成时
             if webView.estimatedProgress >= 1.0 {
-                progressView.isHidden = true
+                self.getPPTPageInfo()
+                
             } else {
-                progressView.isHidden = false
             }
         }
     }
@@ -93,7 +86,7 @@ class JNWebToPDFVC: BaseViewController {
     
     // 生成 PDF 按钮的点击事件
     @objc func generatePDFButtonTapped() {
-        guard let currentURL = webView.url else {
+        guard webView.url != nil else {
             print("WebView 尚未加载任何内容")
             return
         }
@@ -109,31 +102,6 @@ class JNWebToPDFVC: BaseViewController {
                 }
             }
         }
-    }
-    
-    // 为 WebView 添加四个方向的阴影和圆角
-    func addShadowAndCornerRadiusToWebView() {
-        // 设置圆角
-        webView.layer.cornerRadius = 10                          // 设置圆角半径
-        webView.layer.masksToBounds = true                      // 不裁剪子视图，允许阴影超出边界
-        
-        let shadowView = UIView()
-        view.addSubview(shadowView)
-        shadowView.backgroundColor = .white
-        shadowView.snp.makeConstraints { make in
-            make.top.left.equalTo(webView).offset(8)
-            make.bottom.right.equalTo(webView).inset(8)
-
-        }
-        
-        // 设置阴影
-        shadowView.layer.shadowColor = UIColor.black.cgColor      // 阴影颜色
-        shadowView.layer.shadowOpacity = 0.3                     // 阴影透明度
-        shadowView.layer.shadowOffset = CGSize(width: 0, height: 0) // 偏移量（四个方向的阴影可以设置为0）
-        shadowView.layer.shadowRadius = 15                        // 阴影半径
-        shadowView.layer.masksToBounds = false                    // 允许超出边界绘制阴影
-        view.sendSubviewToBack(shadowView)
-        
     }
     
     // 移除观察者
@@ -159,13 +127,38 @@ class JNWebToPDFVC: BaseViewController {
     }
     
     func previewPDF(at url: URL) {
-//        let documentController = UIDocumentInteractionController(url: url)
-//        documentController.delegate = self
-//        documentController.presentPreview(animated: true)
+        let converter = PDFToSingleImageConverter()
+        var images: [UIImage] = []  // 替换为你的 UIImage 数组
+        if let combinedImage = converter.convertPDFToSingleImage(pdfURL: url) {
+            // `combinedImage` 是拼接后的长图片，可以展示或保存
+            print("PDF 成功转换为长图片")
+            if let splitImages = combinedImage.splitImageIntoParts(numberOfParts: self.pageCount) {
+                images = splitImages
+            }
+        } else {
+            print("转换失败")
+        }
+        // 回调最终生成的图片数组
+        if let callback = self.callback {
+            callback(images)
+        }
+        
+        
     }
+    // 获取 PPT 页数及每一页的尺寸信息
+    private func getPPTPageInfo() {
+        let getPageCountScript = "document.getElementsByClassName('slide').length"
+        
+        webView.evaluateJavaScript(getPageCountScript) { (result, error) in
+            if let count = result as? Int {
+                self.pageCount = count
+                
+            }
+        }
+    }
+    
 }
-
-extension JNWebToPDFVC: UIDocumentInteractionControllerDelegate {
+extension JNFileToPDFVC: UIDocumentInteractionControllerDelegate {
     func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
         return self
     }

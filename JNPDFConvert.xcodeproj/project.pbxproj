@@ -32,17 +32,25 @@
 		0401C1D62C95DDF000542AB3 /* JNHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1D52C95DDF000542AB3 /* JNHistoryVC.swift */; };
 		0401C1D82C95DE8E00542AB3 /* NSString+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401C1D72C95DE8E00542AB3 /* NSString+Extion.swift */; };
 		0401C1DD2C95DFB100542AB3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0401C1DB2C95DFB100542AB3 /* Localizable.strings */; };
+		040A31E82C9F0266003A2059 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31E62C9F0266003A2059 /* ProgressHUD.swift */; };
+		040A31ED2C9F0548003A2059 /* ZCycleLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31E92C9F0548003A2059 /* ZCycleLayout.swift */; };
+		040A31EE2C9F0548003A2059 /* ZCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31EA2C9F0548003A2059 /* ZCycleView.swift */; };
+		040A31EF2C9F0548003A2059 /* ZPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31EB2C9F0548003A2059 /* ZPageControl.swift */; };
+		040A31F12C9F0710003A2059 /* GCD+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31F02C9F0710003A2059 /* GCD+Extion.swift */; };
+		040A31F32C9F13A9003A2059 /* ImageGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31F22C9F13A9003A2059 /* ImageGalleryViewController.swift */; };
+		040A31F52C9FCCF9003A2059 /* PDFToSingleImageConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31F42C9FCCF9003A2059 /* PDFToSingleImageConverter.swift */; };
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB32C9D227B00890024 /* JNUrlPopView.swift */; };
 		0428AFB72C9D9FF300890024 /* JNWebToPDFVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB62C9D9FF300890024 /* JNWebToPDFVC.swift */; };
-		0428AFBE2C9DA1F400890024 /* NDHTMLtoPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFBD2C9DA1F400890024 /* NDHTMLtoPDF.m */; };
 		04934BB82C957FE000A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB72C957FE000A05D31 /* Base */; };
 		04934BBA2C957FE200A05D31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04934BB92C957FE200A05D31 /* Assets.xcassets */; };
 		04934BBD2C957FE200A05D31 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 04934BBC2C957FE200A05D31 /* Base */; };
 		04934BCD2C95814F00A05D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04934BC52C95814F00A05D31 /* AppDelegate.swift */; };
 		04934BCF2C95814F00A05D31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04934BC72C95814F00A05D31 /* ViewController.swift */; };
 		04934BD12C9583F200A05D31 /* JNDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04934BD02C9583F200A05D31 /* JNDefine.swift */; };
+		04CC24472C9EDED2007A79A3 /* JNFileToPDFVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CC24462C9EDED2007A79A3 /* JNFileToPDFVC.swift */; };
+		04CC244D2C9EF612007A79A3 /* JNFileToImageConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CC244C2C9EF612007A79A3 /* JNFileToImageConverter.swift */; };
 		04DC758C2C9AC4CF00A70D5C /* UIimage+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DC758B2C9AC4CF00A70D5C /* UIimage+Extion.swift */; };
 		04DC75A62C9AE57D00A70D5C /* BTBubble+Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DC759E2C9AE57D00A70D5C /* BTBubble+Check.swift */; };
 		04DC75A72C9AE57D00A70D5C /* BTBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DC759F2C9AE57D00A70D5C /* BTBubble.swift */; };
@@ -84,13 +92,18 @@
 		0401C1DA2C95DF5A00542AB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		0401C1DC2C95DFB100542AB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0401C1DE2C95DFCC00542AB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		040A31E62C9F0266003A2059 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		040A31E92C9F0548003A2059 /* ZCycleLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZCycleLayout.swift; sourceTree = "<group>"; };
+		040A31EA2C9F0548003A2059 /* ZCycleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZCycleView.swift; sourceTree = "<group>"; };
+		040A31EB2C9F0548003A2059 /* ZPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZPageControl.swift; sourceTree = "<group>"; };
+		040A31F02C9F0710003A2059 /* GCD+Extion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GCD+Extion.swift"; sourceTree = "<group>"; };
+		040A31F22C9F13A9003A2059 /* ImageGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryViewController.swift; sourceTree = "<group>"; };
+		040A31F42C9FCCF9003A2059 /* PDFToSingleImageConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFToSingleImageConverter.swift; sourceTree = "<group>"; };
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		0428AFB32C9D227B00890024 /* JNUrlPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNUrlPopView.swift; sourceTree = "<group>"; };
 		0428AFB62C9D9FF300890024 /* JNWebToPDFVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNWebToPDFVC.swift; sourceTree = "<group>"; };
 		0428AFB82C9DA1C200890024 /* JNPDFConvert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JNPDFConvert-Bridging-Header.h"; sourceTree = "<group>"; };
-		0428AFBC2C9DA1F400890024 /* NDHTMLtoPDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NDHTMLtoPDF.h; path = JNPDFConvert/third/NDHTMLtoPDF.h; sourceTree = SOURCE_ROOT; };
-		0428AFBD2C9DA1F400890024 /* NDHTMLtoPDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NDHTMLtoPDF.m; path = JNPDFConvert/third/NDHTMLtoPDF.m; sourceTree = SOURCE_ROOT; };
 		04934BAD2C957FE000A05D31 /* JNPDFConvert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JNPDFConvert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04934BB72C957FE000A05D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04934BB92C957FE200A05D31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,6 +112,8 @@
 		04934BC52C95814F00A05D31 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04934BC72C95814F00A05D31 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04934BD02C9583F200A05D31 /* JNDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNDefine.swift; sourceTree = "<group>"; };
+		04CC24462C9EDED2007A79A3 /* JNFileToPDFVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNFileToPDFVC.swift; sourceTree = "<group>"; };
+		04CC244C2C9EF612007A79A3 /* JNFileToImageConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNFileToImageConverter.swift; sourceTree = "<group>"; };
 		04DC758B2C9AC4CF00A70D5C /* UIimage+Extion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIimage+Extion.swift"; sourceTree = "<group>"; };
 		04DC759E2C9AE57D00A70D5C /* BTBubble+Check.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BTBubble+Check.swift"; sourceTree = "<group>"; };
 		04DC759F2C9AE57D00A70D5C /* BTBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTBubble.swift; sourceTree = "<group>"; };
@@ -140,6 +155,8 @@
 				0401C1CF2C95DCCA00542AB3 /* UIFastCreatTool.swift */,
 				0401C1D72C95DE8E00542AB3 /* NSString+Extion.swift */,
 				04DC758B2C9AC4CF00A70D5C /* UIimage+Extion.swift */,
+				040A31F02C9F0710003A2059 /* GCD+Extion.swift */,
+				040A31F42C9FCCF9003A2059 /* PDFToSingleImageConverter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -182,6 +199,24 @@
 			path = Tabbar;
 			sourceTree = "<group>";
 		};
+		040A31E72C9F0266003A2059 /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				040A31E62C9F0266003A2059 /* ProgressHUD.swift */,
+			);
+			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
+		040A31EC2C9F0548003A2059 /* cycleView */ = {
+			isa = PBXGroup;
+			children = (
+				040A31E92C9F0548003A2059 /* ZCycleLayout.swift */,
+				040A31EA2C9F0548003A2059 /* ZCycleView.swift */,
+				040A31EB2C9F0548003A2059 /* ZPageControl.swift */,
+			);
+			path = cycleView;
+			sourceTree = "<group>";
+		};
 		0428AFB22C9D226600890024 /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				0428AFB62C9D9FF300890024 /* JNWebToPDFVC.swift */,
+				04CC24462C9EDED2007A79A3 /* JNFileToPDFVC.swift */,
+				040A31F22C9F13A9003A2059 /* ImageGalleryViewController.swift */,
 			);
 			path = sub;
 			sourceTree = "<group>";
@@ -279,9 +316,10 @@
 		04934BCB2C95814F00A05D31 /* third */ = {
 			isa = PBXGroup;
 			children = (
+				040A31EC2C9F0548003A2059 /* cycleView */,
+				040A31E72C9F0266003A2059 /* ProgressHUD */,
+				04CC244A2C9EF44C007A79A3 /* PPTToImageTool */,
 				04DC75952C9ADA8200A70D5C /* BTBubble */,
-				0428AFBC2C9DA1F400890024 /* NDHTMLtoPDF.h */,
-				0428AFBD2C9DA1F400890024 /* NDHTMLtoPDF.m */,
 				0428AFB82C9DA1C200890024 /* JNPDFConvert-Bridging-Header.h */,
 			);
 			path = third;
@@ -293,6 +331,14 @@
 				0401C1D12C95DDCB00542AB3 /* HomeVC.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		04CC244A2C9EF44C007A79A3 /* PPTToImageTool */ = {
+			isa = PBXGroup;
+			children = (
+				04CC244C2C9EF612007A79A3 /* JNFileToImageConverter.swift */,
+			);
+			path = PPTToImageTool;
 			sourceTree = "<group>";
 		};
 		04DC75952C9ADA8200A70D5C /* BTBubble */ = {
@@ -445,32 +491,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04CC244D2C9EF612007A79A3 /* JNFileToImageConverter.swift in Sources */,
 				0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */,
 				0401C1CE2C95DBC800542AB3 /* BaseNavigationController.swift in Sources */,
 				04934BD12C9583F200A05D31 /* JNDefine.swift in Sources */,
 				0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */,
+				040A31ED2C9F0548003A2059 /* ZCycleLayout.swift in Sources */,
 				0401C1C42C95D6BD00542AB3 /* VC+Extion.swift in Sources */,
 				04934BCF2C95814F00A05D31 /* ViewController.swift in Sources */,
 				0401C1C92C95DB5500542AB3 /* TabBarConfigure.swift in Sources */,
 				0401C1AA2C95CE2300542AB3 /* UIView+Extion.swift in Sources */,
+				04CC24472C9EDED2007A79A3 /* JNFileToPDFVC.swift in Sources */,
+				040A31EF2C9F0548003A2059 /* ZPageControl.swift in Sources */,
 				0401C1CA2C95DB5500542AB3 /* TabBarControllerConfig.swift in Sources */,
 				0401C1CB2C95DB5500542AB3 /* TabBar.swift in Sources */,
 				0401C1C22C95D62C00542AB3 /* importHeader.swift in Sources */,
 				04DC75A92C9AE57D00A70D5C /* BTBubble+Draw.swift in Sources */,
 				0401C1D02C95DCCA00542AB3 /* UIFastCreatTool.swift in Sources */,
 				04934BCD2C95814F00A05D31 /* AppDelegate.swift in Sources */,
+				040A31EE2C9F0548003A2059 /* ZCycleView.swift in Sources */,
 				0401C1AE2C95D1FF00542AB3 /* UILabel+Extion.swift in Sources */,
 				04DC75AB2C9AE57D00A70D5C /* BTBubbleConfig.swift in Sources */,
 				04DC75A82C9AE57D00A70D5C /* BTBubble+Menu.swift in Sources */,
 				0428AFB72C9D9FF300890024 /* JNWebToPDFVC.swift in Sources */,
 				0401C1BE2C95D44700542AB3 /* BaseViewController.swift in Sources */,
 				04DC75AD2C9AE57D00A70D5C /* BTBubble+Location.swift in Sources */,
+				040A31F12C9F0710003A2059 /* GCD+Extion.swift in Sources */,
+				040A31F32C9F13A9003A2059 /* ImageGalleryViewController.swift in Sources */,
 				0401C1B62C95D30C00542AB3 /* Storage.swift in Sources */,
 				04DC758C2C9AC4CF00A70D5C /* UIimage+Extion.swift in Sources */,
 				0401C1B12C95D29500542AB3 /* NSObject+Extension.swift in Sources */,
 				0401C1CC2C95DB5500542AB3 /* TabBarController.swift in Sources */,
 				04DC75A72C9AE57D00A70D5C /* BTBubble.swift in Sources */,
-				0428AFBE2C9DA1F400890024 /* NDHTMLtoPDF.m in Sources */,
+				040A31F52C9FCCF9003A2059 /* PDFToSingleImageConverter.swift in Sources */,
 				0401C1A82C959D2000542AB3 /* UIConfig.swift in Sources */,
 				0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */,
 				04DC75A62C9AE57D00A70D5C /* BTBubble+Check.swift in Sources */,
@@ -479,6 +532,7 @@
 				0401C1BD2C95D44700542AB3 /* BaseSimpleViewController.swift in Sources */,
 				0401C1D62C95DDF000542AB3 /* JNHistoryVC.swift in Sources */,
 				04DC75AA2C9AE57D00A70D5C /* BubbleTools.swift in Sources */,
+				040A31E82C9F0266003A2059 /* ProgressHUD.swift in Sources */,
 				0401C1AC2C95CED800542AB3 /* UIColor+Extion.swift in Sources */,
 				0401C1D22C95DDCB00542AB3 /* HomeVC.swift in Sources */,
 				0401C1B22C95D29500542AB3 /* UIimage+Extension.swift in Sources */,
@@ -650,11 +704,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = ZXK7A2YS9X;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JNPDFConvert/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to access your camera in order to scan documents with your device.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Would like to access your photo library in order to scan documents with your device.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Would like to access your photo library in order to scan documents with your device.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -666,8 +726,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = hebert.JNPDFConvert;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zzh.autoclicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = autoclicker_dev;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -687,11 +749,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = ZXK7A2YS9X;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JNPDFConvert/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to access your camera in order to scan documents with your device.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Would like to access your photo library in order to scan documents with your device.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Would like to access your photo library in order to scan documents with your device.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -703,8 +771,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = hebert.JNPDFConvert;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zzh.autoclicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = autoclicker_dev;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

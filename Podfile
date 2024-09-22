@@ -15,4 +15,5 @@ pod 'EmptyDataSet-Swift'
 pod 'MBProgressHUD'
 pod 'CLImagePickerTool'
 pod 'IQKeyboardManagerSwift', '6.3.0'
+pod 'LLCycleScrollView' 
 end
