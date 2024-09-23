@@ -32,6 +32,8 @@ class JNConversationVC: BaseViewController {
         tableView.dataSource = self
         tableView.register(JNConverImageCell.self, forCellReuseIdentifier: "JNConverImageCell")
         tableView.register(JNSettingsCell.self, forCellReuseIdentifier: "JNSettingsCell")
+        tableView.register(JNSettingsSliderCell.self, forCellReuseIdentifier: "JNSettingsSliderCell")
+        
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
@@ -110,7 +112,7 @@ extension JNConversationVC:UITableViewDelegate, UITableViewDataSource {
         headerView.roundCorners(view: headerView, corners: [.topLeft,.topRight], radius: 14)
         return headerView // 第一组无标题
     }
-
+    
     // 设置 header 高度
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 {
@@ -124,7 +126,7 @@ extension JNConversationVC:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return nil
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             if indexPath.row < images.count {
@@ -152,6 +154,14 @@ extension JNConversationVC:UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
         } else {
+            if indexPath.row == 1,isSettingsExpanded {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "JNSettingsSliderCell", for: indexPath) as! JNSettingsSliderCell
+                cell.configure(number: quality)
+                cell.valueChanged = { number in
+                    self.quality = number
+                }
+                return cell
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: "JNSettingsCell", for: indexPath) as! JNSettingsCell
             var subtitle = ".pdf"
             var arrowname = "conversation_unright"
@@ -177,7 +187,7 @@ extension JNConversationVC:UITableViewDelegate, UITableViewDataSource {
                 return 60
             }
             return 68
-
+            
         }
         if indexPath.row == 1,isSettingsExpanded {return 117 + 16}
         return 66
@@ -187,11 +197,29 @@ extension JNConversationVC:UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 && indexPath.row == images.count {
             // 处理添加图片的逻辑
             print("Add more images tapped")
-        } else if indexPath.section == 1 {
+        } else if indexPath.section == 1 , indexPath.row == 1{
             isSettingsExpanded.toggle() // 点击展开或折叠设置项
-            let indexPath = IndexPath(row: 0, section: 1)
+            let indexPath = IndexPath(row: 1, section: 1)
             tableView.reloadRows(at: [indexPath], with: .automatic)
+        } else if indexPath.section == 1 , indexPath.row == 2{
+            
+        } else if indexPath.section == 1 , indexPath.row == 3{
+            ChangeName()
         }
+    }
+    func ChangeName(){
+        let popupView = JNUrlPopView(frame: self.view.bounds, title: "Name",placeholder: "Enter Name", confirmButtonText: "Confirm")
+        popupView.textField.text = pdfName
+        // 设置确定按钮的回调
+        popupView.onConfirm = { inputText in
+            self.pdfName = inputText ?? ""
+            let indexPath = IndexPath(row: 3, section: 1)
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            
+        }
+        // 添加到视图中
+        AppUtil.getWindow()?.rootViewController?.view.addSubview(popupView)
+        
     }
 }
 
@@ -234,7 +262,7 @@ class JNConverImageCell: UITableViewCell {
         // 约束
         setupConstraints()
         
-      
+        
     }
     
     // 布局约束
@@ -243,7 +271,7 @@ class JNConverImageCell: UITableViewCell {
             make.leading.equalToSuperview().inset(25)
             make.width.equalTo(42)
             make.height.equalTo(50)
-
+            
             make.centerY.equalToSuperview()
         }
         
@@ -291,101 +319,214 @@ class JNConverImageCell: UITableViewCell {
 
 class JNSettingsCell: UITableViewCell {
     // MARK: - UI Components
+    
+    // 背景视图
+    private let backgroundContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = grayColor
+        view.layer.cornerRadius = 14
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
+    // 标题标签
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.textColor = BlackColor
+        return label
+    }()
+    
+    // 副标题标签
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.textColor = BlackColor
+        label.textAlignment = .right
+        return label
+    }()
+    
+    // 箭头图标
+    let arrowImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "conversation_right") // 默认箭头图标
+        return imageView
+    }()
+    
+    // MARK: - Initialization
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        // 背景视图
-        private let backgroundContainerView: UIView = {
-            let view = UIView()
-            view.backgroundColor = grayColor
-            view.layer.cornerRadius = 14
-            view.layer.masksToBounds = true
-            return view
-        }()
+        // 禁用默认的选中背景颜色
+        selectionStyle = .none
         
-        // 标题标签
-        let titleLabel: UILabel = {
-            let label = UILabel()
-            label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-            label.textColor = BlackColor
-            return label
-        }()
-        
-        // 副标题标签
-        let subtitleLabel: UILabel = {
-            let label = UILabel()
-            label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-            label.textColor = BlackColor
-            label.textAlignment = .right
-            return label
-        }()
-        
-        // 箭头图标
-        let arrowImageView: UIImageView = {
-            let imageView = UIImageView()
-            imageView.contentMode = .scaleAspectFit
-            imageView.image = UIImage(named: "conversation_right") // 默认箭头图标
-            return imageView
-        }()
-        
-        // MARK: - Initialization
-        
-        override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-            super.init(style: style, reuseIdentifier: reuseIdentifier)
-            
-            // 禁用默认的选中背景颜色
-            selectionStyle = .none
-            
-            // 添加背景容器视图
-            contentView.addSubview(backgroundContainerView)
-            backgroundContainerView.snp.makeConstraints { make in
-                make.left.top.right.equalToSuperview()
-                make.height.equalTo(50)
-            }
-            
-            // 添加 UI 元素
-            backgroundContainerView.addSubview(titleLabel)
-            backgroundContainerView.addSubview(subtitleLabel)
-            backgroundContainerView.addSubview(arrowImageView)
-            
-            // 布局约束
-            setupConstraints()
+        // 添加背景容器视图
+        contentView.addSubview(backgroundContainerView)
+        backgroundContainerView.snp.makeConstraints { make in
+            make.left.top.right.equalToSuperview()
+            make.height.equalTo(50)
         }
         
-        required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
+        // 添加 UI 元素
+        backgroundContainerView.addSubview(titleLabel)
+        backgroundContainerView.addSubview(subtitleLabel)
+        backgroundContainerView.addSubview(arrowImageView)
+        
+        // 布局约束
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Layout
+    
+    private func setupConstraints() {
+        // 标题标签布局
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16)
+            make.centerY.equalToSuperview()
         }
         
-        // MARK: - Layout
-        
-        private func setupConstraints() {
-            // 标题标签布局
-            titleLabel.snp.makeConstraints { make in
-                make.leading.equalToSuperview().inset(16)
-                make.centerY.equalToSuperview()
-            }
-            
-            // 箭头图标布局
-            arrowImageView.snp.makeConstraints { make in
-                make.trailing.equalToSuperview().inset(16)
-                make.centerY.equalToSuperview()
-                make.width.height.equalTo(18) // 固定大小
-            }
-            
-            // 副标题布局
-            subtitleLabel.snp.makeConstraints { make in
-                make.trailing.equalTo(arrowImageView.snp.leading).offset(-8)
-                make.centerY.equalToSuperview()
-                make.leading.greaterThanOrEqualTo(titleLabel.snp.trailing).offset(8)
-            }
+        // 箭头图标布局
+        arrowImageView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16)
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(18) // 固定大小
         }
         
-        // MARK: - Configuration
-        
-        // 配置方法，允许外部设置标题、副标题、箭头图标
-        func configure(title: String, subtitle: String, arrowImage: UIImage? = nil) {
-            titleLabel.text = title
-            subtitleLabel.text = subtitle
-            if let image = arrowImage {
-                arrowImageView.image = image
-            }
+        // 副标题布局
+        subtitleLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(arrowImageView.snp.leading).offset(-8)
+            make.centerY.equalToSuperview()
+            make.leading.greaterThanOrEqualTo(titleLabel.snp.trailing).offset(8)
         }
+    }
+    
+    // MARK: - Configuration
+    
+    // 配置方法，允许外部设置标题、副标题、箭头图标
+    func configure(title: String, subtitle: String, arrowImage: UIImage? = nil) {
+        titleLabel.text = title
+        subtitleLabel.text = subtitle
+        if let image = arrowImage {
+            arrowImageView.image = image
+        }
+    }
+}
+
+class JNSettingsSliderCell: UITableViewCell {
+    // MARK: - UI Components
+    
+    // 背景视图
+    private let backgroundContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = grayColor
+        view.layer.cornerRadius = 14
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
+    // 标题标签
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.textColor = BlackColor
+        return label
+    }()
+    
+    // 副标题标签
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.textColor = BlackColor
+        label.textAlignment = .center
+        return label
+    }()
+    
+    // 箭头图标
+    let arrowImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "conversation_right") // 默认箭头图标
+        return imageView
+    }()
+    let customSlider = JNConversationSliderView()
+    // MARK: - Initialization
+    var valueChanged: ((Int) -> Void)?
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        // 禁用默认的选中背景颜色
+        selectionStyle = .none
+        
+        // 添加背景容器视图
+        contentView.addSubview(backgroundContainerView)
+        backgroundContainerView.snp.makeConstraints { make in
+            make.left.top.right.equalToSuperview()
+            make.height.equalTo(117)
+        }
+        
+        // 添加 UI 元素
+        backgroundContainerView.addSubview(titleLabel)
+        backgroundContainerView.addSubview(subtitleLabel)
+        backgroundContainerView.addSubview(arrowImageView)
+        backgroundContainerView.addSubview(customSlider)
+        titleLabel.text = "Quality"
+        arrowImageView.image = UIImage(named: "conversation_up")
+        subtitleLabel.text = "90%"
+        customSlider.configure(minimumValue: 0, maximumValue: 100, initialValue: 90, thumbImage: UIImage(named: "conversation_slider"))
+        // 布局约束
+        setupConstraints()
+        customSlider.valueChanged = { value in
+            let intValue = Int(value)
+            self.valueChanged?(intValue)
+            self.subtitleLabel.text = String(intValue) + "%"
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Layout
+    
+    private func setupConstraints() {
+        // 标题标签布局
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16)
+            make.top.equalToSuperview().offset(16)
+            make.height.equalTo(19)
+        }
+        
+        // 箭头图标布局
+        arrowImageView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16)
+            make.top.equalToSuperview().offset(16)
+            make.width.height.equalTo(18) // 固定大小
+        }
+        
+        // 副标题布局
+        subtitleLabel.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(8)
+            make.top.equalToSuperview().offset(50)
+            make.height.equalTo(17)
+        }
+        customSlider.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(18)
+            make.top.equalToSuperview().offset(66)
+            make.height.equalTo(34)
+        }
+    }
+    
+    // MARK: - Configuration
+    
+    // 配置方法，允许外部设置标题、副标题、箭头图标
+    func configure(number : Int) {
+        customSlider.setSliderValue(Float(number))
+        subtitleLabel.text = String(number) + "%"
+    }
 }

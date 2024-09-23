@@ -14,7 +14,7 @@ class JNUrlPopView: UIView {
     private var dimmingView: UIView!
     private var popupView: UIView!
     private var titleLabel: UILabel!
-    private var textField: UITextField!
+    public var textField: UITextField!
     private var confirmButton: UIButton!
     private var closeButton: UIButton!
     
@@ -83,8 +83,8 @@ class JNUrlPopView: UIView {
         confirmButton.layer.cornerRadius = 16
         confirmButton.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
         popupView.addSubview(confirmButton)
-//        confirmButton.isEnabled = false
-        textField.text = "http://www.baidu.com"
+        confirmButton.isEnabled = false
+//        textField.text = "http://www.baidu.com"
         confirmButton.alpha = 0.2  // 设为半透明，表示不可点击
     }
     
