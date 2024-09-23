@@ -100,7 +100,7 @@ class AllToolsVC: BaseViewController {
         titleL.font = .systemFont(ofSize: 26, weight: UIFont.Weight(rawValue: 900.0))
         view.addSubview(titleL)
         
-        let searchBtn = UIFastCreatTool.createButton(normalImage: UIImage(named: "Group 1000005307"))
+        let searchBtn = UIFastCreatTool.createButton(normalImage: UIImage(named: "Group_homeSearch"))
         searchBtn.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
         view.addSubview(searchBtn)
         

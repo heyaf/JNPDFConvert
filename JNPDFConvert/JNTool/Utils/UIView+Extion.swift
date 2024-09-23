@@ -9,7 +9,15 @@ import Foundation
 import UIKit
 
 public extension UIView {
-  
+    func roundCorners(view:UIView, corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        view.layer.mask = mask
+    }
+    func noCornerMask() {
+        layer.mask = nil
+    }
     /// x
     var x: CGFloat {
         get {

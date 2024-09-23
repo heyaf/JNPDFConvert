@@ -80,7 +80,7 @@ class HomeVC: BaseViewController {
         titleL.font = .systemFont(ofSize: 26, weight: UIFont.Weight(rawValue: 900.0))
         view.addSubview(titleL)
         
-        let searchBtn = UIFastCreatTool.createButton(normalImage: UIImage(named: "Group 1000005307"))
+        let searchBtn = UIFastCreatTool.createButton(normalImage: UIImage(named: "Group_homeSearch"))
         searchBtn.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
         view.addSubview(searchBtn)
         
@@ -286,6 +286,9 @@ class HomeVC: BaseViewController {
                     let popupVC = JNPictureChooseVC(images: imageArr)
                     popupVC.buttonAction = { action in
                         print("按钮点击: \(action)")
+                        if action == 1 {
+                            self.conversationAction(with: imageArr)
+                        }
                     }
                     self.present(popupVC, animated: true, completion: nil)
                 }
@@ -333,6 +336,12 @@ class HomeVC: BaseViewController {
             
             self.present(dcVc, animated: true, completion: nil)
         }
+    }
+    func conversationAction(with images:[UIImage]){
+        let vc = JNConversationVC()
+        vc.images = images
+        vc.imageNames = AppUtil().generateStringArray(count: images.count)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 extension HomeVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSource, EmptyDataSetDelegate,VNDocumentCameraViewControllerDelegate{

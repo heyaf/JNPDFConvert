@@ -14,4 +14,17 @@ extension String {
         let languageBundle = Bundle(path: path)
         return languageBundle?.localizedString(forKey: self, value: nil, table: "Localizable") ?? self
     }
+    func generateImageString(geshi:String) -> String {
+        // 获取当前日期
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd" // 设置日期格式为 "年月日"
+        let currentDate = dateFormatter.string(from: Date())
+        
+        // 生成四位随机数
+        let randomNumber = String(format: "%04d", Int.random(in: 0..<10000))
+        
+        // 组合成所需字符串
+        let result = geshi + currentDate + randomNumber
+        return result
+    }
 }

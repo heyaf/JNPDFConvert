@@ -169,6 +169,17 @@ public class AppUtil {
             }.resume()
         }
     }
+    func generateStringArray(count: Int) -> [String] {
+        var stringArray: [String] = []
+        
+        for _ in 0..<count {
+            // 生成一个字符串，例如使用规则："IMG" + 当前年月日 + 四位的随机数
+            let string = String().generateImageString(geshi: "IMG")
+            stringArray.append(string)
+        }
+        
+        return stringArray
+    }
     
 }
 //回到主线程

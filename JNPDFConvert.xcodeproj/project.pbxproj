@@ -40,6 +40,8 @@
 		040A31F32C9F13A9003A2059 /* ImageGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31F22C9F13A9003A2059 /* ImageGalleryViewController.swift */; };
 		040A31F52C9FCCF9003A2059 /* PDFToSingleImageConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31F42C9FCCF9003A2059 /* PDFToSingleImageConverter.swift */; };
 		040A31F82CA12060003A2059 /* JNPictureChooseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31F72CA12060003A2059 /* JNPictureChooseVC.swift */; };
+		040A31FA2CA15C0F003A2059 /* JNConversationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31F92CA15C0F003A2059 /* JNConversationVC.swift */; };
+		040A31FC2CA16527003A2059 /* tableViewCell+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31FB2CA16527003A2059 /* tableViewCell+Extion.swift */; };
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB32C9D227B00890024 /* JNUrlPopView.swift */; };
@@ -101,6 +103,8 @@
 		040A31F22C9F13A9003A2059 /* ImageGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryViewController.swift; sourceTree = "<group>"; };
 		040A31F42C9FCCF9003A2059 /* PDFToSingleImageConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFToSingleImageConverter.swift; sourceTree = "<group>"; };
 		040A31F72CA12060003A2059 /* JNPictureChooseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNPictureChooseVC.swift; sourceTree = "<group>"; };
+		040A31F92CA15C0F003A2059 /* JNConversationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNConversationVC.swift; sourceTree = "<group>"; };
+		040A31FB2CA16527003A2059 /* tableViewCell+Extion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "tableViewCell+Extion.swift"; sourceTree = "<group>"; };
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		0428AFB32C9D227B00890024 /* JNUrlPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNUrlPopView.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 				0401C1CF2C95DCCA00542AB3 /* UIFastCreatTool.swift */,
 				0401C1D72C95DE8E00542AB3 /* NSString+Extion.swift */,
 				04DC758B2C9AC4CF00A70D5C /* UIimage+Extion.swift */,
+				040A31FB2CA16527003A2059 /* tableViewCell+Extion.swift */,
 				040A31F02C9F0710003A2059 /* GCD+Extion.swift */,
 				040A31F42C9FCCF9003A2059 /* PDFToSingleImageConverter.swift */,
 			);
@@ -231,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				0428AFB32C9D227B00890024 /* JNUrlPopView.swift */,
+				040A31F92CA15C0F003A2059 /* JNConversationVC.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -515,6 +521,7 @@
 				04CC24472C9EDED2007A79A3 /* JNFileToPDFVC.swift in Sources */,
 				040A31EF2C9F0548003A2059 /* ZPageControl.swift in Sources */,
 				0401C1CA2C95DB5500542AB3 /* TabBarControllerConfig.swift in Sources */,
+				040A31FA2CA15C0F003A2059 /* JNConversationVC.swift in Sources */,
 				0401C1CB2C95DB5500542AB3 /* TabBar.swift in Sources */,
 				0401C1C22C95D62C00542AB3 /* importHeader.swift in Sources */,
 				04DC75A92C9AE57D00A70D5C /* BTBubble+Draw.swift in Sources */,
@@ -539,6 +546,7 @@
 				0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */,
 				04DC75A62C9AE57D00A70D5C /* BTBubble+Check.swift in Sources */,
 				0401C1A62C959A7100542AB3 /* AppUtil.swift in Sources */,
+				040A31FC2CA16527003A2059 /* tableViewCell+Extion.swift in Sources */,
 				0401C1D82C95DE8E00542AB3 /* NSString+Extion.swift in Sources */,
 				040A31F82CA12060003A2059 /* JNPictureChooseVC.swift in Sources */,
 				0401C1BD2C95D44700542AB3 /* BaseSimpleViewController.swift in Sources */,

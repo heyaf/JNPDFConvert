@@ -12,7 +12,8 @@ import UIKit
 public let MainColor = UIColor.hexString("#F90000")
 //#141416
 public let BlackColor = UIColor.hexString("#141416")
-
+//#141416
+public let grayColor = UIColor.hexString("#F9F9F9")
 public func boldSystemFont(ofSize fontSize: CGFloat) -> UIFont {
     return .boldSystemFont(ofSize: fontSize)
 }
