@@ -43,6 +43,15 @@
 		040A31FA2CA15C0F003A2059 /* JNConversationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31F92CA15C0F003A2059 /* JNConversationVC.swift */; };
 		040A31FC2CA16527003A2059 /* tableViewCell+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31FB2CA16527003A2059 /* tableViewCell+Extion.swift */; };
 		040A31FE2CA1B610003A2059 /* JNConversationSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31FD2CA1B610003A2059 /* JNConversationSliderView.swift */; };
+		040A32072CA1C3EE003A2059 /* DurationDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A31FF2CA1C3EE003A2059 /* DurationDatePickerView.swift */; };
+		040A32082CA1C3EE003A2059 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32002CA1C3EE003A2059 /* PickerView.swift */; };
+		040A32092CA1C3EE003A2059 /* PickerViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32012CA1C3EE003A2059 /* PickerViewConfig.swift */; };
+		040A320A2CA1C3EE003A2059 /* PickerViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32022CA1C3EE003A2059 /* PickerViewManager.swift */; };
+		040A320B2CA1C3EE003A2059 /* PickerViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32032CA1C3EE003A2059 /* PickerViewUtils.swift */; };
+		040A320C2CA1C3EE003A2059 /* SelectPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32042CA1C3EE003A2059 /* SelectPickerView.swift */; };
+		040A320D2CA1C3EE003A2059 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32052CA1C3EE003A2059 /* ToolBarView.swift */; };
+		040A321A2CA1C6B0003A2059 /* CSPickerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 040A32172CA1C6B0003A2059 /* CSPickerView.bundle */; };
+		040A321B2CA1C6B0003A2059 /* CSPickerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040A32182CA1C6B0003A2059 /* CSPickerView.framework */; };
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB32C9D227B00890024 /* JNUrlPopView.swift */; };
@@ -107,6 +116,15 @@
 		040A31F92CA15C0F003A2059 /* JNConversationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNConversationVC.swift; sourceTree = "<group>"; };
 		040A31FB2CA16527003A2059 /* tableViewCell+Extion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "tableViewCell+Extion.swift"; sourceTree = "<group>"; };
 		040A31FD2CA1B610003A2059 /* JNConversationSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNConversationSliderView.swift; sourceTree = "<group>"; };
+		040A31FF2CA1C3EE003A2059 /* DurationDatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationDatePickerView.swift; sourceTree = "<group>"; };
+		040A32002CA1C3EE003A2059 /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		040A32012CA1C3EE003A2059 /* PickerViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewConfig.swift; sourceTree = "<group>"; };
+		040A32022CA1C3EE003A2059 /* PickerViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewManager.swift; sourceTree = "<group>"; };
+		040A32032CA1C3EE003A2059 /* PickerViewUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewUtils.swift; sourceTree = "<group>"; };
+		040A32042CA1C3EE003A2059 /* SelectPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPickerView.swift; sourceTree = "<group>"; };
+		040A32052CA1C3EE003A2059 /* ToolBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
+		040A32172CA1C6B0003A2059 /* CSPickerView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CSPickerView.bundle; sourceTree = "<group>"; };
+		040A32182CA1C6B0003A2059 /* CSPickerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CSPickerView.framework; sourceTree = "<group>"; };
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		0428AFB32C9D227B00890024 /* JNUrlPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNUrlPopView.swift; sourceTree = "<group>"; };
@@ -142,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F50FA60A2CF6BFCB400179CE /* Pods_JNPDFConvert.framework in Frameworks */,
+				040A321B2CA1C6B0003A2059 /* CSPickerView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +251,30 @@
 				040A31F72CA12060003A2059 /* JNPictureChooseVC.swift */,
 			);
 			path = sub;
+			sourceTree = "<group>";
+		};
+		040A32062CA1C3EE003A2059 /* pickView */ = {
+			isa = PBXGroup;
+			children = (
+				040A32192CA1C6B0003A2059 /* Frameworks */,
+				040A31FF2CA1C3EE003A2059 /* DurationDatePickerView.swift */,
+				040A32002CA1C3EE003A2059 /* PickerView.swift */,
+				040A32012CA1C3EE003A2059 /* PickerViewConfig.swift */,
+				040A32022CA1C3EE003A2059 /* PickerViewManager.swift */,
+				040A32032CA1C3EE003A2059 /* PickerViewUtils.swift */,
+				040A32042CA1C3EE003A2059 /* SelectPickerView.swift */,
+				040A32052CA1C3EE003A2059 /* ToolBarView.swift */,
+			);
+			path = pickView;
+			sourceTree = "<group>";
+		};
+		040A32192CA1C6B0003A2059 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				040A32172CA1C6B0003A2059 /* CSPickerView.bundle */,
+				040A32182CA1C6B0003A2059 /* CSPickerView.framework */,
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		0428AFB22C9D226600890024 /* view */ = {
@@ -335,6 +378,7 @@
 		04934BCB2C95814F00A05D31 /* third */ = {
 			isa = PBXGroup;
 			children = (
+				040A32062CA1C3EE003A2059 /* pickView */,
 				040A31EC2C9F0548003A2059 /* cycleView */,
 				040A31E72C9F0266003A2059 /* ProgressHUD */,
 				04CC244A2C9EF44C007A79A3 /* PPTToImageTool */,
@@ -455,6 +499,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040A321A2CA1C6B0003A2059 /* CSPickerView.bundle in Resources */,
 				04934BBA2C957FE200A05D31 /* Assets.xcassets in Resources */,
 				0401C1DD2C95DFB100542AB3 /* Localizable.strings in Resources */,
 				04934BBD2C957FE200A05D31 /* Base in Resources */,
@@ -515,6 +560,8 @@
 				0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */,
 				0401C1CE2C95DBC800542AB3 /* BaseNavigationController.swift in Sources */,
 				04934BD12C9583F200A05D31 /* JNDefine.swift in Sources */,
+				040A320B2CA1C3EE003A2059 /* PickerViewUtils.swift in Sources */,
+				040A32072CA1C3EE003A2059 /* DurationDatePickerView.swift in Sources */,
 				0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */,
 				040A31ED2C9F0548003A2059 /* ZCycleLayout.swift in Sources */,
 				0401C1C42C95D6BD00542AB3 /* VC+Extion.swift in Sources */,
@@ -524,6 +571,7 @@
 				04CC24472C9EDED2007A79A3 /* JNFileToPDFVC.swift in Sources */,
 				040A31EF2C9F0548003A2059 /* ZPageControl.swift in Sources */,
 				0401C1CA2C95DB5500542AB3 /* TabBarControllerConfig.swift in Sources */,
+				040A320A2CA1C3EE003A2059 /* PickerViewManager.swift in Sources */,
 				040A31FA2CA15C0F003A2059 /* JNConversationVC.swift in Sources */,
 				0401C1CB2C95DB5500542AB3 /* TabBar.swift in Sources */,
 				0401C1C22C95D62C00542AB3 /* importHeader.swift in Sources */,
@@ -542,13 +590,17 @@
 				0401C1B62C95D30C00542AB3 /* Storage.swift in Sources */,
 				04DC758C2C9AC4CF00A70D5C /* UIimage+Extion.swift in Sources */,
 				0401C1B12C95D29500542AB3 /* NSObject+Extension.swift in Sources */,
+				040A320C2CA1C3EE003A2059 /* SelectPickerView.swift in Sources */,
 				0401C1CC2C95DB5500542AB3 /* TabBarController.swift in Sources */,
 				04DC75A72C9AE57D00A70D5C /* BTBubble.swift in Sources */,
 				040A31F52C9FCCF9003A2059 /* PDFToSingleImageConverter.swift in Sources */,
 				0401C1A82C959D2000542AB3 /* UIConfig.swift in Sources */,
 				0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */,
 				04DC75A62C9AE57D00A70D5C /* BTBubble+Check.swift in Sources */,
+				040A32082CA1C3EE003A2059 /* PickerView.swift in Sources */,
+				040A320D2CA1C3EE003A2059 /* ToolBarView.swift in Sources */,
 				0401C1A62C959A7100542AB3 /* AppUtil.swift in Sources */,
+				040A32092CA1C3EE003A2059 /* PickerViewConfig.swift in Sources */,
 				040A31FC2CA16527003A2059 /* tableViewCell+Extion.swift in Sources */,
 				040A31FE2CA1B610003A2059 /* JNConversationSliderView.swift in Sources */,
 				0401C1D82C95DE8E00542AB3 /* NSString+Extion.swift in Sources */,
@@ -734,6 +786,10 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = ZXK7A2YS9X;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JNPDFConvert/third/pickView/Frameworks",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JNPDFConvert/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to access your camera in order to scan documents with your device.";
@@ -779,6 +835,10 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = ZXK7A2YS9X;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JNPDFConvert/third/pickView/Frameworks",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JNPDFConvert/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to access your camera in order to scan documents with your device.";

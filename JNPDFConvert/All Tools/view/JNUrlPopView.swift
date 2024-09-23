@@ -83,9 +83,12 @@ class JNUrlPopView: UIView {
         confirmButton.layer.cornerRadius = 16
         confirmButton.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
         popupView.addSubview(confirmButton)
-        confirmButton.isEnabled = false
-//        textField.text = "http://www.baidu.com"
-        confirmButton.alpha = 0.2  // 设为半透明，表示不可点击
+        if textField.text?.count == 0 {
+            confirmButton.isEnabled = false
+    //        textField.text = "http://www.baidu.com"
+            confirmButton.alpha = 0.2  // 设为半透明，表示不可点击
+        }
+        
     }
     
     // 确定按钮点击事件

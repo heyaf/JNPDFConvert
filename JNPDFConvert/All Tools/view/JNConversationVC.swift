@@ -202,7 +202,7 @@ extension JNConversationVC:UITableViewDelegate, UITableViewDataSource {
             let indexPath = IndexPath(row: 1, section: 1)
             tableView.reloadRows(at: [indexPath], with: .automatic)
         } else if indexPath.section == 1 , indexPath.row == 2{
-            
+            chooseQuality()
         } else if indexPath.section == 1 , indexPath.row == 3{
             ChangeName()
         }
@@ -220,6 +220,26 @@ extension JNConversationVC:UITableViewDelegate, UITableViewDataSource {
         // 添加到视图中
         AppUtil.getWindow()?.rootViewController?.view.addSubview(popupView)
         
+    }
+    func chooseQuality(){
+        PickerViewConfig.shared.maskColor = UIColor.black.withAlphaComponent(0.2)
+        PickerViewConfig.shared.rightButtonColor = MainColor
+        PickerViewConfig.shared.leftButtonColor = .lightGray
+        PickerViewConfig.shared.centerLabelColor = BlackColor
+        PickerViewConfig.shared.lineColor = .white
+        PickerViewConfig.shared.leftButtonFont = UIFont.systemFont(ofSize: 16)
+        PickerViewConfig.shared.rightButtonFont = UIFont.systemFont(ofSize: 16)
+        PickerViewConfig.shared.centerLabelFont = UIFont.systemFont(ofSize: 18, weight: .medium)
+        PickerViewConfig.shared.itemLabelFont = boldSystemFont(ofSize: 18)
+        PickerViewConfig.shared.itemLabelColor = MainColor
+        PickerViewConfig.shared.toolBarViewTopCornerRadius = 10
+        
+        let marginArr = ["None","Narrow","Normal"]
+        PickerViewManager.showSingleColPicker("Margins", data: marginArr, defaultSelectedIndex: margins, cancelAction: {}, sureAction: { index, value in
+            self.margins = index
+            let indexPath = IndexPath(row: 2, section: 1)
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        })
     }
 }
 

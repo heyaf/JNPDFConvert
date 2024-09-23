@@ -1,10 +1,10 @@
 /* 
   Localizable.strings
-  JNPDFConvert
-
-  Created by hebert on 2024/9/14.
-  
+  CSPickerView
+  英文
+  Created by CoderStar on 2021/6/6.
 */
+
 "CSPickerView.sure" = "Sure";
 "CSPickerView.cancel" = "Cancel";
 "CSPickerView.startEndTime" = "Please Select Start And End Time";
