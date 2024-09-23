@@ -1,0 +1,148 @@
+//
+//  JNPictureChooseVC.swift
+//  JNPDFConvert
+//
+//  Created by hebert on 2024/9/23.
+//
+
+import UIKit
+
+class JNPictureChooseVC: BaseViewController {
+
+    
+    private var imageViewStack: UIStackView!
+    private var images: [UIImage]
+    private let maxDisplayImages = 3
+    var buttonAction: ((Int) -> Void)?
+    
+    init(images: [UIImage]) {
+        self.images = images
+        super.init(nibName: nil, bundle: nil)
+        modalPresentationStyle = .overFullScreen
+        modalTransitionStyle = .crossDissolve
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupMaskLayer()
+        setupPopupView()
+        setupImageViewStack()
+        setupButtons()
+    }
+    
+    // 设置遮罩层
+    private func setupMaskLayer() {
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissPopup))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    // 设置弹窗视图
+    private func setupPopupView() {
+        let popupView = UIView()
+        popupView.backgroundColor = .white
+        popupView.layer.cornerRadius = 16
+        view.addSubview(popupView)
+        
+        popupView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.height.equalTo(400)
+        }
+    }
+    
+    // 设置图片展示区域
+    private func setupImageViewStack() {
+        imageViewStack = UIStackView()
+        imageViewStack.axis = .horizontal
+        imageViewStack.alignment = .fill
+        imageViewStack.distribution = .fillEqually
+        imageViewStack.spacing = 10
+        view.addSubview(imageViewStack)
+        
+        imageViewStack.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(20)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(150)
+        }
+        
+        let displayedImages = images.prefix(maxDisplayImages)
+        for (index, image) in displayedImages.enumerated() {
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = .scaleAspectFill
+            imageView.clipsToBounds = true
+            imageView.layer.cornerRadius = 8
+            imageViewStack.addArrangedSubview(imageView)
+            
+            // 添加角标
+            let badgeLabel = UILabel()
+            badgeLabel.text = "\(index + 1)"
+            badgeLabel.textColor = .white
+            badgeLabel.backgroundColor = .red
+            badgeLabel.textAlignment = .center
+            badgeLabel.layer.cornerRadius = 15
+            badgeLabel.clipsToBounds = true
+            imageView.addSubview(badgeLabel)
+            
+            badgeLabel.snp.makeConstraints { make in
+                make.bottom.right.equalToSuperview().inset(5)
+                make.size.equalTo(30)
+            }
+        }
+    }
+    
+    // 设置按钮
+    private func setupButtons() {
+        let editButton = UIButton(type: .system)
+        editButton.setTitle("Edit & Convert", for: .normal)
+        editButton.setTitleColor(.white, for: .normal)
+        editButton.backgroundColor = .red
+        editButton.layer.cornerRadius = 16
+        editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+        view.addSubview(editButton)
+        
+        let convertButton = UIButton(type: .system)
+        convertButton.setTitle("Convert", for: .normal)
+        convertButton.setTitleColor(.white, for: .normal)
+        convertButton.backgroundColor = .red
+        convertButton.layer.cornerRadius = 16
+        convertButton.addTarget(self, action: #selector(convertButtonTapped), for: .touchUpInside)
+        view.addSubview(convertButton)
+        
+        // 按钮布局
+        editButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalTo(view.snp.centerX).offset(-10)
+            make.bottom.equalToSuperview().offset(-30)
+            make.height.equalTo(50)
+        }
+        
+        convertButton.snp.makeConstraints { make in
+            make.leading.equalTo(view.snp.centerX).offset(10)
+            make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-30)
+            make.height.equalTo(50)
+        }
+    }
+    
+    // Edit 按钮点击事件
+    @objc private func editButtonTapped() {
+        buttonAction?(0)
+        dismissPopup()
+    }
+    
+    // Convert 按钮点击事件
+    @objc private func convertButtonTapped() {
+        buttonAction?(1)
+        dismissPopup()
+    }
+    
+    // 点击遮罩层关闭弹窗
+    @objc private func dismissPopup() {
+        dismiss(animated: true, completion: nil)
+    }
+}

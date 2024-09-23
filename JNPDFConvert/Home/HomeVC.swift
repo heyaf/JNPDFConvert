@@ -148,12 +148,15 @@ class HomeVC: BaseViewController {
         setmodule(view: wordView, title: "Word to PDF", Icon: "scan 877")
         setmodule(view: scanView, title: "Scan", Icon: "scan 879")
 
+        corverImageV.tag = 333
+        wordView.tag = 334
+        scanView.tag = 335
         let corverTap = UITapGestureRecognizer(target: self, action: #selector(cotverImage(_:)))
         corverImageV.addGestureRecognizer(corverTap)
         bgImageV.isUserInteractionEnabled = true
         corverImageV.isUserInteractionEnabled = true
-        
-        
+        wordView.addGestureRecognizer(corverTap)
+        scanView.addGestureRecognizer(corverTap)
     }
     func bottomUI(){
         
@@ -245,6 +248,40 @@ class HomeVC: BaseViewController {
         tabbar?.changeToIndex(index: 2)
     }
     @objc func cotverImage(_ gesture: UITapGestureRecognizer) {
+        if gesture.view?.tag == 333 {
+            imageAction()
+        }else if gesture.view?.tag == 334 {
+            wordAction()
+        }else if gesture.view?.tag == 335 {
+            scanAction()
+        }
+       
+    }
+    @objc func segmentChanged(_ sender: UISegmentedControl) {
+            // 处理切换逻辑
+        let segmentWidth = (view.frame.width - 32) / 3
+
+        UIView.animate(withDuration: 0.2) {
+            self.segmengView.x = segmentWidth * CGFloat(sender.selectedSegmentIndex)
+        }
+        
+        }
+    
+    func imageAction(){
+        let imagePickTool = CLImagePickerTool()
+        imagePickTool.isHiddenVideo = true
+        imagePickTool.navColor = MainColor
+        imagePickTool.navTitleColor = .white
+        imagePickTool.statusBarType = .white
+        imagePickTool.showCamaroInPicture = false
+        imagePickTool.cl_setupImagePickerWith(MaxImagesCount: 9, superVC: self) { (asset,cutImage) in
+            print("返回的asset数组是\(asset)")
+        }
+    }
+    func wordAction(){
+        
+    }
+    func scanAction(){
         if #available(iOS 13.0, *) {
             
             // 判断当前设备是否支持 VNDocumentCameraViewController
@@ -281,15 +318,6 @@ class HomeVC: BaseViewController {
             self.present(dcVc, animated: true, completion: nil)
         }
     }
-    @objc func segmentChanged(_ sender: UISegmentedControl) {
-            // 处理切换逻辑
-        let segmentWidth = (view.frame.width - 32) / 3
-
-        UIView.animate(withDuration: 0.2) {
-            self.segmengView.x = segmentWidth * CGFloat(sender.selectedSegmentIndex)
-        }
-        
-        }
 }
 extension HomeVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSource, EmptyDataSetDelegate,VNDocumentCameraViewControllerDelegate{
     // MARK: - UITableView DataSource & Delegate Methods
