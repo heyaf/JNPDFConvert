@@ -155,8 +155,11 @@ class HomeVC: BaseViewController {
         corverImageV.addGestureRecognizer(corverTap)
         bgImageV.isUserInteractionEnabled = true
         corverImageV.isUserInteractionEnabled = true
-        wordView.addGestureRecognizer(corverTap)
-        scanView.addGestureRecognizer(corverTap)
+        let corverTap1 = UITapGestureRecognizer(target: self, action: #selector(cotverImage(_:)))
+        let corverTap2 = UITapGestureRecognizer(target: self, action: #selector(cotverImage(_:)))
+
+        wordView.addGestureRecognizer(corverTap1)
+        scanView.addGestureRecognizer(corverTap2)
     }
     func bottomUI(){
         
@@ -199,7 +202,7 @@ class HomeVC: BaseViewController {
         segmentControl.addSubview(segmengView)
         segmentControl.sendSubviewToBack(segmengView)
         // 添加值改变事件监听
-                segmentControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
+        segmentControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
         view.addSubview(tableView)
         
         // Layout with SnapKit
@@ -274,8 +277,21 @@ class HomeVC: BaseViewController {
         imagePickTool.navTitleColor = .white
         imagePickTool.statusBarType = .white
         imagePickTool.showCamaroInPicture = false
+        
         imagePickTool.cl_setupImagePickerWith(MaxImagesCount: 9, superVC: self) { (asset,cutImage) in
-            print("返回的asset数组是\(asset)")
+            var imageArr = [UIImage]()
+            CLImagePickerTool.convertAssetArrToOriginImage(assetArr: asset, scale: 0.1, successClouse: { (image,assetItem) in
+                imageArr.append(image)
+                if imageArr.count == asset.count {
+                    let popupVC = JNPictureChooseVC(images: imageArr)
+                    popupVC.buttonAction = { action in
+                        print("按钮点击: \(action)")
+                    }
+                    self.present(popupVC, animated: true, completion: nil)
+                }
+            }, failedClouse: { () in
+            })
+            
         }
     }
     func wordAction(){

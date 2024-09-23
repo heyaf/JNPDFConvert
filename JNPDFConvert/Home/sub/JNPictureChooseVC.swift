@@ -7,14 +7,14 @@
 
 import UIKit
 
-class JNPictureChooseVC: BaseViewController {
+class JNPictureChooseVC: UIViewController {
 
     
-    private var imageViewStack: UIStackView!
+//    private var imageViewStack: UIStackView!
     private var images: [UIImage]
     private let maxDisplayImages = 3
     var buttonAction: ((Int) -> Void)?
-    
+    let popupView = UIView()
     init(images: [UIImage]) {
         self.images = images
         super.init(nibName: nil, bundle: nil)
@@ -43,55 +43,88 @@ class JNPictureChooseVC: BaseViewController {
     
     // 设置弹窗视图
     private func setupPopupView() {
-        let popupView = UIView()
+        
         popupView.backgroundColor = .white
-        popupView.layer.cornerRadius = 16
+        popupView.layer.cornerRadius = 20
         view.addSubview(popupView)
         
         popupView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.8)
-            make.height.equalTo(400)
+            make.left.right.equalToSuperview().inset(20)
+            make.height.equalTo(376)
         }
     }
     
     // 设置图片展示区域
     private func setupImageViewStack() {
-        imageViewStack = UIStackView()
-        imageViewStack.axis = .horizontal
-        imageViewStack.alignment = .fill
-        imageViewStack.distribution = .fillEqually
-        imageViewStack.spacing = 10
-        view.addSubview(imageViewStack)
+        let imageBg = UIView()
         
-        imageViewStack.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(150)
+        popupView.addSubview(imageBg)
+        
+        imageBg.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(32)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 176, height: 176))
         }
         
-        let displayedImages = images.prefix(maxDisplayImages)
-        for (index, image) in displayedImages.enumerated() {
-            let imageView = UIImageView(image: image)
+        let displayedImages = images.prefix(maxDisplayImages)  // 只获取前 maxDisplayImages 张图片
+        var imageVArr: [UIImageView] = []
+
+        // 遍历创建 UIImageView 并设置布局
+        for index in 0..<min(displayedImages.count, 3) {
+            let imageView = UIImageView()
             imageView.contentMode = .scaleAspectFill
             imageView.clipsToBounds = true
-            imageView.layer.cornerRadius = 8
-            imageViewStack.addArrangedSubview(imageView)
+            imageView.layer.cornerRadius = 14
             
-            // 添加角标
-            let badgeLabel = UILabel()
-            badgeLabel.text = "\(index + 1)"
-            badgeLabel.textColor = .white
-            badgeLabel.backgroundColor = .red
-            badgeLabel.textAlignment = .center
-            badgeLabel.layer.cornerRadius = 15
-            badgeLabel.clipsToBounds = true
-            imageView.addSubview(badgeLabel)
+            // 计算图片的位置
+            let xOffset = 23 + 10 * index
+            let yOffset = 20 - 10 * index
+            imageView.frame = CGRect(x: xOffset, y: yOffset, width: 109, height: 154)
             
-            badgeLabel.snp.makeConstraints { make in
-                make.bottom.right.equalToSuperview().inset(5)
-                make.size.equalTo(30)
-            }
+            // 设置图片
+            imageView.image = displayedImages[index]
+            
+            // 将 UIImageView 添加到数组并添加到视图
+            imageVArr.append(imageView)
+            imageBg.addSubview(imageView)
+            
+            // 将当前 UIImageView 置于其他图片的后面
+            imageBg.sendSubviewToBack(imageView)
+        }
+
+
+        // 添加角标
+        let badgeLabel = UILabel()
+        badgeLabel.text = "\(images.count)"
+        badgeLabel.textColor = .white
+        badgeLabel.font = boldSystemFont(ofSize: 18)
+        badgeLabel.backgroundColor = MainColor
+        badgeLabel.textAlignment = .center
+        badgeLabel.layer.cornerRadius = 16
+        badgeLabel.clipsToBounds = true
+        popupView.addSubview(badgeLabel)
+        
+        badgeLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalTo(imageBg.snp.bottom)
+            make.size.equalTo(CGSize(width: 43, height: 27))
+        }
+        
+        
+        let infoLabel = UILabel()
+        infoLabel.text = "How would you like to proceed?"
+        infoLabel.textColor = .black
+        infoLabel.font = middleFont(ofSize: 20)
+        infoLabel.backgroundColor = .white
+        infoLabel.textAlignment = .center
+
+        popupView.addSubview(infoLabel)
+        
+        infoLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(imageBg.snp.bottom).offset(36)
+            make.height.equalTo(20)
         }
     }
     
@@ -100,32 +133,36 @@ class JNPictureChooseVC: BaseViewController {
         let editButton = UIButton(type: .system)
         editButton.setTitle("Edit & Convert", for: .normal)
         editButton.setTitleColor(.white, for: .normal)
-        editButton.backgroundColor = .red
+        editButton.titleLabel?.font = boldSystemFont(ofSize: 18)
+        editButton.backgroundColor = MainColor
         editButton.layer.cornerRadius = 16
         editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
-        view.addSubview(editButton)
+        popupView.addSubview(editButton)
         
         let convertButton = UIButton(type: .system)
         convertButton.setTitle("Convert", for: .normal)
         convertButton.setTitleColor(.white, for: .normal)
-        convertButton.backgroundColor = .red
+        convertButton.titleLabel?.font = boldSystemFont(ofSize: 18)
+        convertButton.backgroundColor = MainColor
         convertButton.layer.cornerRadius = 16
         convertButton.addTarget(self, action: #selector(convertButtonTapped), for: .touchUpInside)
-        view.addSubview(convertButton)
+        popupView.addSubview(convertButton)
         
+        let width = (kScreenWidth - 40 - 32 - 10)/2
         // 按钮布局
         editButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalTo(view.snp.centerX).offset(-10)
+            make.left.equalToSuperview().offset(16)
             make.bottom.equalToSuperview().offset(-30)
             make.height.equalTo(50)
+            make.width.equalTo(width)
         }
         
         convertButton.snp.makeConstraints { make in
-            make.leading.equalTo(view.snp.centerX).offset(10)
-            make.trailing.equalToSuperview().offset(-20)
             make.bottom.equalToSuperview().offset(-30)
             make.height.equalTo(50)
+            make.width.equalTo(width)
+            make.right.equalToSuperview().offset(-16)
+
         }
     }
     
