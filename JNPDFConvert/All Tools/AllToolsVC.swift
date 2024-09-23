@@ -259,19 +259,28 @@ extension AllToolsVC: UIDocumentPickerDelegate {
             }
             try fileManager.copyItem(at: selectedFileURL, to: destURL)
             print("File copied to: \(destURL)")
-        let converter = JNFileToImageConverter(filepath: destURL.absoluteString, success: { images in
-            // 成功获取图片数组
-            print("生成的图片数量: \(images.count)")
-            // 处理生成的图片数组，比如展示或者保存
-        }, failure: { error in
-            ProgressHUD.showError("fail")
-            // 处理失败情况
-            print("转换失败: \(error)")
-        })
-        
-        // 开始文件处理流程
-        converter.startConversion()
-           
+
+            ProgressHUD.showLoading()
+            let urlPdf = JNFileToPDFVC()
+            urlPdf.filepath = destURL.absoluteString
+            urlPdf.filetype = chooseFileType
+            urlPdf.callback = { imageArr in
+                ProgressHUD.dismiss()
+                urlPdf.dismiss(animated: false)
+                self.images = imageArr
+                let vc = ImageGalleryViewController()
+                vc.images = imageArr
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            urlPdf.failureCallback = { string in
+                ProgressHUD.showError("fail")
+
+            }
+            urlPdf.startConversion()
+            urlPdf.modalPresentationStyle = .overFullScreen
+            self.present(urlPdf, animated: false) {
+                urlPdf.view.isHidden = true
+            }
 
         } catch {
             print("文件复制失败: \(error)")

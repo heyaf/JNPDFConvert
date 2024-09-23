@@ -31,7 +31,6 @@ class PDFToSingleImageConverter {
         // 拼接所有 UIImage 成为一张长图
         return combineImages(images: pageImages)
     }
-
     // 渲染单个 PDF 页为 UIImage
     private func renderPageToImage(page: CGPDFPage) -> UIImage? {
         let pageRect = page.getBoxRect(.mediaBox)
