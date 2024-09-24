@@ -159,9 +159,9 @@ class JNWebToPDFVC: BaseViewController {
     }
     
     func previewPDF(at url: URL) {
-//        let documentController = UIDocumentInteractionController(url: url)
-//        documentController.delegate = self
-//        documentController.presentPreview(animated: true)
+        let documentController = UIDocumentInteractionController(url: url)
+        documentController.delegate = self
+        documentController.presentPreview(animated: true)
     }
 }
 

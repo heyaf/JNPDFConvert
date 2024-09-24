@@ -71,7 +71,16 @@ class JNConversationVC: BaseViewController {
     
     @objc func convertButtonTapped() {
         // 处理点击转换的逻辑
-        print("Convert button tapped")
+        if let pdfPath = JNPDFGenerator.convertPDF(with: self.images, fileName: self.pdfName + ".pdf", border: margins, quality: CGFloat(quality)) {
+            let fileURL = URL(fileURLWithPath: pdfPath) // 使用 fileURLWithPath
+            let documentController = UIDocumentInteractionController(url: fileURL)
+            documentController.delegate = self
+            documentController.presentPreview(animated: true)
+        } else {
+            ProgressHUD.showMessage("fail")
+        }
+
+      
     }
     
     
@@ -196,7 +205,25 @@ extension JNConversationVC:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.row == images.count {
             // 处理添加图片的逻辑
-            print("Add more images tapped")
+            let imagePickTool = CLImagePickerTool()
+            imagePickTool.isHiddenVideo = true
+            imagePickTool.navColor = MainColor
+            imagePickTool.navTitleColor = .white
+            imagePickTool.statusBarType = .white
+            imagePickTool.showCamaroInPicture = false
+            
+            imagePickTool.cl_setupImagePickerWith(MaxImagesCount: 9, superVC: self) { (asset,cutImage) in
+                var imageArr = [UIImage]()
+                CLImagePickerTool.convertAssetArrToOriginImage(assetArr: asset, scale: 0.1, successClouse: { (image,assetItem) in
+                    imageArr.append(image)
+                    if imageArr.count == asset.count {
+                        self.images.append(contentsOf: imageArr)
+                        self.tableView.reloadData()
+                    }
+                }, failedClouse: { () in
+                })
+                
+            }
         } else if indexPath.section == 1 , indexPath.row == 1{
             isSettingsExpanded.toggle() // 点击展开或折叠设置项
             let indexPath = IndexPath(row: 1, section: 1)
@@ -242,7 +269,11 @@ extension JNConversationVC:UITableViewDelegate, UITableViewDataSource {
         })
     }
 }
-
+extension JNConversationVC: UIDocumentInteractionControllerDelegate {
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
+    }
+}
 // MARK: - Cell
 
 

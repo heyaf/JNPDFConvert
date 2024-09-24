@@ -52,6 +52,7 @@
 		040A320D2CA1C3EE003A2059 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32052CA1C3EE003A2059 /* ToolBarView.swift */; };
 		040A321A2CA1C6B0003A2059 /* CSPickerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 040A32172CA1C6B0003A2059 /* CSPickerView.bundle */; };
 		040A321B2CA1C6B0003A2059 /* CSPickerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040A32182CA1C6B0003A2059 /* CSPickerView.framework */; };
+		040A321D2CA26E59003A2059 /* JNPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A321C2CA26E59003A2059 /* JNPDFGenerator.swift */; };
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB32C9D227B00890024 /* JNUrlPopView.swift */; };
@@ -125,6 +126,7 @@
 		040A32052CA1C3EE003A2059 /* ToolBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
 		040A32172CA1C6B0003A2059 /* CSPickerView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CSPickerView.bundle; sourceTree = "<group>"; };
 		040A32182CA1C6B0003A2059 /* CSPickerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CSPickerView.framework; sourceTree = "<group>"; };
+		040A321C2CA26E59003A2059 /* JNPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNPDFGenerator.swift; sourceTree = "<group>"; };
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		0428AFB32C9D227B00890024 /* JNUrlPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNUrlPopView.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				040A31FB2CA16527003A2059 /* tableViewCell+Extion.swift */,
 				040A31F02C9F0710003A2059 /* GCD+Extion.swift */,
 				040A31F42C9FCCF9003A2059 /* PDFToSingleImageConverter.swift */,
+				040A321C2CA26E59003A2059 /* JNPDFGenerator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				040A31FE2CA1B610003A2059 /* JNConversationSliderView.swift in Sources */,
 				0401C1D82C95DE8E00542AB3 /* NSString+Extion.swift in Sources */,
 				040A31F82CA12060003A2059 /* JNPictureChooseVC.swift in Sources */,
+				040A321D2CA26E59003A2059 /* JNPDFGenerator.swift in Sources */,
 				0401C1BD2C95D44700542AB3 /* BaseSimpleViewController.swift in Sources */,
 				0401C1D62C95DDF000542AB3 /* JNHistoryVC.swift in Sources */,
 				04DC75AA2C9AE57D00A70D5C /* BubbleTools.swift in Sources */,

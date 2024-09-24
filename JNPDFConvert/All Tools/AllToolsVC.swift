@@ -139,6 +139,12 @@ class AllToolsVC: BaseViewController {
     @objc func settingAction(){
         
     }
+    func conversationAction(with images:[UIImage]){
+        let vc = JNConversationVC()
+        vc.images = images
+        vc.imageNames = AppUtil().generateStringArray(count: images.count)
+        navigationController?.pushViewController(vc, animated: true)
+    }
     // 打开“文件”应用以选择 Word 文件
     func openDocumentPicker(for type: Int) {
         chooseFileType = type
@@ -202,8 +208,24 @@ extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
             imagePickTool.navTitleColor = .white
             imagePickTool.statusBarType = .white
             imagePickTool.showCamaroInPicture = false
+            
             imagePickTool.cl_setupImagePickerWith(MaxImagesCount: 9, superVC: self) { (asset,cutImage) in
-                print("返回的asset数组是\(asset)")
+                var imageArr = [UIImage]()
+                CLImagePickerTool.convertAssetArrToOriginImage(assetArr: asset, scale: 0.1, successClouse: { (image,assetItem) in
+                    imageArr.append(image)
+                    if imageArr.count == asset.count {
+                        let popupVC = JNPictureChooseVC(images: imageArr)
+                        popupVC.buttonAction = { action in
+                            print("按钮点击: \(action)")
+                            if action == 1 {
+                                self.conversationAction(with: imageArr)
+                            }
+                        }
+                        self.present(popupVC, animated: true, completion: nil)
+                    }
+                }, failedClouse: { () in
+                })
+                
             }
         } else if indexPath.section == 1,indexPath.row == 2 {
             imagePickTool.cameraOut = true
@@ -234,10 +256,15 @@ extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
         
         // 设置确定按钮的回调
         popupView.onConfirm = { inputText in
-            print("User input: \(inputText ?? "")")
-            let urlPdf = JNWebToPDFVC()
-            urlPdf.urlString = "\(inputText ?? "")"
-            self.navigationController?.pushViewController(urlPdf, animated: true)
+            if let validURL = String().validateAndFormatURL(inputText!) {
+                print("有效的网址: \(validURL)")
+                let urlPdf = JNWebToPDFVC()
+                urlPdf.urlString = validURL
+                self.navigationController?.pushViewController(urlPdf, animated: true)
+            } else {
+                ProgressHUD.showMessage("Please enter the correct URL")
+            }
+            
         }
         // 添加到视图中
         AppUtil.getWindow()?.rootViewController?.view.addSubview(popupView)

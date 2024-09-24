@@ -27,4 +27,29 @@ extension String {
         let result = geshi + currentDate + randomNumber
         return result
     }
+    func validateAndFormatURL(_ urlString: String) -> String? {
+        var formattedURLString = urlString
+
+        // 检查是否包含 "http://" 或 "https://"
+        if !formattedURLString.hasPrefix("http://") && !formattedURLString.hasPrefix("https://") {
+            formattedURLString = "https://" + formattedURLString
+        }
+
+        // 创建 URL 对象
+        if isValidURL(formattedURLString) {
+            return formattedURLString // 返回格式化后的有效 URL 字符串
+        }
+        
+        return nil // 返回 nil 表示无效 URL
+    }
+    func isValidURL(_ content: String) -> Bool {
+        // 定义正则表达式来匹配常见的域名后缀
+        let pattern = "([\\w-]+\\.)+[\\w-]{2,}(/\\S*)?$"
+        let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+
+        // 使用正则表达式进行匹配
+        let range = NSRange(location: 0, length: content.utf16.count)
+        return regex?.firstMatch(in: content, options: [], range: range) != nil
+    }
+
 }
