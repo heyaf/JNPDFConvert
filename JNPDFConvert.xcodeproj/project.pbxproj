@@ -53,6 +53,9 @@
 		040A321A2CA1C6B0003A2059 /* CSPickerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 040A32172CA1C6B0003A2059 /* CSPickerView.bundle */; };
 		040A321B2CA1C6B0003A2059 /* CSPickerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040A32182CA1C6B0003A2059 /* CSPickerView.framework */; };
 		040A321D2CA26E59003A2059 /* JNPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A321C2CA26E59003A2059 /* JNPDFGenerator.swift */; };
+		040A321F2CA2B7EF003A2059 /* JNPDFDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A321E2CA2B7EF003A2059 /* JNPDFDetailVC.swift */; };
+		040A32212CA2BBB3003A2059 /* JNPDFDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32202CA2BBB3003A2059 /* JNPDFDetailHeaderView.swift */; };
+		040A32232CA2CE7D003A2059 /* UIButton+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32222CA2CE7D003A2059 /* UIButton+Extion.swift */; };
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB32C9D227B00890024 /* JNUrlPopView.swift */; };
@@ -127,6 +130,9 @@
 		040A32172CA1C6B0003A2059 /* CSPickerView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CSPickerView.bundle; sourceTree = "<group>"; };
 		040A32182CA1C6B0003A2059 /* CSPickerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CSPickerView.framework; sourceTree = "<group>"; };
 		040A321C2CA26E59003A2059 /* JNPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNPDFGenerator.swift; sourceTree = "<group>"; };
+		040A321E2CA2B7EF003A2059 /* JNPDFDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNPDFDetailVC.swift; sourceTree = "<group>"; };
+		040A32202CA2BBB3003A2059 /* JNPDFDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNPDFDetailHeaderView.swift; sourceTree = "<group>"; };
+		040A32222CA2CE7D003A2059 /* UIButton+Extion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extion.swift"; sourceTree = "<group>"; };
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		0428AFB32C9D227B00890024 /* JNUrlPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNUrlPopView.swift; sourceTree = "<group>"; };
@@ -184,6 +190,7 @@
 				0401C1CF2C95DCCA00542AB3 /* UIFastCreatTool.swift */,
 				0401C1D72C95DE8E00542AB3 /* NSString+Extion.swift */,
 				04DC758B2C9AC4CF00A70D5C /* UIimage+Extion.swift */,
+				040A32222CA2CE7D003A2059 /* UIButton+Extion.swift */,
 				040A31FB2CA16527003A2059 /* tableViewCell+Extion.swift */,
 				040A31F02C9F0710003A2059 /* GCD+Extion.swift */,
 				040A31F42C9FCCF9003A2059 /* PDFToSingleImageConverter.swift */,
@@ -286,6 +293,7 @@
 				0428AFB32C9D227B00890024 /* JNUrlPopView.swift */,
 				040A31F92CA15C0F003A2059 /* JNConversationVC.swift */,
 				040A31FD2CA1B610003A2059 /* JNConversationSliderView.swift */,
+				040A32202CA2BBB3003A2059 /* JNPDFDetailHeaderView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -296,6 +304,7 @@
 				0428AFB62C9D9FF300890024 /* JNWebToPDFVC.swift */,
 				04CC24462C9EDED2007A79A3 /* JNFileToPDFVC.swift */,
 				040A31F22C9F13A9003A2059 /* ImageGalleryViewController.swift */,
+				040A321E2CA2B7EF003A2059 /* JNPDFDetailVC.swift */,
 			);
 			path = sub;
 			sourceTree = "<group>";
@@ -583,6 +592,8 @@
 				04934BCD2C95814F00A05D31 /* AppDelegate.swift in Sources */,
 				040A31EE2C9F0548003A2059 /* ZCycleView.swift in Sources */,
 				0401C1AE2C95D1FF00542AB3 /* UILabel+Extion.swift in Sources */,
+				040A32212CA2BBB3003A2059 /* JNPDFDetailHeaderView.swift in Sources */,
+				040A321F2CA2B7EF003A2059 /* JNPDFDetailVC.swift in Sources */,
 				04DC75AB2C9AE57D00A70D5C /* BTBubbleConfig.swift in Sources */,
 				04DC75A82C9AE57D00A70D5C /* BTBubble+Menu.swift in Sources */,
 				0428AFB72C9D9FF300890024 /* JNWebToPDFVC.swift in Sources */,
@@ -601,6 +612,7 @@
 				0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */,
 				04DC75A62C9AE57D00A70D5C /* BTBubble+Check.swift in Sources */,
 				040A32082CA1C3EE003A2059 /* PickerView.swift in Sources */,
+				040A32232CA2CE7D003A2059 /* UIButton+Extion.swift in Sources */,
 				040A320D2CA1C3EE003A2059 /* ToolBarView.swift in Sources */,
 				0401C1A62C959A7100542AB3 /* AppUtil.swift in Sources */,
 				040A32092CA1C3EE003A2059 /* PickerViewConfig.swift in Sources */,

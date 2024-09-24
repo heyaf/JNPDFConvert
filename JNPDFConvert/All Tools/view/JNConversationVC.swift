@@ -142,7 +142,12 @@ extension JNConversationVC:UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "JNConverImageCell", for: indexPath) as! JNConverImageCell
                 cell.configure(image: images[indexPath.row],name: imageNames[indexPath.row])
                 
-                
+                cell.DeleteAction = {
+                    self.images.remove(at: indexPath.row)
+                    self.imageNames.remove(at: indexPath.row)
+                    tableView.reloadData()
+//                    tableView.reloadSections(IndexSet(integer: 0), with: .none)
+                }
                 return cell
             } else {
                 let cell = UITableViewCell()
@@ -155,6 +160,7 @@ extension JNConversationVC:UITableViewDelegate, UITableViewDataSource {
                 addImageButton.setTitleColor(MainColor, for: .normal)
                 addImageButton.titleLabel?.font = .boldSystemFont(ofSize: 16)
                 addImageButton.backgroundColor = grayColor
+                addImageButton.isUserInteractionEnabled = false
                 // 居中显示
                 cell.contentView.addSubview(addImageButton)
                 addImageButton.frame = CGRect(x: 0, y: 0, width: kScreenWidth - 40, height: 50)
@@ -218,6 +224,7 @@ extension JNConversationVC:UITableViewDelegate, UITableViewDataSource {
                     imageArr.append(image)
                     if imageArr.count == asset.count {
                         self.images.append(contentsOf: imageArr)
+                        self.imageNames.append(contentsOf: AppUtil().generateStringArray(count: imageArr.count))
                         self.tableView.reloadData()
                     }
                 }, failedClouse: { () in
@@ -289,7 +296,7 @@ class JNConverImageCell: UITableViewCell {
     }
     let lineV = UIFastCreatTool.getLine(.hex("#F3F3F3"))
     
-    
+    var DeleteAction: (() -> ())?
     // 初始化
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -353,6 +360,7 @@ class JNConverImageCell: UITableViewCell {
     // 处理删除按钮点击事件
     @objc func deleteTapped() {
         // 删除逻辑
+        self.DeleteAction?()
     }
     
     // 设置图片和删除操作

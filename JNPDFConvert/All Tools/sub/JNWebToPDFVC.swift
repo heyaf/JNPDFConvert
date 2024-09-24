@@ -76,7 +76,10 @@ class JNWebToPDFVC: BaseViewController {
         button.titleLabel?.font = boldSystemFont(ofSize: 18)
         button.backgroundColor = MainColor
         button.setTitleColor(.white, for: .normal)
+        button.addGradationColor(width: Float(kScreenWidth) - 40, height: 59)
         button.layer.cornerRadius = 16
+        button.layer.masksToBounds = true
+
         view.addSubview(button)
         
         // 使用 SnapKit 设置按钮的约束
@@ -143,25 +146,28 @@ class JNWebToPDFVC: BaseViewController {
     
     // 保存 PDF 文件到本地
     func savePDF(data: Data) {
-        let filePath = getDocumentsDirectory().appendingPathComponent("webview.pdf")
+        let filePath = getDocumentsDirectory().appendingPathComponent(String().generateImageString(geshi: "PDF") + ".pdf")
         
         do {
             try data.write(to: filePath)
             print("PDF 已保存至: \(filePath)")
             previewPDF(at: filePath)
+            
         } catch {
             print("无法保存 PDF 文件: \(error.localizedDescription)")
+            
         }
+        
     }
-    
+    // 获取 Documents 目录路径的方法
     func getDocumentsDirectory() -> URL {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
     
     func previewPDF(at url: URL) {
-        let documentController = UIDocumentInteractionController(url: url)
-        documentController.delegate = self
-        documentController.presentPreview(animated: true)
+        let detailVC = JNPDFDetailVC()
+        detailVC.pathString = url
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
