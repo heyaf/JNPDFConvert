@@ -167,6 +167,7 @@ class JNWebToPDFVC: BaseViewController {
     func previewPDF(at url: URL) {
         let detailVC = JNPDFDetailVC()
         detailVC.pathString = url
+        detailVC.backToRoot = true
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

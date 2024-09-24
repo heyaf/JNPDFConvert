@@ -8,6 +8,7 @@
 import UIKit
 import WebKit
 class JNPDFDetailVC: BaseViewController {
+    var backToRoot = false
     var webView: WKWebView!
     var pathString: URL?
     var titleStr: String!
@@ -143,7 +144,12 @@ class JNPDFDetailVC: BaseViewController {
     
     
     open override func onBackClick(){
-        popToRootViewCon()
+        if backToRoot {
+            popToRootViewCon()
+
+        }else{
+            popViewCon()
+        }
     }
     
     
