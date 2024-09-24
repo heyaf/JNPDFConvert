@@ -21,7 +21,7 @@ class JNPDFGenerator {
         UIGraphicsBeginPDFContextToFile(pdfPath, CGRect.zero, nil)
         
         // 获取 PDF 页面的尺寸
-        let pdfBounds = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - kNavBarHeight - kBottomSafeHeight) // A4 纸的尺寸
+        let pdfBounds = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - kNavBarHeight - kBottomSafeHeight)
         let borderWidth: CGFloat
         
         // 根据边框类型设置边框宽度
@@ -35,6 +35,7 @@ class JNPDFGenerator {
         default:
             borderWidth = 20
         }
+
         let Newimages = compressImages(images, quality: quality)
         for image in Newimages {
             UIGraphicsBeginPDFPageWithInfo(pdfBounds, nil)
@@ -55,16 +56,16 @@ class JNPDFGenerator {
             // 图片居中绘制
             let originX = (pdfBounds.width - w) / 2
             let originY = (pdfBounds.height - h) / 2
-            image.draw(in: CGRect(x: originX + borderWidth, y: originY + borderWidth, width: w, height: h))
+            
+            // 添加边距
+            image.draw(in: CGRect(x: originX , y: originY , width: w, height: h))
         }
         
         UIGraphicsEndPDFContext()
         
-        // 处理 PDF 质量（0-100%）
-        // 由于 UIGraphics 不直接支持质量设置，可以选择使用图像压缩
-        // 在此处返回 PDF 路径
         return pdfPath
     }
+
     
     static func saveDirectory(fileName: String) -> String {
         // 根据需要自定义保存路径
