@@ -56,6 +56,7 @@
 		040A321F2CA2B7EF003A2059 /* JNPDFDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A321E2CA2B7EF003A2059 /* JNPDFDetailVC.swift */; };
 		040A32212CA2BBB3003A2059 /* JNPDFDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32202CA2BBB3003A2059 /* JNPDFDetailHeaderView.swift */; };
 		040A32232CA2CE7D003A2059 /* UIButton+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32222CA2CE7D003A2059 /* UIButton+Extion.swift */; };
+		040A32262CA3C648003A2059 /* JNImagesEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32252CA3C648003A2059 /* JNImagesEditVC.swift */; };
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB32C9D227B00890024 /* JNUrlPopView.swift */; };
@@ -133,6 +134,7 @@
 		040A321E2CA2B7EF003A2059 /* JNPDFDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNPDFDetailVC.swift; sourceTree = "<group>"; };
 		040A32202CA2BBB3003A2059 /* JNPDFDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNPDFDetailHeaderView.swift; sourceTree = "<group>"; };
 		040A32222CA2CE7D003A2059 /* UIButton+Extion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extion.swift"; sourceTree = "<group>"; };
+		040A32252CA3C648003A2059 /* JNImagesEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImagesEditVC.swift; sourceTree = "<group>"; };
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		0428AFB32C9D227B00890024 /* JNUrlPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNUrlPopView.swift; sourceTree = "<group>"; };
@@ -287,6 +289,14 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
+		040A32242CA3C625003A2059 /* edit */ = {
+			isa = PBXGroup;
+			children = (
+				040A32252CA3C648003A2059 /* JNImagesEditVC.swift */,
+			);
+			path = edit;
+			sourceTree = "<group>";
+		};
 		0428AFB22C9D226600890024 /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,6 +342,7 @@
 			children = (
 				04934BC82C95814F00A05D31 /* BaseModule */,
 				04934BC42C95814F00A05D31 /* All Tools */,
+				040A32242CA3C625003A2059 /* edit */,
 				04934BCC2C95814F00A05D31 /* Home */,
 				04934BC92C95814F00A05D31 /* History */,
 				04934BCA2C95814F00A05D31 /* JNTool */,
@@ -601,6 +612,7 @@
 				04DC75AD2C9AE57D00A70D5C /* BTBubble+Location.swift in Sources */,
 				040A31F12C9F0710003A2059 /* GCD+Extion.swift in Sources */,
 				040A31F32C9F13A9003A2059 /* ImageGalleryViewController.swift in Sources */,
+				040A32262CA3C648003A2059 /* JNImagesEditVC.swift in Sources */,
 				0401C1B62C95D30C00542AB3 /* Storage.swift in Sources */,
 				04DC758C2C9AC4CF00A70D5C /* UIimage+Extion.swift in Sources */,
 				0401C1B12C95D29500542AB3 /* NSObject+Extension.swift in Sources */,

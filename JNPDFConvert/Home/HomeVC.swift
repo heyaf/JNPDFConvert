@@ -288,6 +288,8 @@ class HomeVC: BaseViewController {
                         print("按钮点击: \(action)")
                         if action == 1 {
                             self.conversationAction(with: imageArr)
+                        }else{
+                            self.editimagesAction(with: imageArr)
                         }
                     }
                     self.present(popupVC, animated: true, completion: nil)
@@ -341,6 +343,11 @@ class HomeVC: BaseViewController {
         let vc = JNConversationVC()
         vc.images = images
         vc.imageNames = AppUtil().generateStringArray(count: images.count)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    func editimagesAction(with images:[UIImage]){
+        let vc = JNImagesEditVC()
+        vc.images = images
         navigationController?.pushViewController(vc, animated: true)
     }
 }
