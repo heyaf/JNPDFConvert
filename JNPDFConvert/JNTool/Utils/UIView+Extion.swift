@@ -131,4 +131,20 @@ public extension UIView {
     func addSubviews(_ subviews: [UIView]) {
         subviews.forEach { addSubview($0) }
     }
+    func viewWithTag(tag: Int) -> UIView? {
+        // 如果当前视图的 tag 就是要找的 tag，直接返回
+        if self.tag == tag {
+            return self
+        }
+        
+        // 遍历子视图，递归查找
+        for subview in self.subviews {
+            if let foundView = subview.viewWithTag(tag) {
+                return foundView
+            }
+        }
+        
+        // 如果没有找到，返回 nil
+        return nil
+    }
 }

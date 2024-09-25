@@ -57,6 +57,35 @@
 		040A32212CA2BBB3003A2059 /* JNPDFDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32202CA2BBB3003A2059 /* JNPDFDetailHeaderView.swift */; };
 		040A32232CA2CE7D003A2059 /* UIButton+Extion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32222CA2CE7D003A2059 /* UIButton+Extion.swift */; };
 		040A32262CA3C648003A2059 /* JNImagesEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32252CA3C648003A2059 /* JNImagesEditVC.swift */; };
+		040A32282CA41BB5003A2059 /* JNImagesCropVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32272CA41BB5003A2059 /* JNImagesCropVC.swift */; };
+		040A32722CA41D94003A2059 /* ZQBrightnessController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A322A2CA41D94003A2059 /* ZQBrightnessController.m */; };
+		040A32732CA41D94003A2059 /* ZQFilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A322C2CA41D94003A2059 /* ZQFilterController.m */; };
+		040A32742CA41D94003A2059 /* ZQImageCropController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A322E2CA41D94003A2059 /* ZQImageCropController.m */; };
+		040A32752CA41D94003A2059 /* ZQImageMosaicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32302CA41D94003A2059 /* ZQImageMosaicController.m */; };
+		040A32762CA41D94003A2059 /* ZQImageRotationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32322CA41D94003A2059 /* ZQImageRotationController.m */; };
+		040A32772CA41D94003A2059 /* ZQImageTextController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32342CA41D94003A2059 /* ZQImageTextController.m */; };
+		040A32782CA41D94003A2059 /* ZQImageWatermarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32362CA41D94003A2059 /* ZQImageWatermarkController.m */; };
+		040A32792CA41D94003A2059 /* WaterMarkPicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32392CA41D94003A2059 /* WaterMarkPicModel.m */; };
+		040A327A2CA41D94003A2059 /* ImageBrightnessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A323C2CA41D94003A2059 /* ImageBrightnessView.m */; };
+		040A327B2CA41D94003A2059 /* CropRatioItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A323F2CA41D94003A2059 /* CropRatioItem.m */; };
+		040A327C2CA41D94003A2059 /* ImageCropRatioChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32412CA41D94003A2059 /* ImageCropRatioChooseView.m */; };
+		040A327D2CA41D94003A2059 /* EditOperatingToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32442CA41D94003A2059 /* EditOperatingToolBar.m */; };
+		040A327E2CA41D94003A2059 /* ImageEditTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32462CA41D94003A2059 /* ImageEditTitleView.m */; };
+		040A327F2CA41D94003A2059 /* ImageEditToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32482CA41D94003A2059 /* ImageEditToolBar.m */; };
+		040A32802CA41D94003A2059 /* ImageMosaicToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A324B2CA41D94003A2059 /* ImageMosaicToolBar.m */; };
+		040A32812CA41D94003A2059 /* ImageRotateToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A324E2CA41D94003A2059 /* ImageRotateToolBar.m */; };
+		040A32822CA41D94003A2059 /* ImageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32512CA41D94003A2059 /* ImageTextView.m */; };
+		040A32832CA41D94003A2059 /* TextColorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32532CA41D94003A2059 /* TextColorItem.m */; };
+		040A32842CA41D94003A2059 /* ImageWaterMarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32562CA41D94003A2059 /* ImageWaterMarkView.m */; };
+		040A32852CA41D94003A2059 /* ImageFilterToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32592CA41D94003A2059 /* ImageFilterToolBar.m */; };
+		040A32862CA41D94003A2059 /* UIImage+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A325E2CA41D94003A2059 /* UIImage+Rotate.m */; };
+		040A32872CA41D94003A2059 /* XLMosaicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32612CA41D94003A2059 /* XLMosaicView.m */; };
+		040A32882CA41D94003A2059 /* WaterMarkControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32642CA41D94003A2059 /* WaterMarkControl.m */; };
+		040A32892CA41D94003A2059 /* ZQUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A32672CA41D94003A2059 /* ZQUtil.m */; };
+		040A328A2CA41D94003A2059 /* Kaiti.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 040A326B2CA41D94003A2059 /* Kaiti.ttf */; };
+		040A328B2CA41D94003A2059 /* SimHei.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 040A326C2CA41D94003A2059 /* SimHei.ttf */; };
+		040A328C2CA41D94003A2059 /* SimSun.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 040A326D2CA41D94003A2059 /* SimSun.ttf */; };
+		040A328D2CA41D94003A2059 /* ZQResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 040A326E2CA41D94003A2059 /* ZQResource.bundle */; };
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB32C9D227B00890024 /* JNUrlPopView.swift */; };
@@ -135,6 +164,60 @@
 		040A32202CA2BBB3003A2059 /* JNPDFDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNPDFDetailHeaderView.swift; sourceTree = "<group>"; };
 		040A32222CA2CE7D003A2059 /* UIButton+Extion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extion.swift"; sourceTree = "<group>"; };
 		040A32252CA3C648003A2059 /* JNImagesEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImagesEditVC.swift; sourceTree = "<group>"; };
+		040A32272CA41BB5003A2059 /* JNImagesCropVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImagesCropVC.swift; sourceTree = "<group>"; };
+		040A32292CA41D94003A2059 /* ZQBrightnessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQBrightnessController.h; sourceTree = "<group>"; };
+		040A322A2CA41D94003A2059 /* ZQBrightnessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQBrightnessController.m; sourceTree = "<group>"; };
+		040A322B2CA41D94003A2059 /* ZQFilterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQFilterController.h; sourceTree = "<group>"; };
+		040A322C2CA41D94003A2059 /* ZQFilterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQFilterController.m; sourceTree = "<group>"; };
+		040A322D2CA41D94003A2059 /* ZQImageCropController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQImageCropController.h; sourceTree = "<group>"; };
+		040A322E2CA41D94003A2059 /* ZQImageCropController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQImageCropController.m; sourceTree = "<group>"; };
+		040A322F2CA41D94003A2059 /* ZQImageMosaicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQImageMosaicController.h; sourceTree = "<group>"; };
+		040A32302CA41D94003A2059 /* ZQImageMosaicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQImageMosaicController.m; sourceTree = "<group>"; };
+		040A32312CA41D94003A2059 /* ZQImageRotationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQImageRotationController.h; sourceTree = "<group>"; };
+		040A32322CA41D94003A2059 /* ZQImageRotationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQImageRotationController.m; sourceTree = "<group>"; };
+		040A32332CA41D94003A2059 /* ZQImageTextController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQImageTextController.h; sourceTree = "<group>"; };
+		040A32342CA41D94003A2059 /* ZQImageTextController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQImageTextController.m; sourceTree = "<group>"; };
+		040A32352CA41D94003A2059 /* ZQImageWatermarkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQImageWatermarkController.h; sourceTree = "<group>"; };
+		040A32362CA41D94003A2059 /* ZQImageWatermarkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQImageWatermarkController.m; sourceTree = "<group>"; };
+		040A32382CA41D94003A2059 /* WaterMarkPicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterMarkPicModel.h; sourceTree = "<group>"; };
+		040A32392CA41D94003A2059 /* WaterMarkPicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterMarkPicModel.m; sourceTree = "<group>"; };
+		040A323B2CA41D94003A2059 /* ImageBrightnessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageBrightnessView.h; sourceTree = "<group>"; };
+		040A323C2CA41D94003A2059 /* ImageBrightnessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageBrightnessView.m; sourceTree = "<group>"; };
+		040A323E2CA41D94003A2059 /* CropRatioItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropRatioItem.h; sourceTree = "<group>"; };
+		040A323F2CA41D94003A2059 /* CropRatioItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropRatioItem.m; sourceTree = "<group>"; };
+		040A32402CA41D94003A2059 /* ImageCropRatioChooseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCropRatioChooseView.h; sourceTree = "<group>"; };
+		040A32412CA41D94003A2059 /* ImageCropRatioChooseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCropRatioChooseView.m; sourceTree = "<group>"; };
+		040A32432CA41D94003A2059 /* EditOperatingToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditOperatingToolBar.h; sourceTree = "<group>"; };
+		040A32442CA41D94003A2059 /* EditOperatingToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditOperatingToolBar.m; sourceTree = "<group>"; };
+		040A32452CA41D94003A2059 /* ImageEditTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageEditTitleView.h; sourceTree = "<group>"; };
+		040A32462CA41D94003A2059 /* ImageEditTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageEditTitleView.m; sourceTree = "<group>"; };
+		040A32472CA41D94003A2059 /* ImageEditToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageEditToolBar.h; sourceTree = "<group>"; };
+		040A32482CA41D94003A2059 /* ImageEditToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageEditToolBar.m; sourceTree = "<group>"; };
+		040A324A2CA41D94003A2059 /* ImageMosaicToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageMosaicToolBar.h; sourceTree = "<group>"; };
+		040A324B2CA41D94003A2059 /* ImageMosaicToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageMosaicToolBar.m; sourceTree = "<group>"; };
+		040A324D2CA41D94003A2059 /* ImageRotateToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageRotateToolBar.h; sourceTree = "<group>"; };
+		040A324E2CA41D94003A2059 /* ImageRotateToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageRotateToolBar.m; sourceTree = "<group>"; };
+		040A32502CA41D94003A2059 /* ImageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTextView.h; sourceTree = "<group>"; };
+		040A32512CA41D94003A2059 /* ImageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTextView.m; sourceTree = "<group>"; };
+		040A32522CA41D94003A2059 /* TextColorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextColorItem.h; sourceTree = "<group>"; };
+		040A32532CA41D94003A2059 /* TextColorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextColorItem.m; sourceTree = "<group>"; };
+		040A32552CA41D94003A2059 /* ImageWaterMarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageWaterMarkView.h; sourceTree = "<group>"; };
+		040A32562CA41D94003A2059 /* ImageWaterMarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageWaterMarkView.m; sourceTree = "<group>"; };
+		040A32582CA41D94003A2059 /* ImageFilterToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFilterToolBar.h; sourceTree = "<group>"; };
+		040A32592CA41D94003A2059 /* ImageFilterToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFilterToolBar.m; sourceTree = "<group>"; };
+		040A325D2CA41D94003A2059 /* UIImage+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotate.h"; sourceTree = "<group>"; };
+		040A325E2CA41D94003A2059 /* UIImage+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotate.m"; sourceTree = "<group>"; };
+		040A32602CA41D94003A2059 /* XLMosaicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLMosaicView.h; sourceTree = "<group>"; };
+		040A32612CA41D94003A2059 /* XLMosaicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLMosaicView.m; sourceTree = "<group>"; };
+		040A32632CA41D94003A2059 /* WaterMarkControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterMarkControl.h; sourceTree = "<group>"; };
+		040A32642CA41D94003A2059 /* WaterMarkControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterMarkControl.m; sourceTree = "<group>"; };
+		040A32662CA41D94003A2059 /* ZQUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQUtil.h; sourceTree = "<group>"; };
+		040A32672CA41D94003A2059 /* ZQUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQUtil.m; sourceTree = "<group>"; };
+		040A326B2CA41D94003A2059 /* Kaiti.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kaiti.ttf; sourceTree = "<group>"; };
+		040A326C2CA41D94003A2059 /* SimHei.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimHei.ttf; sourceTree = "<group>"; };
+		040A326D2CA41D94003A2059 /* SimSun.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimSun.ttf; sourceTree = "<group>"; };
+		040A326E2CA41D94003A2059 /* ZQResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZQResource.bundle; sourceTree = "<group>"; };
+		040A32702CA41D94003A2059 /* ZQImageEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQImageEdit.h; sourceTree = "<group>"; };
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		0428AFB32C9D227B00890024 /* JNUrlPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNUrlPopView.swift; sourceTree = "<group>"; };
@@ -293,8 +376,221 @@
 			isa = PBXGroup;
 			children = (
 				040A32252CA3C648003A2059 /* JNImagesEditVC.swift */,
+				040A32272CA41BB5003A2059 /* JNImagesCropVC.swift */,
 			);
 			path = edit;
+			sourceTree = "<group>";
+		};
+		040A32372CA41D94003A2059 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				040A32292CA41D94003A2059 /* ZQBrightnessController.h */,
+				040A322A2CA41D94003A2059 /* ZQBrightnessController.m */,
+				040A322B2CA41D94003A2059 /* ZQFilterController.h */,
+				040A322C2CA41D94003A2059 /* ZQFilterController.m */,
+				040A322D2CA41D94003A2059 /* ZQImageCropController.h */,
+				040A322E2CA41D94003A2059 /* ZQImageCropController.m */,
+				040A322F2CA41D94003A2059 /* ZQImageMosaicController.h */,
+				040A32302CA41D94003A2059 /* ZQImageMosaicController.m */,
+				040A32312CA41D94003A2059 /* ZQImageRotationController.h */,
+				040A32322CA41D94003A2059 /* ZQImageRotationController.m */,
+				040A32332CA41D94003A2059 /* ZQImageTextController.h */,
+				040A32342CA41D94003A2059 /* ZQImageTextController.m */,
+				040A32352CA41D94003A2059 /* ZQImageWatermarkController.h */,
+				040A32362CA41D94003A2059 /* ZQImageWatermarkController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		040A323A2CA41D94003A2059 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				040A32382CA41D94003A2059 /* WaterMarkPicModel.h */,
+				040A32392CA41D94003A2059 /* WaterMarkPicModel.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		040A323D2CA41D94003A2059 /* ImageBrightness */ = {
+			isa = PBXGroup;
+			children = (
+				040A323B2CA41D94003A2059 /* ImageBrightnessView.h */,
+				040A323C2CA41D94003A2059 /* ImageBrightnessView.m */,
+			);
+			path = ImageBrightness;
+			sourceTree = "<group>";
+		};
+		040A32422CA41D94003A2059 /* ImageCrop */ = {
+			isa = PBXGroup;
+			children = (
+				040A323E2CA41D94003A2059 /* CropRatioItem.h */,
+				040A323F2CA41D94003A2059 /* CropRatioItem.m */,
+				040A32402CA41D94003A2059 /* ImageCropRatioChooseView.h */,
+				040A32412CA41D94003A2059 /* ImageCropRatioChooseView.m */,
+			);
+			path = ImageCrop;
+			sourceTree = "<group>";
+		};
+		040A32492CA41D94003A2059 /* ImageEdit */ = {
+			isa = PBXGroup;
+			children = (
+				040A32432CA41D94003A2059 /* EditOperatingToolBar.h */,
+				040A32442CA41D94003A2059 /* EditOperatingToolBar.m */,
+				040A32452CA41D94003A2059 /* ImageEditTitleView.h */,
+				040A32462CA41D94003A2059 /* ImageEditTitleView.m */,
+				040A32472CA41D94003A2059 /* ImageEditToolBar.h */,
+				040A32482CA41D94003A2059 /* ImageEditToolBar.m */,
+			);
+			path = ImageEdit;
+			sourceTree = "<group>";
+		};
+		040A324C2CA41D94003A2059 /* ImageMosaic */ = {
+			isa = PBXGroup;
+			children = (
+				040A324A2CA41D94003A2059 /* ImageMosaicToolBar.h */,
+				040A324B2CA41D94003A2059 /* ImageMosaicToolBar.m */,
+			);
+			path = ImageMosaic;
+			sourceTree = "<group>";
+		};
+		040A324F2CA41D94003A2059 /* ImageRotate */ = {
+			isa = PBXGroup;
+			children = (
+				040A324D2CA41D94003A2059 /* ImageRotateToolBar.h */,
+				040A324E2CA41D94003A2059 /* ImageRotateToolBar.m */,
+			);
+			path = ImageRotate;
+			sourceTree = "<group>";
+		};
+		040A32542CA41D94003A2059 /* ImageText */ = {
+			isa = PBXGroup;
+			children = (
+				040A32502CA41D94003A2059 /* ImageTextView.h */,
+				040A32512CA41D94003A2059 /* ImageTextView.m */,
+				040A32522CA41D94003A2059 /* TextColorItem.h */,
+				040A32532CA41D94003A2059 /* TextColorItem.m */,
+			);
+			path = ImageText;
+			sourceTree = "<group>";
+		};
+		040A32572CA41D94003A2059 /* ImageWatermark */ = {
+			isa = PBXGroup;
+			children = (
+				040A32552CA41D94003A2059 /* ImageWaterMarkView.h */,
+				040A32562CA41D94003A2059 /* ImageWaterMarkView.m */,
+			);
+			path = ImageWatermark;
+			sourceTree = "<group>";
+		};
+		040A325A2CA41D94003A2059 /* ImgaeFilter */ = {
+			isa = PBXGroup;
+			children = (
+				040A32582CA41D94003A2059 /* ImageFilterToolBar.h */,
+				040A32592CA41D94003A2059 /* ImageFilterToolBar.m */,
+			);
+			path = ImgaeFilter;
+			sourceTree = "<group>";
+		};
+		040A325B2CA41D94003A2059 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				040A323D2CA41D94003A2059 /* ImageBrightness */,
+				040A32422CA41D94003A2059 /* ImageCrop */,
+				040A32492CA41D94003A2059 /* ImageEdit */,
+				040A324C2CA41D94003A2059 /* ImageMosaic */,
+				040A324F2CA41D94003A2059 /* ImageRotate */,
+				040A32542CA41D94003A2059 /* ImageText */,
+				040A32572CA41D94003A2059 /* ImageWatermark */,
+				040A325A2CA41D94003A2059 /* ImgaeFilter */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		040A325C2CA41D94003A2059 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				040A32372CA41D94003A2059 /* C */,
+				040A323A2CA41D94003A2059 /* M */,
+				040A325B2CA41D94003A2059 /* V */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		040A325F2CA41D94003A2059 /* UIImage+Rotate */ = {
+			isa = PBXGroup;
+			children = (
+				040A325D2CA41D94003A2059 /* UIImage+Rotate.h */,
+				040A325E2CA41D94003A2059 /* UIImage+Rotate.m */,
+			);
+			path = "UIImage+Rotate";
+			sourceTree = "<group>";
+		};
+		040A32622CA41D94003A2059 /* UIImageMosaic */ = {
+			isa = PBXGroup;
+			children = (
+				040A32602CA41D94003A2059 /* XLMosaicView.h */,
+				040A32612CA41D94003A2059 /* XLMosaicView.m */,
+			);
+			path = UIImageMosaic;
+			sourceTree = "<group>";
+		};
+		040A32652CA41D94003A2059 /* WaterMarkControl */ = {
+			isa = PBXGroup;
+			children = (
+				040A32632CA41D94003A2059 /* WaterMarkControl.h */,
+				040A32642CA41D94003A2059 /* WaterMarkControl.m */,
+			);
+			path = WaterMarkControl;
+			sourceTree = "<group>";
+		};
+		040A32682CA41D94003A2059 /* ZQUtil */ = {
+			isa = PBXGroup;
+			children = (
+				040A32662CA41D94003A2059 /* ZQUtil.h */,
+				040A32672CA41D94003A2059 /* ZQUtil.m */,
+			);
+			path = ZQUtil;
+			sourceTree = "<group>";
+		};
+		040A32692CA41D94003A2059 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				040A325F2CA41D94003A2059 /* UIImage+Rotate */,
+				040A32622CA41D94003A2059 /* UIImageMosaic */,
+				040A32652CA41D94003A2059 /* WaterMarkControl */,
+				040A32682CA41D94003A2059 /* ZQUtil */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		040A326A2CA41D94003A2059 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				040A325C2CA41D94003A2059 /* MVC */,
+				040A32692CA41D94003A2059 /* Tool */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		040A326F2CA41D94003A2059 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				040A326B2CA41D94003A2059 /* Kaiti.ttf */,
+				040A326C2CA41D94003A2059 /* SimHei.ttf */,
+				040A326D2CA41D94003A2059 /* SimSun.ttf */,
+				040A326E2CA41D94003A2059 /* ZQResource.bundle */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		040A32712CA41D94003A2059 /* ZQImageEdit */ = {
+			isa = PBXGroup;
+			children = (
+				040A326A2CA41D94003A2059 /* Class */,
+				040A326F2CA41D94003A2059 /* Resource */,
+				040A32702CA41D94003A2059 /* ZQImageEdit.h */,
+			);
+			path = ZQImageEdit;
 			sourceTree = "<group>";
 		};
 		0428AFB22C9D226600890024 /* view */ = {
@@ -401,6 +697,7 @@
 		04934BCB2C95814F00A05D31 /* third */ = {
 			isa = PBXGroup;
 			children = (
+				040A32712CA41D94003A2059 /* ZQImageEdit */,
 				040A32062CA1C3EE003A2059 /* pickView */,
 				040A31EC2C9F0548003A2059 /* cycleView */,
 				040A31E72C9F0266003A2059 /* ProgressHUD */,
@@ -522,11 +819,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040A328B2CA41D94003A2059 /* SimHei.ttf in Resources */,
 				040A321A2CA1C6B0003A2059 /* CSPickerView.bundle in Resources */,
 				04934BBA2C957FE200A05D31 /* Assets.xcassets in Resources */,
 				0401C1DD2C95DFB100542AB3 /* Localizable.strings in Resources */,
+				040A328D2CA41D94003A2059 /* ZQResource.bundle in Resources */,
 				04934BBD2C957FE200A05D31 /* Base in Resources */,
+				040A328C2CA41D94003A2059 /* SimSun.ttf in Resources */,
 				04934BB82C957FE000A05D31 /* Base in Resources */,
+				040A328A2CA41D94003A2059 /* Kaiti.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,23 +880,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040A32782CA41D94003A2059 /* ZQImageWatermarkController.m in Sources */,
 				04CC244D2C9EF612007A79A3 /* JNFileToImageConverter.swift in Sources */,
 				0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */,
 				0401C1CE2C95DBC800542AB3 /* BaseNavigationController.swift in Sources */,
 				04934BD12C9583F200A05D31 /* JNDefine.swift in Sources */,
+				040A32832CA41D94003A2059 /* TextColorItem.m in Sources */,
 				040A320B2CA1C3EE003A2059 /* PickerViewUtils.swift in Sources */,
 				040A32072CA1C3EE003A2059 /* DurationDatePickerView.swift in Sources */,
 				0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */,
+				040A327E2CA41D94003A2059 /* ImageEditTitleView.m in Sources */,
 				040A31ED2C9F0548003A2059 /* ZCycleLayout.swift in Sources */,
+				040A32752CA41D94003A2059 /* ZQImageMosaicController.m in Sources */,
+				040A32872CA41D94003A2059 /* XLMosaicView.m in Sources */,
+				040A32722CA41D94003A2059 /* ZQBrightnessController.m in Sources */,
 				0401C1C42C95D6BD00542AB3 /* VC+Extion.swift in Sources */,
 				04934BCF2C95814F00A05D31 /* ViewController.swift in Sources */,
 				0401C1C92C95DB5500542AB3 /* TabBarConfigure.swift in Sources */,
 				0401C1AA2C95CE2300542AB3 /* UIView+Extion.swift in Sources */,
 				04CC24472C9EDED2007A79A3 /* JNFileToPDFVC.swift in Sources */,
 				040A31EF2C9F0548003A2059 /* ZPageControl.swift in Sources */,
+				040A32892CA41D94003A2059 /* ZQUtil.m in Sources */,
 				0401C1CA2C95DB5500542AB3 /* TabBarControllerConfig.swift in Sources */,
 				040A320A2CA1C3EE003A2059 /* PickerViewManager.swift in Sources */,
 				040A31FA2CA15C0F003A2059 /* JNConversationVC.swift in Sources */,
+				040A32842CA41D94003A2059 /* ImageWaterMarkView.m in Sources */,
+				040A32862CA41D94003A2059 /* UIImage+Rotate.m in Sources */,
 				0401C1CB2C95DB5500542AB3 /* TabBar.swift in Sources */,
 				0401C1C22C95D62C00542AB3 /* importHeader.swift in Sources */,
 				04DC75A92C9AE57D00A70D5C /* BTBubble+Draw.swift in Sources */,
@@ -604,17 +914,22 @@
 				040A31EE2C9F0548003A2059 /* ZCycleView.swift in Sources */,
 				0401C1AE2C95D1FF00542AB3 /* UILabel+Extion.swift in Sources */,
 				040A32212CA2BBB3003A2059 /* JNPDFDetailHeaderView.swift in Sources */,
+				040A32852CA41D94003A2059 /* ImageFilterToolBar.m in Sources */,
 				040A321F2CA2B7EF003A2059 /* JNPDFDetailVC.swift in Sources */,
 				04DC75AB2C9AE57D00A70D5C /* BTBubbleConfig.swift in Sources */,
 				04DC75A82C9AE57D00A70D5C /* BTBubble+Menu.swift in Sources */,
 				0428AFB72C9D9FF300890024 /* JNWebToPDFVC.swift in Sources */,
+				040A32742CA41D94003A2059 /* ZQImageCropController.m in Sources */,
 				0401C1BE2C95D44700542AB3 /* BaseViewController.swift in Sources */,
+				040A32802CA41D94003A2059 /* ImageMosaicToolBar.m in Sources */,
+				040A32822CA41D94003A2059 /* ImageTextView.m in Sources */,
 				04DC75AD2C9AE57D00A70D5C /* BTBubble+Location.swift in Sources */,
 				040A31F12C9F0710003A2059 /* GCD+Extion.swift in Sources */,
 				040A31F32C9F13A9003A2059 /* ImageGalleryViewController.swift in Sources */,
 				040A32262CA3C648003A2059 /* JNImagesEditVC.swift in Sources */,
 				0401C1B62C95D30C00542AB3 /* Storage.swift in Sources */,
 				04DC758C2C9AC4CF00A70D5C /* UIimage+Extion.swift in Sources */,
+				040A327A2CA41D94003A2059 /* ImageBrightnessView.m in Sources */,
 				0401C1B12C95D29500542AB3 /* NSObject+Extension.swift in Sources */,
 				040A320C2CA1C3EE003A2059 /* SelectPickerView.swift in Sources */,
 				0401C1CC2C95DB5500542AB3 /* TabBarController.swift in Sources */,
@@ -626,21 +941,32 @@
 				040A32082CA1C3EE003A2059 /* PickerView.swift in Sources */,
 				040A32232CA2CE7D003A2059 /* UIButton+Extion.swift in Sources */,
 				040A320D2CA1C3EE003A2059 /* ToolBarView.swift in Sources */,
+				040A32732CA41D94003A2059 /* ZQFilterController.m in Sources */,
+				040A327D2CA41D94003A2059 /* EditOperatingToolBar.m in Sources */,
 				0401C1A62C959A7100542AB3 /* AppUtil.swift in Sources */,
 				040A32092CA1C3EE003A2059 /* PickerViewConfig.swift in Sources */,
+				040A327F2CA41D94003A2059 /* ImageEditToolBar.m in Sources */,
 				040A31FC2CA16527003A2059 /* tableViewCell+Extion.swift in Sources */,
 				040A31FE2CA1B610003A2059 /* JNConversationSliderView.swift in Sources */,
 				0401C1D82C95DE8E00542AB3 /* NSString+Extion.swift in Sources */,
+				040A32792CA41D94003A2059 /* WaterMarkPicModel.m in Sources */,
+				040A32882CA41D94003A2059 /* WaterMarkControl.m in Sources */,
+				040A327C2CA41D94003A2059 /* ImageCropRatioChooseView.m in Sources */,
 				040A31F82CA12060003A2059 /* JNPictureChooseVC.swift in Sources */,
+				040A327B2CA41D94003A2059 /* CropRatioItem.m in Sources */,
 				040A321D2CA26E59003A2059 /* JNPDFGenerator.swift in Sources */,
 				0401C1BD2C95D44700542AB3 /* BaseSimpleViewController.swift in Sources */,
 				0401C1D62C95DDF000542AB3 /* JNHistoryVC.swift in Sources */,
+				040A32282CA41BB5003A2059 /* JNImagesCropVC.swift in Sources */,
 				04DC75AA2C9AE57D00A70D5C /* BubbleTools.swift in Sources */,
 				040A31E82C9F0266003A2059 /* ProgressHUD.swift in Sources */,
+				040A32762CA41D94003A2059 /* ZQImageRotationController.m in Sources */,
 				0401C1AC2C95CED800542AB3 /* UIColor+Extion.swift in Sources */,
+				040A32772CA41D94003A2059 /* ZQImageTextController.m in Sources */,
 				0401C1D22C95DDCB00542AB3 /* HomeVC.swift in Sources */,
 				0401C1B22C95D29500542AB3 /* UIimage+Extension.swift in Sources */,
 				0401C1B72C95D30C00542AB3 /* StorageManager.swift in Sources */,
+				040A32812CA41D94003A2059 /* ImageRotateToolBar.m in Sources */,
 				04DC75AC2C9AE57D00A70D5C /* BTBubble+Animation.swift in Sources */,
 				0401C1D42C95DDDC00542AB3 /* AllToolsVC.swift in Sources */,
 				0401C1C02C95D55200542AB3 /* WRCustomNavigationBar.swift in Sources */,

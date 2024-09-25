@@ -32,7 +32,7 @@ class JNImagesEditVC: BaseViewController {
     }()
     lazy var pageLabel:UILabel = {
         let label = UILabel()
-        label.textColor = .hex("#141416")
+        label.textColor = .hex("#141416").withAlphaComponent(0.6)
         label.font = .boldSystemFont(ofSize: 16)
         label.textAlignment = .center
         label.lineBreakMode = .byTruncatingMiddle
@@ -46,6 +46,7 @@ class JNImagesEditVC: BaseViewController {
         button.titleLabel?.font = boldSystemFont(ofSize: 18)
         button.setTitleColor(MainColor, for: .normal)
         button.backgroundColor = .clear
+        button.setTitle("Done", for: .normal)
         return button
     }()
     let buttonStack = UIView()
@@ -67,7 +68,6 @@ class JNImagesEditVC: BaseViewController {
             make.top.equalToSuperview().offset(statusBarHeight)
             make.height.equalTo(21)
         }
-        edittitleLabel.text = ""
         pageLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(20)
             make.top.equalToSuperview().offset(statusBarHeight + 21)
@@ -119,6 +119,7 @@ class JNImagesEditVC: BaseViewController {
             let imageView = UIImageView(image: image)
             imageView.contentMode = .scaleAspectFit
             imageView.frame = CGRect(x: CGFloat(index) * pageWidth, y: 0, width: pageWidth, height: pageHeight)
+            imageView.tag = 10000 + index
             scrollView.addSubview(imageView)
         }
     }
@@ -173,20 +174,34 @@ class JNImagesEditVC: BaseViewController {
     
     @objc func bottomButtonTapped(_ sender: UIButton) {
         // 取消其他按钮选中状态
-//        for subview in buttonStack.subviews {
-//            if let button = subview as? UIButton {
-//                button.isSelected = false
-//            }
-//        }
+        let titleStr = sender.title(for: .normal) ?? ""
+        if titleStr == buttonNames[0] {
+            
+        }else if titleStr == buttonNames[1] {
+            let vc = JNImagesCropVC()
+            vc.editImage = images[page]
+            vc.doneblock = { [self] editimage in
+                let imageview = scrollView.viewWithTag(tag: (10000 + page)) as! UIImageView
+                imageview.image = editimage
+                images[page] = editimage
+            }
+            pushViewCon(vc)
+        }else if titleStr == buttonNames[2] {
+            
+        }else if titleStr == buttonNames[3] {
+            
+        }else if titleStr == buttonNames[4] {
+            
+        }
         
-        // 设置当前点击的按钮为选中状态
-        sender.isSelected = true
         
         // 打印选中按钮的 title
         print("\(sender.title(for: .normal) ?? "") 按钮点击")
     }
     
-    
+    func dropAction(){
+        
+    }
     
     
     
