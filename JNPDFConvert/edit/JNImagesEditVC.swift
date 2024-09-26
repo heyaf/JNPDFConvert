@@ -50,21 +50,53 @@ class JNImagesEditVC: BaseViewController {
         return button
     }()
     let buttonStack = UIView()
+    let navbgView : UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kNavBarHeight)
+        
+        return view
+    }()
+    let backBtn :UIButton = {
+        let cancleBtn = UIButton()
+        cancleBtn.imageView?.contentMode = .center
+        cancleBtn.setImage(UIImage(named: "back_black"), for: .normal)
+        cancleBtn.backgroundColor = .clear
+        cancleBtn.frame = CGRect(x: 10, y: statusBarHeight, width: 80, height: 44)
+       return cancleBtn
+    }()
     var page = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = grayColor
+        customNav.isHidden = true
+
         setUpUI()
     }
     func setUpUI(){
+        
+        setNavUI()
+        // 设置 ScrollView
+        setupScrollView()
+        
+        // 添加图片到 ScrollView
+        setupImagePages()
+        
+        
+        // 添加底部按钮
+        setupBottomButtons()
+    }
+    func setNavUI(){
+        view.addSubview(navbgView)
+        navbgView.addSubview(backBtn)
         view.addSubview(edittitleLabel)
         view.addSubview(pageLabel)
         pageLabel.text = "1/\(images.count)"
         // 添加顶部导航栏的"Done"按钮
         view.addSubview(doneBtn)
-        customNav.title = ""
+        
         edittitleLabel.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(20)
+            make.left.right.equalToSuperview().inset(80)
             make.top.equalToSuperview().offset(statusBarHeight)
             make.height.equalTo(21)
         }
@@ -79,15 +111,6 @@ class JNImagesEditVC: BaseViewController {
             make.height.equalTo(20)
             //            make.width.equalTo(40)
         }
-        // 设置 ScrollView
-        setupScrollView()
-        
-        // 添加图片到 ScrollView
-        setupImagePages()
-        
-        
-        // 添加底部按钮
-        setupBottomButtons()
     }
     
     @objc func doneButtonTapped() {
@@ -111,7 +134,7 @@ class JNImagesEditVC: BaseViewController {
     
     func setupImagePages() {
         let pageWidth = UIScreen.main.bounds.width - 16 // ScrollView 左右各留出 8 像素
-        let pageHeight = UIScreen.main.bounds.height * 0.6
+        let pageHeight = kScreenHeight - kNavBarHeight - 70 - 135 - kBottomSafeHeight - 8
         
         scrollView.contentSize = CGSize(width: pageWidth * CGFloat(images.count), height: pageHeight)
         
@@ -120,6 +143,7 @@ class JNImagesEditVC: BaseViewController {
             imageView.contentMode = .scaleAspectFit
             imageView.frame = CGRect(x: CGFloat(index) * pageWidth, y: 0, width: pageWidth, height: pageHeight)
             imageView.tag = 10000 + index
+//            imageView.backgroundColor = .red
             scrollView.addSubview(imageView)
         }
     }
@@ -132,11 +156,8 @@ class JNImagesEditVC: BaseViewController {
         buttonStack.backgroundColor = .white
         view.addSubview(buttonStack)
         buttonStack.backgroundColor = .white
-        buttonStack.snp.makeConstraints { make in
-            make.left.right.equalTo(view).inset(0)
-            make.bottom.equalToSuperview()
-            make.height.equalTo(80 + kBottomSafeHeight) // 图标 + 文字
-        }
+        let bHeight = 70 + kBottomSafeHeight
+        buttonStack.frame = CGRect(x: 0, y: kScreenHeight - bHeight, width: kScreenWidth, height: bHeight)
         
         for (index, buttonName) in buttonNames.enumerated() {
             let button = createBottomButton(name: buttonName, imagename: buttonImage[index])
@@ -192,6 +213,7 @@ class JNImagesEditVC: BaseViewController {
             }
             pushViewCon(vc)
         }else if titleStr == buttonNames[2] {
+            filterAction()
             
         }else if titleStr == buttonNames[3] {
             
@@ -206,6 +228,35 @@ class JNImagesEditVC: BaseViewController {
     
     func dropAction(){
         
+    }
+    func filterAction(){
+        UIView.animate(withDuration: 0.5) {
+            self.buttonStack.y = kScreenHeight
+            self.navbgView.y = -100
+        }completion: {[self]  Bool in
+            edittitleLabel.isHidden = true
+            pageLabel.isHidden = true
+            doneBtn.isHidden = true
+            let vc = JNImageFilterVC()
+            vc.editImage = images[page]
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: false)
+            vc.cancleblock = { [self] in
+                showNavAndBottom()
+            }
+        }
+    }
+    func showNavAndBottom(){
+        UIView.animate(withDuration: 0.5) {
+            let bHeight = 70 + kBottomSafeHeight
+            self.buttonStack.y = kScreenHeight - bHeight
+            self.navbgView.y = 0
+        }completion: {[self]  Bool in
+            edittitleLabel.isHidden = false
+            pageLabel.isHidden = false
+            doneBtn.isHidden = false
+            
+        }
     }
     
     
