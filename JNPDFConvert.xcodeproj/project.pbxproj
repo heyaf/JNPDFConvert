@@ -87,6 +87,7 @@
 		040A328C2CA41D94003A2059 /* SimSun.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 040A326D2CA41D94003A2059 /* SimSun.ttf */; };
 		040A328D2CA41D94003A2059 /* ZQResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 040A326E2CA41D94003A2059 /* ZQResource.bundle */; };
 		040A328F2CA4FB58003A2059 /* JNImageFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A328E2CA4FB58003A2059 /* JNImageFilterVC.swift */; };
+		040A32912CA56B6A003A2059 /* AppImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32902CA56B6A003A2059 /* AppImageUtil.swift */; };
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB32C9D227B00890024 /* JNUrlPopView.swift */; };
@@ -220,6 +221,7 @@
 		040A326E2CA41D94003A2059 /* ZQResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZQResource.bundle; sourceTree = "<group>"; };
 		040A32702CA41D94003A2059 /* ZQImageEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQImageEdit.h; sourceTree = "<group>"; };
 		040A328E2CA4FB58003A2059 /* JNImageFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImageFilterVC.swift; sourceTree = "<group>"; };
+		040A32902CA56B6A003A2059 /* AppImageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImageUtil.swift; sourceTree = "<group>"; };
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		0428AFB32C9D227B00890024 /* JNUrlPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNUrlPopView.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			children = (
 				0401C1AF2C95D29500542AB3 /* NSObject+Extension.swift */,
 				0401C1B02C95D29500542AB3 /* UIimage+Extension.swift */,
+				040A32902CA56B6A003A2059 /* AppImageUtil.swift */,
 				0401C1A52C959A7100542AB3 /* AppUtil.swift */,
 				0401C1A72C959D2000542AB3 /* UIConfig.swift */,
 				0401C1A92C95CE2300542AB3 /* UIView+Extion.swift */,
@@ -958,6 +961,7 @@
 				040A327C2CA41D94003A2059 /* ImageCropRatioChooseView.m in Sources */,
 				040A31F82CA12060003A2059 /* JNPictureChooseVC.swift in Sources */,
 				040A327B2CA41D94003A2059 /* CropRatioItem.m in Sources */,
+				040A32912CA56B6A003A2059 /* AppImageUtil.swift in Sources */,
 				040A321D2CA26E59003A2059 /* JNPDFGenerator.swift in Sources */,
 				0401C1BD2C95D44700542AB3 /* BaseSimpleViewController.swift in Sources */,
 				0401C1D62C95DDF000542AB3 /* JNHistoryVC.swift in Sources */,

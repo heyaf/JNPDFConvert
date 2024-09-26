@@ -20,6 +20,7 @@ class JNImagesEditVC: BaseViewController {
 //                           "editimage4_select"]
     let buttonImage = ["ic_Rotation","ic_Crop","ic_Filter","ic_sign","ic_adjust"]
     var buttonArr : [UIButton] = []
+    var filteredImages :[[UIImage]] = [[]]
     lazy var edittitleLabel:UILabel = {
         let label = UILabel()
         label.textColor = BlackColor
@@ -72,6 +73,7 @@ class JNImagesEditVC: BaseViewController {
         customNav.isHidden = true
 
         setUpUI()
+        setfiltersImages()
     }
     func setUpUI(){
         
@@ -101,7 +103,7 @@ class JNImagesEditVC: BaseViewController {
             make.height.equalTo(21)
         }
         pageLabel.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(20)
+            make.left.right.equalToSuperview().inset(80)
             make.top.equalToSuperview().offset(statusBarHeight + 21)
             make.height.equalTo(19)
         }
@@ -110,6 +112,26 @@ class JNImagesEditVC: BaseViewController {
             make.top.equalToSuperview().offset(statusBarHeight + 12)
             make.height.equalTo(20)
             //            make.width.equalTo(40)
+        }
+    }
+    func setfiltersImages(){
+        // 开启子线程
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
+            
+            var tempFilteredImages: [[UIImage]] = [] // 临时存储过滤后的图片数组
+            
+            for item in self.images {
+                // 耗时操作在子线程中处理
+                let filteredImageArr = AppImageUtil().applyFiltersToImage(originImage: item)
+                tempFilteredImages.append(filteredImageArr)
+            }
+            
+            // 回到主线程更新UI或处理结果
+            DispatchQueue.main.async {
+                self.filteredImages = tempFilteredImages
+                
+            }
         }
     }
     
@@ -216,7 +238,7 @@ class JNImagesEditVC: BaseViewController {
             filterAction()
             
         }else if titleStr == buttonNames[3] {
-            
+            dropAction()
         }else if titleStr == buttonNames[4] {
             
         }
@@ -228,23 +250,35 @@ class JNImagesEditVC: BaseViewController {
     
     func dropAction(){
         
+        
+        
     }
     func filterAction(){
-        UIView.animate(withDuration: 0.5) {
-            self.buttonStack.y = kScreenHeight
-            self.navbgView.y = -100
-        }completion: {[self]  Bool in
-            edittitleLabel.isHidden = true
-            pageLabel.isHidden = true
-            doneBtn.isHidden = true
-            let vc = JNImageFilterVC()
-            vc.editImage = images[page]
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: false)
-            vc.cancleblock = { [self] in
-                showNavAndBottom()
+
+        let image = images[page]
+        let filteredImages = AppImageUtil().getFilteredImages(from: image)
+            UIView.animate(withDuration: 0.5) {
+                self.buttonStack.y = kScreenHeight
+                self.navbgView.y = -100
+            }completion: {[self]  Bool in
+                edittitleLabel.isHidden = true
+                pageLabel.isHidden = true
+                doneBtn.isHidden = true
+                let vc = JNImageFilterVC()
+               
+                vc.editImages = filteredImages
+                vc.modalPresentationStyle = .fullScreen
+                present(vc, animated: false)
+                vc.cancleblock = { [self] in
+                    showNavAndBottom()
+                }
+                vc.doneblock = {[self] image in
+                    showNavAndBottom()
+                    let imageview = scrollView.viewWithTag(tag: (10000 + page)) as! UIImageView
+                    imageview.image = image
+                    images[page] = image
+                }
             }
-        }
     }
     func showNavAndBottom(){
         UIView.animate(withDuration: 0.5) {

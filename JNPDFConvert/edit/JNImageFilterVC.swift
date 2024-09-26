@@ -9,10 +9,11 @@ import UIKit
 
 class JNImageFilterVC: UIViewController {
     var selectindex = 0
-    var editImage : UIImage! = UIImage()
+    var editImages : [UIImage] = []
     var doneblock :((UIImage) -> ())?
     var cancleblock :(() -> ())?
     let buttonStack = UIView()
+    let imageNames = ["Original","Auto","Black & White","Color","Clear","GrayScale"]
     let imageView = UIImageView()
     lazy var edittitleLabel:UILabel = {
         let label = UILabel()
@@ -42,6 +43,7 @@ class JNImageFilterVC: UIViewController {
         collectionView?.backgroundColor = grayColor
         view.addSubview(collectionView!)
         collectionView?.frame = CGRect(x: 8, y: kScreenHeight - kBottomSafeHeight - 80 - 120, width: kScreenWidth - 8, height: 110)
+        collectionView?.showsHorizontalScrollIndicator = false
         view.sendSubviewToBack(collectionView!)
     }
     
@@ -88,7 +90,7 @@ class JNImageFilterVC: UIViewController {
             make.size.equalTo(28) // 图标 + 文字
         }
         
-        imageView.image = editImage
+        imageView.image = editImages.first
         imageView.contentMode = .scaleAspectFit
 //        imageView.backgroundColor = .red
         view.addSubview(imageView)
@@ -107,13 +109,14 @@ class JNImageFilterVC: UIViewController {
     }
     @objc func doneButtonTapped() {
         print("Done 按钮点击")
-        // 处理 Done 按钮点击事件
+        dismiss(animated: false)
+        doneblock?(editImages[selectindex])
     }
 
 }
 extension JNImageFilterVC : UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return 15 // Number of items
+        return editImages.count // Number of items
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -121,14 +124,18 @@ extension JNImageFilterVC : UICollectionViewDelegate,UICollectionViewDataSource{
                 fatalError("Unable to dequeue CustomCollectionViewCell")
             }
             // Configure the cell
-            let image = editImage // Replace with your image
-            cell.configure(with: image!, title: "TitleTitleTitle \(indexPath.row)")
+            if indexPath.row < editImages.count {
+                let image = editImages[indexPath.row]
+                // 使用 image 变量
+                cell.configure(with: image, title: imageNames[indexPath.row])
+            }
             cell.setSelectAction(isselect: indexPath.row == selectindex)
             return cell
         }
         
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             selectindex = indexPath.row
+            imageView.image = editImages[selectindex]
             collectionView.reloadData()
         }
 }
