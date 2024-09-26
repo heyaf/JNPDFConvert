@@ -187,7 +187,7 @@ class JNImagesEditVC: BaseViewController {
             
             
             let btnW = (kScreenWidth - 64 - 5 * 4)/5
-            button.frame = CGRect(x: 32 + CGFloat(index) * (btnW + 5), y: 10, width: btnW, height: 60)
+            button.frame = CGRect(x: 32 + CGFloat(index) * (btnW + 5), y: 15, width: btnW, height: 45)
             button.imagePosition(style: .top, spacing: 6)
             
             buttonStack.addSubview(button)
@@ -236,9 +236,8 @@ class JNImagesEditVC: BaseViewController {
             pushViewCon(vc)
         }else if titleStr == buttonNames[2] {
             filterAction()
-            
         }else if titleStr == buttonNames[3] {
-            dropAction()
+            adjustAction()
         }else if titleStr == buttonNames[4] {
             
         }
@@ -248,37 +247,57 @@ class JNImagesEditVC: BaseViewController {
         print("\(sender.title(for: .normal) ?? "") 按钮点击")
     }
     
-    func dropAction(){
+    func adjustAction(){
+        UIView.animate(withDuration: 0.5) {
+            self.buttonStack.y = kScreenHeight
+            self.navbgView.y = -100
+        }completion: {[self]  Bool in
+            edittitleLabel.isHidden = true
+            pageLabel.isHidden = true
+            doneBtn.isHidden = true
+            let vc = JNImageAdjustVC()
+            vc.editImage = images[page]
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: false)
+            vc.cancleblock = { [self] in
+                showNavAndBottom()
+            }
+            vc.doneblock = {[self] image in
+                showNavAndBottom()
+                let imageview = scrollView.viewWithTag(tag: (10000 + page)) as! UIImageView
+                imageview.image = image
+                images[page] = image
+            }
+        }
         
         
         
     }
     func filterAction(){
-
-        let image = images[page]
-        let filteredImages = AppImageUtil().getFilteredImages(from: image)
-            UIView.animate(withDuration: 0.5) {
-                self.buttonStack.y = kScreenHeight
-                self.navbgView.y = -100
-            }completion: {[self]  Bool in
-                edittitleLabel.isHidden = true
-                pageLabel.isHidden = true
-                doneBtn.isHidden = true
-                let vc = JNImageFilterVC()
-               
-                vc.editImages = filteredImages
-                vc.modalPresentationStyle = .fullScreen
-                present(vc, animated: false)
-                vc.cancleblock = { [self] in
-                    showNavAndBottom()
-                }
-                vc.doneblock = {[self] image in
-                    showNavAndBottom()
-                    let imageview = scrollView.viewWithTag(tag: (10000 + page)) as! UIImageView
-                    imageview.image = image
-                    images[page] = image
-                }
+        
+        
+        UIView.animate(withDuration: 0.5) {
+            self.buttonStack.y = kScreenHeight
+            self.navbgView.y = -100
+        }completion: {[self]  Bool in
+            edittitleLabel.isHidden = true
+            pageLabel.isHidden = true
+            doneBtn.isHidden = true
+            let vc = JNImageFilterVC()
+            
+            vc.editImages = filteredImages[page]
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: false)
+            vc.cancleblock = { [self] in
+                showNavAndBottom()
             }
+            vc.doneblock = {[self] image in
+                showNavAndBottom()
+                let imageview = scrollView.viewWithTag(tag: (10000 + page)) as! UIImageView
+                imageview.image = image
+                images[page] = image
+            }
+        }
     }
     func showNavAndBottom(){
         UIView.animate(withDuration: 0.5) {
