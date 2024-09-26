@@ -4,3 +4,4 @@
 
 
 #import "ZQImageEdit.h"
+#import "UIImage+Rotate.h"

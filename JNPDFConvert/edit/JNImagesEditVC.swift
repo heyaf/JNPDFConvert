@@ -176,7 +176,12 @@ class JNImagesEditVC: BaseViewController {
         // 取消其他按钮选中状态
         let titleStr = sender.title(for: .normal) ?? ""
         if titleStr == buttonNames[0] {
-            
+            let imageview = scrollView.viewWithTag(tag: (10000 + page)) as! UIImageView
+            if let imageRotation = imageview.image?.rotate(.right) {
+                imageview.image = imageRotation
+                images[page] = imageRotation
+
+            }
         }else if titleStr == buttonNames[1] {
             let vc = JNImagesCropVC()
             vc.editImage = images[page]
