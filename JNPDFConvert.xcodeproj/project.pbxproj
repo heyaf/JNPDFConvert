@@ -89,6 +89,7 @@
 		040A328F2CA4FB58003A2059 /* JNImageFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A328E2CA4FB58003A2059 /* JNImageFilterVC.swift */; };
 		040A32912CA56B6A003A2059 /* AppImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32902CA56B6A003A2059 /* AppImageUtil.swift */; };
 		040A32932CA59AA5003A2059 /* JNImageAdjustVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32922CA59AA5003A2059 /* JNImageAdjustVC.swift */; };
+		040A32962CA63E2C003A2059 /* JNImageAdjustSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32952CA63E2C003A2059 /* JNImageAdjustSliderView.swift */; };
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB32C9D227B00890024 /* JNUrlPopView.swift */; };
@@ -224,6 +225,7 @@
 		040A328E2CA4FB58003A2059 /* JNImageFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImageFilterVC.swift; sourceTree = "<group>"; };
 		040A32902CA56B6A003A2059 /* AppImageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImageUtil.swift; sourceTree = "<group>"; };
 		040A32922CA59AA5003A2059 /* JNImageAdjustVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImageAdjustVC.swift; sourceTree = "<group>"; };
+		040A32952CA63E2C003A2059 /* JNImageAdjustSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImageAdjustSliderView.swift; sourceTree = "<group>"; };
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		0428AFB32C9D227B00890024 /* JNUrlPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNUrlPopView.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				040A32272CA41BB5003A2059 /* JNImagesCropVC.swift */,
 				040A328E2CA4FB58003A2059 /* JNImageFilterVC.swift */,
 				040A32922CA59AA5003A2059 /* JNImageAdjustVC.swift */,
+				040A32942CA63E13003A2059 /* view */,
 			);
 			path = edit;
 			sourceTree = "<group>";
@@ -600,6 +603,14 @@
 				040A32702CA41D94003A2059 /* ZQImageEdit.h */,
 			);
 			path = ZQImageEdit;
+			sourceTree = "<group>";
+		};
+		040A32942CA63E13003A2059 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				040A32952CA63E2C003A2059 /* JNImageAdjustSliderView.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		0428AFB22C9D226600890024 /* view */ = {
@@ -953,6 +964,7 @@
 				040A32232CA2CE7D003A2059 /* UIButton+Extion.swift in Sources */,
 				040A320D2CA1C3EE003A2059 /* ToolBarView.swift in Sources */,
 				040A32732CA41D94003A2059 /* ZQFilterController.m in Sources */,
+				040A32962CA63E2C003A2059 /* JNImageAdjustSliderView.swift in Sources */,
 				040A327D2CA41D94003A2059 /* EditOperatingToolBar.m in Sources */,
 				0401C1A62C959A7100542AB3 /* AppUtil.swift in Sources */,
 				040A32092CA1C3EE003A2059 /* PickerViewConfig.swift in Sources */,

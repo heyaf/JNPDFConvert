@@ -113,6 +113,8 @@ class JNImagesEditVC: BaseViewController {
             make.height.equalTo(20)
             //            make.width.equalTo(40)
         }
+        backBtn.addClickAction(action: backButtonTapped)
+
     }
     func setfiltersImages(){
         // 开启子线程
@@ -138,6 +140,9 @@ class JNImagesEditVC: BaseViewController {
     @objc func doneButtonTapped() {
         print("Done 按钮点击")
         // 处理 Done 按钮点击事件
+    }
+    @objc func backButtonTapped(button: UIButton) {
+       popViewCon()
     }
     
     func setupScrollView() {

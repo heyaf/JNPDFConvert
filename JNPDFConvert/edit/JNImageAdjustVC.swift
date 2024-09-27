@@ -35,7 +35,7 @@ class JNImageAdjustVC: UIViewController {
         label.text = "Adjust"
         return label
     }()
-    private var collectionView: UICollectionView?
+    var slider: JNImageAdjustSliderView?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = grayColor
@@ -106,7 +106,7 @@ class JNImageAdjustVC: UIViewController {
         view.addSubview(buttonBG)
         buttonBG.backgroundColor = .white
         let bHeight = 70 + kBottomSafeHeight
-        buttonBG.frame = CGRect(x: 0, y: kScreenHeight - bHeight - 20 - 50 , width: kScreenWidth, height: 50)
+        buttonBG.frame = CGRect(x: 0, y: kScreenHeight - bHeight - 50 - 50 , width: kScreenWidth, height: 50)
         
         layerView.frame = CGRect(x: 0, y: buttonBG.y - 15, width: kScreenWidth, height: 30)
         
@@ -125,10 +125,49 @@ class JNImageAdjustVC: UIViewController {
             }
             buttonArr.append(button)
         }
+        slider = JNImageAdjustSliderView(frame: CGRect(x: 0, y: buttonBG.bottom, width: kScreenWidth, height: 50))
+        slider?.backgroundColor = .white
+        view.addSubview(slider!)
+        slider?.onValueChanged = {[self] value in
+            changeValueAction(value: value)
+        }
         
         
     }
-    
+    func changeValueAction(value:Int){
+        let adjustments = editImage?.convertValueToAdjustments(value: Float(value))
+        switch selectindex {
+        case 0:
+            // 调整对比度
+            if let contrast = adjustments?.contrast ,let adjustedImage = editImage?.adjustedContrast(contrast) {
+                imageView.image = adjustedImage
+            }
+        case 1:
+            // 调整对比度
+            if let contrast = adjustments?.saturation ,let adjustedImage = editImage?.adjustedSaturation(contrast) {
+                imageView.image = adjustedImage
+            }
+        case 2:
+            // 调整亮度
+            if let contrast = adjustments?.brightness ,let adjustedImage = editImage?.adjustedBrightness(contrast) {
+                imageView.image = adjustedImage
+            }
+        case 3:
+            // 调整对比度
+            if let contrast = adjustments?.exposure ,let adjustedImage = editImage?.adjustedExposure(contrast) {
+                imageView.image = adjustedImage
+            }
+        case 4:
+            // 调整对比度
+            if let contrast = adjustments?.gamma ,let adjustedImage = editImage?.adjustedGamma(contrast) {
+                imageView.image = adjustedImage
+            }
+            
+        default: break
+            
+        }
+
+    }
     func createBottomButton(name: String, imagename: String,imageSelectname: String) -> UIButton {
         let button = UIButton(type: .custom)
         button.setTitle(name, for: .normal)
@@ -152,13 +191,15 @@ class JNImageAdjustVC: UIViewController {
     @objc func doneButtonTapped() {
         print("Done 按钮点击")
         dismiss(animated: false)
-        doneblock?(editImage)
+        doneblock?(self.imageView.image!)
     }
     @objc func bottomButtonTapped(_ sender: UIButton) {
         for item in buttonArr {
             item.isSelected = false
         }
+        selectindex = sender.tag - 10000
         sender.isSelected = true
+        slider?.resetValue()
         // 取消其他按钮选中状态
         let titleStr = sender.title(for: .normal) ?? ""
         if titleStr == buttonNames[0] {
