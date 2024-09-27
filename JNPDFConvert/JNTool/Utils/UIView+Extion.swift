@@ -148,3 +148,11 @@ public extension UIView {
         return nil
     }
 }
+extension UIView{
+    func asImage(bounces : CGRect) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounces)
+        return renderer.image { (context) in
+            self.layer.render(in: context.cgContext)
+        }
+    }
+}

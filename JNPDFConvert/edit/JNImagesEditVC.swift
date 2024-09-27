@@ -11,6 +11,7 @@ class JNImagesEditVC: BaseViewController {
     
     var images : [UIImage] = []
     let scrollView = UIScrollView()
+    
     let buttonNames = ["Rotation", "Crop", "Filter", "Sign", "Adjust"]
 //    let buttonImage = ["Contrast_normal","editimage1_normal",
 //                       "editimage2_normal","editimage3_normal",
@@ -244,7 +245,7 @@ class JNImagesEditVC: BaseViewController {
         }else if titleStr == buttonNames[3] {
             adjustAction()
         }else if titleStr == buttonNames[4] {
-            
+            imageSignAction()
         }
         
         
@@ -291,6 +292,29 @@ class JNImagesEditVC: BaseViewController {
             let vc = JNImageFilterVC()
             
             vc.editImages = filteredImages[page]
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: false)
+            vc.cancleblock = { [self] in
+                showNavAndBottom()
+            }
+            vc.doneblock = {[self] image in
+                showNavAndBottom()
+                let imageview = scrollView.viewWithTag(tag: (10000 + page)) as! UIImageView
+                imageview.image = image
+                images[page] = image
+            }
+        }
+    }
+    func imageSignAction(){
+        UIView.animate(withDuration: 0.5) {
+            self.buttonStack.y = kScreenHeight
+            self.navbgView.y = -100
+        }completion: {[self]  Bool in
+            edittitleLabel.isHidden = true
+            pageLabel.isHidden = true
+            doneBtn.isHidden = true
+            let vc = JNImageSignVC()
+            vc.editImage = images[page]
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: false)
             vc.cancleblock = { [self] in

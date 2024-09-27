@@ -90,6 +90,9 @@
 		040A32912CA56B6A003A2059 /* AppImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32902CA56B6A003A2059 /* AppImageUtil.swift */; };
 		040A32932CA59AA5003A2059 /* JNImageAdjustVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32922CA59AA5003A2059 /* JNImageAdjustVC.swift */; };
 		040A32962CA63E2C003A2059 /* JNImageAdjustSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32952CA63E2C003A2059 /* JNImageAdjustSliderView.swift */; };
+		040A329C2CA6B5C1003A2059 /* JNDrawingBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A329B2CA6B5C1003A2059 /* JNDrawingBoardView.swift */; };
+		040A329E2CA6BA32003A2059 /* JNImageSignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A329D2CA6BA32003A2059 /* JNImageSignVC.swift */; };
+		040A32A02CA6BA54003A2059 /* JNImageNewSignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A329F2CA6BA54003A2059 /* JNImageNewSignVC.swift */; };
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB32C9D227B00890024 /* JNUrlPopView.swift */; };
@@ -226,6 +229,9 @@
 		040A32902CA56B6A003A2059 /* AppImageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImageUtil.swift; sourceTree = "<group>"; };
 		040A32922CA59AA5003A2059 /* JNImageAdjustVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImageAdjustVC.swift; sourceTree = "<group>"; };
 		040A32952CA63E2C003A2059 /* JNImageAdjustSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImageAdjustSliderView.swift; sourceTree = "<group>"; };
+		040A329B2CA6B5C1003A2059 /* JNDrawingBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNDrawingBoardView.swift; sourceTree = "<group>"; };
+		040A329D2CA6BA32003A2059 /* JNImageSignVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImageSignVC.swift; sourceTree = "<group>"; };
+		040A329F2CA6BA54003A2059 /* JNImageNewSignVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImageNewSignVC.swift; sourceTree = "<group>"; };
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		0428AFB32C9D227B00890024 /* JNUrlPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNUrlPopView.swift; sourceTree = "<group>"; };
@@ -388,6 +394,8 @@
 				040A32272CA41BB5003A2059 /* JNImagesCropVC.swift */,
 				040A328E2CA4FB58003A2059 /* JNImageFilterVC.swift */,
 				040A32922CA59AA5003A2059 /* JNImageAdjustVC.swift */,
+				040A329D2CA6BA32003A2059 /* JNImageSignVC.swift */,
+				040A329F2CA6BA54003A2059 /* JNImageNewSignVC.swift */,
 				040A32942CA63E13003A2059 /* view */,
 			);
 			path = edit;
@@ -609,6 +617,7 @@
 			isa = PBXGroup;
 			children = (
 				040A32952CA63E2C003A2059 /* JNImageAdjustSliderView.swift */,
+				040A329B2CA6B5C1003A2059 /* JNDrawingBoardView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -909,6 +918,7 @@
 				040A32832CA41D94003A2059 /* TextColorItem.m in Sources */,
 				040A320B2CA1C3EE003A2059 /* PickerViewUtils.swift in Sources */,
 				040A32072CA1C3EE003A2059 /* DurationDatePickerView.swift in Sources */,
+				040A32A02CA6BA54003A2059 /* JNImageNewSignVC.swift in Sources */,
 				0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */,
 				040A327E2CA41D94003A2059 /* ImageEditTitleView.m in Sources */,
 				040A31ED2C9F0548003A2059 /* ZCycleLayout.swift in Sources */,
@@ -937,6 +947,7 @@
 				040A32212CA2BBB3003A2059 /* JNPDFDetailHeaderView.swift in Sources */,
 				040A32852CA41D94003A2059 /* ImageFilterToolBar.m in Sources */,
 				040A321F2CA2B7EF003A2059 /* JNPDFDetailVC.swift in Sources */,
+				040A329C2CA6B5C1003A2059 /* JNDrawingBoardView.swift in Sources */,
 				04DC75AB2C9AE57D00A70D5C /* BTBubbleConfig.swift in Sources */,
 				04DC75A82C9AE57D00A70D5C /* BTBubble+Menu.swift in Sources */,
 				0428AFB72C9D9FF300890024 /* JNWebToPDFVC.swift in Sources */,
@@ -982,6 +993,7 @@
 				0401C1BD2C95D44700542AB3 /* BaseSimpleViewController.swift in Sources */,
 				0401C1D62C95DDF000542AB3 /* JNHistoryVC.swift in Sources */,
 				040A32282CA41BB5003A2059 /* JNImagesCropVC.swift in Sources */,
+				040A329E2CA6BA32003A2059 /* JNImageSignVC.swift in Sources */,
 				04DC75AA2C9AE57D00A70D5C /* BubbleTools.swift in Sources */,
 				040A31E82C9F0266003A2059 /* ProgressHUD.swift in Sources */,
 				040A32762CA41D94003A2059 /* ZQImageRotationController.m in Sources */,

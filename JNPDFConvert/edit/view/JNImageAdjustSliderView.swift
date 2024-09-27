@@ -112,7 +112,6 @@ class JNImageAdjustSliderView: UIView {
         let progress = (thumbView.center.x - progressbgview.frame.minX) / progressbgview.frame.width
         currentValue = Int(progress * CGFloat(maxValue - minValue) + CGFloat(minValue))
         
-        print("进度\(thumX),\(progress),\(translation.x)-----\(point.x)")
         // 更新进度条和label
         updateProgress(thumX)
         label.text = "\(currentValue)"

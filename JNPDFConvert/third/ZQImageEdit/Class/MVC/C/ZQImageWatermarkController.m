@@ -13,7 +13,6 @@
 #import "TZImagePickerController.h"
 #import "ZQUtil.h"
 
-
 @interface ZQImageWatermarkController ()<TZImagePickerControllerDelegate,UIActionSheetDelegate>
 {
     ImageBlock _block;
@@ -167,17 +166,10 @@
 
 
 -(void)getImageFromeAlbum{
-    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
-    [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
-        
-        UIImage *image = photos.firstObject;
-        [[WaterMarkControl shareControl] addNewWaterMark:image];
-        _warterMarkView.imagePthes = [WaterMarkControl shareControl].waterMarkPathes;
-    }];
-    imagePickerVc.navigationBar.barTintColor = [ZQUtil R:68 G:170 B:240 A:1];
-    imagePickerVc.maxImagesCount = 1;
-    imagePickerVc.allowPickingVideo = NO;
-    [self presentViewController:imagePickerVc animated:YES completion:nil];
+    UIImage *image = [UIImage imageNamed:@"IMG_0719"];
+    [[WaterMarkControl shareControl] addNewWaterMark:image];
+    _warterMarkView.imagePthes = [WaterMarkControl shareControl].waterMarkPathes;
+    
 }
 
 
