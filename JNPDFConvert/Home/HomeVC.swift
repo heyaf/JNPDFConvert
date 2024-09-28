@@ -244,7 +244,8 @@ class HomeVC: BaseViewController {
         
     }
     @objc func settingAction(){
-        
+        let setVC = JNSettingVC()
+        pushViewCon(setVC)
     }
     @objc func moreAction(){
        let tabbar = AppUtil.getWindow()?.rootViewController as? TabBarController

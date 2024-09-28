@@ -170,7 +170,8 @@ class JNHistoryVC: BaseViewController {
         
     }
     @objc func settingAction(){
-        
+        let setVC = JNSettingVC()
+        pushViewCon(setVC)
     }
     
     

@@ -93,6 +93,7 @@
 		040A329C2CA6B5C1003A2059 /* JNDrawingBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A329B2CA6B5C1003A2059 /* JNDrawingBoardView.swift */; };
 		040A329E2CA6BA32003A2059 /* JNImageSignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A329D2CA6BA32003A2059 /* JNImageSignVC.swift */; };
 		040A32A02CA6BA54003A2059 /* JNImageNewSignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A329F2CA6BA54003A2059 /* JNImageNewSignVC.swift */; };
+		040A32A32CA8053C003A2059 /* JNSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32A22CA8053C003A2059 /* JNSettingVC.swift */; };
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB32C9D227B00890024 /* JNUrlPopView.swift */; };
@@ -232,6 +233,7 @@
 		040A329B2CA6B5C1003A2059 /* JNDrawingBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNDrawingBoardView.swift; sourceTree = "<group>"; };
 		040A329D2CA6BA32003A2059 /* JNImageSignVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImageSignVC.swift; sourceTree = "<group>"; };
 		040A329F2CA6BA54003A2059 /* JNImageNewSignVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImageNewSignVC.swift; sourceTree = "<group>"; };
+		040A32A22CA8053C003A2059 /* JNSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JNSettingVC.swift; path = JNPDFConvert/Home/set/JNSettingVC.swift; sourceTree = SOURCE_ROOT; };
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		0428AFB32C9D227B00890024 /* JNUrlPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNUrlPopView.swift; sourceTree = "<group>"; };
@@ -622,6 +624,14 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		040A32A12CA804F5003A2059 /* set */ = {
+			isa = PBXGroup;
+			children = (
+				040A32A22CA8053C003A2059 /* JNSettingVC.swift */,
+			);
+			path = set;
+			sourceTree = "<group>";
+		};
 		0428AFB22C9D226600890024 /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -740,6 +750,7 @@
 		04934BCC2C95814F00A05D31 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				040A32A12CA804F5003A2059 /* set */,
 				0401C1D12C95DDCB00542AB3 /* HomeVC.swift */,
 				040A31F62CA12024003A2059 /* sub */,
 			);
@@ -980,6 +991,7 @@
 				0401C1A62C959A7100542AB3 /* AppUtil.swift in Sources */,
 				040A32092CA1C3EE003A2059 /* PickerViewConfig.swift in Sources */,
 				040A327F2CA41D94003A2059 /* ImageEditToolBar.m in Sources */,
+				040A32A32CA8053C003A2059 /* JNSettingVC.swift in Sources */,
 				040A31FC2CA16527003A2059 /* tableViewCell+Extion.swift in Sources */,
 				040A31FE2CA1B610003A2059 /* JNConversationSliderView.swift in Sources */,
 				0401C1D82C95DE8E00542AB3 /* NSString+Extion.swift in Sources */,
@@ -1182,6 +1194,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JNPDFConvert/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Image Converter";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to access your camera in order to scan documents with your device.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Would like to access your photo library in order to scan documents with your device.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Would like to access your photo library in order to scan documents with your device.";
@@ -1231,6 +1244,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JNPDFConvert/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Image Converter";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Would like to access your camera in order to scan documents with your device.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Would like to access your photo library in order to scan documents with your device.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Would like to access your photo library in order to scan documents with your device.";

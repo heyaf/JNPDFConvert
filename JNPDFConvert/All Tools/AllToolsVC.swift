@@ -137,7 +137,8 @@ class AllToolsVC: BaseViewController {
         
     }
     @objc func settingAction(){
-        
+        let setVC = JNSettingVC()
+        pushViewCon(setVC)
     }
     func conversationAction(with images:[UIImage]){
         let vc = JNConversationVC()
