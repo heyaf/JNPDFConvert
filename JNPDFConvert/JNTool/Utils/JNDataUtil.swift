@@ -16,14 +16,14 @@ class JNDataUtil {
     }
     
     // MARK: - 保存数据
-    func saveData(image: UIImage, title: String, fileSize: String, filePath: String) {
+    func saveData(image: UIImage, title: String, fileSize: String, filePath: String) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let currentTime = dateFormatter.string(from: Date())
         
         guard let imageData = image.jpegData(compressionQuality: 1.0) else {
             print("图片转换失败")
-            return
+            return nil
         }
         
         let uniqueID = generateUniqueID()
@@ -41,6 +41,7 @@ class JNDataUtil {
         
         UserDefaults.standard.set(allData, forKey: userDefaultsKey)
         print("数据保存成功，ID: \(uniqueID)")
+        return uniqueID
     }
     
     // MARK: - 读取所有数据
@@ -124,5 +125,21 @@ class JNDataUtil {
     // 获取最近六个月的数据
     func getRecentSixMonthsData() -> [[String: Any]] {
         return filterByDateRange(days: 180)
+    }
+    func getFileSize(at filePath: String) -> String {
+        let fileManager = FileManager.default
+        do {
+            // 获取文件属性
+            let attributes = try fileManager.attributesOfItem(atPath: filePath)
+            // 提取文件大小，单位是字节
+            if let fileSize = attributes[.size] as? Int64 {
+                // 将文件大小转换为 MB 并返回字符串
+                let fileSizeInKB = Double(fileSize) / 1024
+                return "\(fileSizeInKB)"
+            }
+        } catch {
+            print("获取文件大小失败: \(error)")
+        }
+        return "未知大小"
     }
 }

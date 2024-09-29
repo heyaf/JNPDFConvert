@@ -72,10 +72,16 @@ class JNConversationVC: BaseViewController {
     @objc func convertButtonTapped() {
         // 处理点击转换的逻辑
         if let pdfPath = JNPDFGenerator.convertPDF(with: self.images, fileName: self.pdfName + ".pdf", border: margins, quality: CGFloat(quality)) {
-            let fileURL = URL(fileURLWithPath: pdfPath) // 使用 fileURLWithPath
-            let documentController = UIDocumentInteractionController(url: fileURL)
-            documentController.delegate = self
-            documentController.presentPreview(animated: true)
+            let filetool = JNDataUtil.shared
+            let size = filetool.getFileSize(at: pdfPath)
+            if let ID = filetool.saveData(image: images[0], title: pdfName, fileSize: size, filePath: pdfPath) {
+                let VC = JNConversationDetailVC()
+                VC.titleStr = pdfName
+                VC.image = images[0]
+                VC.fileID = ID
+                pushViewCon(VC)
+            }
+            
         } else {
             ProgressHUD.showMessage("fail")
         }
