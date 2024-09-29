@@ -9,7 +9,7 @@ import UIKit
 import LinkPresentation
 import MessageUI
 class JNSettingVC: BaseViewController, UITableViewDelegate, UITableViewDataSource {
-    let appID = "6590607143"
+    let appID = "6590607122"
 
     let tableView = UITableView()
     
@@ -58,9 +58,9 @@ class JNSettingVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
        
         switch indexPath.row {
         case 3:
-            openUrl("https://www.notion.so/Terms-of-Use-f5a04b9fca9f493dafa8d49952b425ca")
+            openUrl("https://sites.google.com/view/imageconvert-ios/terms-of-use")
         case 4:
-            openUrl("https://www.notion.so/Privacy-Policy-12e1fb8957eb498eb7bbac31334876df")
+            openUrl("https://sites.google.com/view/imageconvert-ios/privacy-policy")
         case 2:
             OpenEmail()
         case 1:
@@ -150,7 +150,7 @@ class JNSettingVC: BaseViewController, UITableViewDelegate, UITableViewDataSourc
     private func OpenEmail(){
         ProgressHUD.showLoading(delay: 3.0)
         //设置主题
-        let recipientEmail = "fjtech_help@outlook.com"
+        let recipientEmail = "hekeyunssj@163.com"
         let subject = "Feedback and technical support".local
         let body = "------\n\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
         //首先要判断设备具不具备发送邮件功能

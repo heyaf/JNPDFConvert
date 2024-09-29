@@ -11,7 +11,7 @@ class JNImagesEditVC: BaseViewController {
     
     var images : [UIImage] = []
     let scrollView = UIScrollView()
-    
+
     let buttonNames = ["Rotation", "Crop", "Filter", "Sign", "Adjust"]
 //    let buttonImage = ["Contrast_normal","editimage1_normal",
 //                       "editimage2_normal","editimage3_normal",
@@ -76,6 +76,9 @@ class JNImagesEditVC: BaseViewController {
         setUpUI()
         setfiltersImages()
     }
+    
+    var singImageEdit = false //从转化页进来的单张编辑
+    public var editfinish:((UIImage)->Void)?
     func setUpUI(){
         
         setNavUI()
@@ -139,8 +142,15 @@ class JNImagesEditVC: BaseViewController {
     }
     
     @objc func doneButtonTapped() {
-        print("Done 按钮点击")
-        // 处理 Done 按钮点击事件
+        if singImageEdit {
+            editfinish?(images[0])
+            popViewCon()
+            return
+        }
+        let conversationVC = JNConversationVC()
+        conversationVC.images = self.images
+         conversationVC.imageNames = AppUtil().generateStringArray(count: images.count)
+        pushViewCon(conversationVC)
     }
     @objc func backButtonTapped(button: UIButton) {
        popViewCon()

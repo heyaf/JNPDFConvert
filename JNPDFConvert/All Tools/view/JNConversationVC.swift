@@ -209,7 +209,16 @@ extension JNConversationVC:UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 && indexPath.row == images.count {
+        if indexPath.section == 0{
+           let editImageVC = JNImagesEditVC()
+            editImageVC.images = [images[indexPath.row]]
+            editImageVC.editfinish = {[self] image in
+                images[indexPath.row] = image
+                tableView.reloadData()
+            }
+            editImageVC.singImageEdit = true
+            pushViewCon(editImageVC)
+        } else if indexPath.section == 0 && indexPath.row == images.count {
             // 处理添加图片的逻辑
             let imagePickTool = CLImagePickerTool()
             imagePickTool.isHiddenVideo = true
