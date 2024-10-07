@@ -512,6 +512,19 @@ class PDFTableViewCell: UITableViewCell {
         pdfIconImageView.image = UIImage(named: "scan_word")
         
     }
+    func configureData(with data:[String:Any]) {
+        if let title = data["title"] as? String {
+            titleLabel.text = title
+        }
+        if let date = data["currentTime"] as? String ,let dateStr = String().convertDateFormat(dateString: date),let sizeStr = data["fileSize"] as? String{
+            dateLabel.text = "\(dateStr) \(sizeStr)"
+        }
+        if let image = data["image"] as? Data {
+            pdfIconImageView.image = UIImage(data: image)
+        }
+        
+        
+    }
     @objc func moreAction(_ button:UIButton){
         
         let item1 = BTBubble.Menu.Item(text: "Rename", identifier: "Rename", image: UIImage(named: "edit_edit"))
@@ -551,5 +564,18 @@ class PDFTableViewCell: UITableViewCell {
 //        let linv3 = UIFastCreatTool.getLine(UIColor.hexString("#545458").withAlphaComponent(0.7))
 //        linv3.frame = CGRect(x: 0, y: 126, width: menuBubble.width, height: 0.5)
 //        menuBubble.addSubviews([linv,linv2,linv3])
+    }
+    func doAnimations(){
+        contentView.backgroundColor = .hex("#E1F0FF")
+        AfterGCD(timeInval: 0.5) {
+            self.contentView.backgroundColor = .clear
+            AfterGCD(timeInval: 0.5) {
+                self.contentView.backgroundColor = .hex("#E1F0FF")
+                AfterGCD(timeInval: 0.5) {
+                    self.contentView.backgroundColor = .clear
+                    
+                }
+            }
+        }
     }
 }

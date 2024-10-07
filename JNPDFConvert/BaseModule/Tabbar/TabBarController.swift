@@ -21,6 +21,7 @@ class TabBarController: UITabBarController {
     
     deinit {
         debugPrint("TabBarController--------销毁了")
+        NotificationCenter.default.removeObserver(self)
         //        tabBar.removeObserver(self, forKeyPath: "tabImageViewDefaultOffset")
     }
     
@@ -35,7 +36,7 @@ extension TabBarController {
         delayGCD(timeInval: 0.1) {
             self.setUpTabbar()
         }
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(changeHistory(_:)), name: NSNotification.Name(rawValue: "Savedfile"), object: nil)
         
     }
     
@@ -46,6 +47,12 @@ extension TabBarController {
         return .default
     }
     
+    @objc func changeHistory(_ notification:Notification){
+        
+        changeToIndex(index: 2)
+    }
+  
+
     
 }
 

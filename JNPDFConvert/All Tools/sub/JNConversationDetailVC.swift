@@ -128,11 +128,19 @@ class JNConversationDetailVC: BaseViewController {
         
     }
     @objc func DeletePDFButtonTapped() {
-        ProgressHUD.showSuccess("Delete Success")
-        AfterGCD(timeInval: 1.0) {
-            self.popToRootViewCon()
+//        ProgressHUD.showSuccess("Delete Success")
+//        AfterGCD(timeInval: 1.0) {
+//            self.popToRootViewCon()
+//        }
+        let id = JNDataUtil.shared.saveData(image: image, title: titleStr, fileSize: JNDataUtil.shared.getFileSize(at: filePath), filePath: filePath)
+        if id != nil {
+            ProgressHUD.showSuccess("Save Success")
+            AfterGCD(timeInval: 0.5) {
+                self.popToRootViewCon()
+                NotificationCenter.default.post(name:NSNotification.Name(rawValue: "Savedfile"),object: nil, userInfo: ["id":id ?? ""])
+            }
+
         }
-        
     }
     
     

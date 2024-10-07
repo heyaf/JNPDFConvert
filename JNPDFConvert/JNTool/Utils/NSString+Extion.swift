@@ -51,5 +51,23 @@ extension String {
         let range = NSRange(location: 0, length: content.utf16.count)
         return regex?.firstMatch(in: content, options: [], range: range) != nil
     }
+    func convertDateFormat(dateString: String) -> String? {
+        // 输入的时间格式
+        let inputDateFormatter = DateFormatter()
+        inputDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        // 输出的时间格式
+        let outputDateFormatter = DateFormatter()
+        outputDateFormatter.dateFormat = "MM,dd yyyy HH:mm"
+        
+        // 将字符串转换为Date对象
+        if let date = inputDateFormatter.date(from: dateString) {
+            // 将Date对象转换为新的字符串格式
+            return outputDateFormatter.string(from: date)
+        } else {
+            // 如果无法解析，返回nil
+            return nil
+        }
+    }
 
 }

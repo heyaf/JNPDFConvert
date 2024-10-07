@@ -54,13 +54,10 @@ class JNHistoryVC: BaseViewController {
         return tableView
     }()
     var selectedOption = 0
-    
+    var newFileId = ""
     // Sample data
-    var pdfList = [
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+    var pdfList : [[String : Any]] = [
+       
 //        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
 //        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
 //        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
@@ -75,12 +72,17 @@ class JNHistoryVC: BaseViewController {
         view.backgroundColor = .hex("f9f9f9")
         isHideCustomNav = true
         setupUI()
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(_:)), name: NSNotification.Name(rawValue: "Savedfile"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         customNav.backgroundColor = .clear
+        tableView.y = kNavBarHeight + 80
+        UIView.animate(withDuration: 0.3) {
+            self.tableView.y = kNavBarHeight + 70
+        }
+        
     }
     func setupUI() {
         setNav()
@@ -107,11 +109,8 @@ class JNHistoryVC: BaseViewController {
         tableView.emptyDataSetDelegate = self
         tableView.register(PDFTableViewCell.self, forCellReuseIdentifier: "PDFCell")
 //        tableView.bounces = false
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            make.left.right.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
+        tableView.frame = CGRect(x: 0, y: kNavBarHeight + 80, width: kScreenWidth, height: kScreenHeight - kNavBarHeight - 70 - kBottomSafeHeight)
+        
     }
     func setNav(){
         
@@ -173,7 +172,31 @@ class JNHistoryVC: BaseViewController {
         let setVC = JNSettingVC()
         pushViewCon(setVC)
     }
-    
+    @objc func handleNotification(_ notification: Notification) {
+        if let userInfo = notification.userInfo {
+            if let value1 = userInfo["id"] as? String, !value1.isEmpty {
+                newFileId = value1
+            }
+            
+        }
+    }
+    func reloadFileData() {
+        let arr = JNDataUtil.shared.loadAllData()
+        let sortList: [[String : Any]]
+        
+        switch selectedOption {
+        case 1:
+            sortList = JNDataUtil.shared.sortByTitle(data: arr)
+        case 2:
+            sortList = JNDataUtil.shared.sortByFileSize(data: arr)
+        default:
+            sortList = JNDataUtil.shared.sortByTimeDescending(data: arr)
+        }
+        
+        pdfList = sortList // 直接赋值
+        tableView.reloadData()
+    }
+
     
     
 }
@@ -193,9 +216,12 @@ extension JNHistoryVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSo
         }
         
         let pdfData = pdfList[indexPath.row]
-        cell.configure(with: pdfData.0, date: pdfData.1, size: pdfData.2)
+        cell.configureData(with: pdfData)
         cell.backgroundColor = .hex("f9f9f9")
         cell.contentView.backgroundColor = .hex("f9f9f9")
+        if indexPath.row == 1 {
+            cell.doAnimations()
+        }
         return cell
     }
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
@@ -212,6 +238,7 @@ extension JNHistoryVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSo
     }
     func didSelectOption(_ option: Int) {
         selectedOption = option
+        reloadFileData()
 //        let names = ["Newest","Name","Size"]
 //        self.filterButton .setTitle(names[selectedOption], for: .normal)
     }

@@ -56,14 +56,37 @@ class JNDataUtil {
         return data.sorted { ($0["title"] as? String ?? "") < ($1["title"] as? String ?? "") }
     }
     
-    // 按照文件大小排序
     func sortByFileSize(data: [[String: Any]]) -> [[String: Any]] {
         return data.sorted {
-            let size1 = ($0["fileSize"] as? String ?? "").replacingOccurrences(of: "MB", with: "")
-            let size2 = ($1["fileSize"] as? String ?? "").replacingOccurrences(of: "MB", with: "")
-            return (Double(size1) ?? 0) < (Double(size2) ?? 0)
+            let size1 = fileSizeInBytes(from: $0["fileSize"] as? String ?? "")
+            let size2 = fileSizeInBytes(from: $1["fileSize"] as? String ?? "")
+            return size1 < size2
         }
     }
+
+    func fileSizeInBytes(from fileSizeString: String) -> Double {
+        let sizeString = fileSizeString.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        
+        if sizeString.hasSuffix("gb") {
+            if let size = Double(sizeString.replacingOccurrences(of: "gb", with: "")) {
+                return size * 1024 * 1024 * 1024 // 转换为字节
+            }
+        } else if sizeString.hasSuffix("mb") {
+            if let size = Double(sizeString.replacingOccurrences(of: "mb", with: "")) {
+                return size * 1024 * 1024 // 转换为字节
+            }
+        } else if sizeString.hasSuffix("kb") {
+            if let size = Double(sizeString.replacingOccurrences(of: "kb", with: "")) {
+                return size * 1024 // 转换为字节
+            }
+        } else {
+            // 默认按字节处理
+            return Double(sizeString) ?? 0
+        }
+        
+        return 0
+    }
+
     
     // 按照时间倒序排序
     func sortByTimeDescending(data: [[String: Any]]) -> [[String: Any]] {
@@ -133,13 +156,27 @@ class JNDataUtil {
             let attributes = try fileManager.attributesOfItem(atPath: filePath)
             // 提取文件大小，单位是字节
             if let fileSize = attributes[.size] as? Int64 {
-                // 将文件大小转换为 MB 并返回字符串
-                let fileSizeInKB = Double(fileSize) / 1024
-                return "\(fileSizeInKB)"
+                // 根据文件大小动态使用合适的单位
+                return formatFileSize(fileSize)
             }
         } catch {
             print("获取文件大小失败: \(error)")
         }
         return "未知大小"
     }
+
+    func formatFileSize(_ sizeInBytes: Int64) -> String {
+        let fileSizeInKB = Double(sizeInBytes) / 1024
+        let fileSizeInMB = fileSizeInKB / 1024
+        let fileSizeInGB = fileSizeInMB / 1024
+
+        if fileSizeInGB >= 1.0 {
+            return String(format: "%.2f GB", fileSizeInGB)
+        } else if fileSizeInMB >= 1.0 {
+            return String(format: "%.2f MB", fileSizeInMB)
+        } else {
+            return String(format: "%.2f KB", fileSizeInKB)
+        }
+    }
+
 }
