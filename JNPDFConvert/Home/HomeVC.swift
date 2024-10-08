@@ -40,17 +40,17 @@ class HomeVC: BaseViewController {
         return tableView
     }()
     var topbgimageV = UIImageView()
-    
+    var selelctIndex = 0
     
     // Sample data
-    var pdfList = [
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB")
-    ]
+    var pdfList : [[String : Any]] = []
+//    ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+//        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+//        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+//        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+//        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+//        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB")
+//    ]
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -61,13 +61,28 @@ class HomeVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         customNav.backgroundColor = .clear
+        reloadFileData()
     }
-    
+    func reloadFileData() {
+        let arr = JNDataUtil.shared.loadAllData()
+        let sortList: [[String : Any]]
+        
+        switch selelctIndex {
+        case 1:
+            sortList = JNDataUtil.shared.getRecentThreeDaysData()
+        case 2:
+            sortList = JNDataUtil.shared.getRecentMonthData()
+        default:
+            sortList = JNDataUtil.shared.getRecentSixMonthsData()
+        }
+        
+        pdfList = sortList // 直接赋值
+        tableView.reloadData()
+    }
     func setupUI() {
         topUI()
         setNav()
         bottomUI()
-        pdfList.removeAll()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.emptyDataSetSource = self
@@ -268,6 +283,8 @@ class HomeVC: BaseViewController {
         UIView.animate(withDuration: 0.2) {
             self.segmengView.x = segmentWidth * CGFloat(sender.selectedSegmentIndex)
         }
+        selelctIndex = sender.selectedSegmentIndex
+        reloadFileData()
         
         }
     
@@ -368,7 +385,7 @@ extension HomeVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSource,
         }
         
         let pdfData = pdfList[indexPath.row]
-        cell.configure(with: pdfData.0, date: pdfData.1, size: pdfData.2)
+        cell.configureData(with: pdfData)
         
         return cell
     }
@@ -567,11 +584,11 @@ class PDFTableViewCell: UITableViewCell {
     }
     func doAnimations(){
         contentView.backgroundColor = .hex("#E1F0FF")
-        AfterGCD(timeInval: 0.5) {
+        AfterGCD(timeInval: 1.0) {
             self.contentView.backgroundColor = .clear
             AfterGCD(timeInval: 0.5) {
                 self.contentView.backgroundColor = .hex("#E1F0FF")
-                AfterGCD(timeInval: 0.5) {
+                AfterGCD(timeInval: 1.0) {
                     self.contentView.backgroundColor = .clear
                     
                 }

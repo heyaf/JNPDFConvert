@@ -96,6 +96,7 @@
 		040A32A32CA8053C003A2059 /* JNSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32A22CA8053C003A2059 /* JNSettingVC.swift */; };
 		040A32A52CA92F23003A2059 /* JNDataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32A42CA92F23003A2059 /* JNDataUtil.swift */; };
 		040A32A72CA95051003A2059 /* JNConversationDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32A62CA95051003A2059 /* JNConversationDetailVC.swift */; };
+		040A32A92CB4EF63003A2059 /* JNFileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32A82CB4EF63003A2059 /* JNFileUtil.swift */; };
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB32C9D227B00890024 /* JNUrlPopView.swift */; };
@@ -238,6 +239,7 @@
 		040A32A22CA8053C003A2059 /* JNSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JNSettingVC.swift; path = JNPDFConvert/Home/set/JNSettingVC.swift; sourceTree = SOURCE_ROOT; };
 		040A32A42CA92F23003A2059 /* JNDataUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNDataUtil.swift; sourceTree = "<group>"; };
 		040A32A62CA95051003A2059 /* JNConversationDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNConversationDetailVC.swift; sourceTree = "<group>"; };
+		040A32A82CB4EF63003A2059 /* JNFileUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNFileUtil.swift; sourceTree = "<group>"; };
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		0428AFB32C9D227B00890024 /* JNUrlPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNUrlPopView.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				040A31F42C9FCCF9003A2059 /* PDFToSingleImageConverter.swift */,
 				040A321C2CA26E59003A2059 /* JNPDFGenerator.swift */,
 				040A32A42CA92F23003A2059 /* JNDataUtil.swift */,
+				040A32A82CB4EF63003A2059 /* JNFileUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -959,6 +962,7 @@
 				04DC75A92C9AE57D00A70D5C /* BTBubble+Draw.swift in Sources */,
 				0401C1D02C95DCCA00542AB3 /* UIFastCreatTool.swift in Sources */,
 				04934BCD2C95814F00A05D31 /* AppDelegate.swift in Sources */,
+				040A32A92CB4EF63003A2059 /* JNFileUtil.swift in Sources */,
 				040A31EE2C9F0548003A2059 /* ZCycleView.swift in Sources */,
 				0401C1AE2C95D1FF00542AB3 /* UILabel+Extion.swift in Sources */,
 				040A32212CA2BBB3003A2059 /* JNPDFDetailHeaderView.swift in Sources */,

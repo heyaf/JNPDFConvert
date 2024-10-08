@@ -123,7 +123,10 @@ class JNConversationDetailVC: BaseViewController {
     
     // 生成 PDF 按钮的点击事件
     @objc func sharePDFButtonTapped() {
-        
+        guard !filePath.isEmpty else {
+            return
+        }
+        JNFileUtil().shareFile(from: filePath, viewController: self)
         
     }
     @objc func DeletePDFButtonTapped() {

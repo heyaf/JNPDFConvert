@@ -78,12 +78,17 @@ class JNHistoryVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         customNav.backgroundColor = .clear
-        tableView.y = kNavBarHeight + 80
-        UIView.animate(withDuration: 0.3) {
-            self.tableView.y = kNavBarHeight + 70
+        if newFileId.isEmpty {
+            tableView.y = kNavBarHeight + 80
+            UIView.animate(withDuration: 0.3) {
+                self.tableView.y = kNavBarHeight + 70
+            }
         }
-        reloadFileData()
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        reloadFileData()
     }
     func setupUI() {
         setNav()
