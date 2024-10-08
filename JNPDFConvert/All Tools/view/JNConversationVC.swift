@@ -74,13 +74,11 @@ class JNConversationVC: BaseViewController {
         if let pdfPath = JNPDFGenerator.convertPDF(with: self.images, fileName: self.pdfName + ".pdf", border: margins, quality: CGFloat(quality)) {
             let filetool = JNDataUtil.shared
             let size = filetool.getFileSize(at: pdfPath)
-            if let ID = filetool.saveData(image: images[0], title: pdfName, fileSize: size, filePath: pdfPath) {
                 let VC = JNConversationDetailVC()
                 VC.titleStr = pdfName
                 VC.image = images[0]
-                VC.fileID = ID
+                VC.filePath = pdfPath
                 pushViewCon(VC)
-            }
             
         } else {
             ProgressHUD.showMessage("fail")

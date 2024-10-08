@@ -18,7 +18,6 @@ class JNConversationDetailVC: BaseViewController {
     var logoImageV : UIImageView!
     var fileSize = ""
     var filePath = ""
-    var fileID = ""
     let successLabel = UIFastCreatTool.createLabel("Successful conversion!", textColor: BlackColor, textAlignment:.center,alpha: 0)
     
     override func viewDidLoad() {
@@ -132,6 +131,9 @@ class JNConversationDetailVC: BaseViewController {
 //        AfterGCD(timeInval: 1.0) {
 //            self.popToRootViewCon()
 //        }
+        guard !filePath.isEmpty else {
+            return
+        }
         let id = JNDataUtil.shared.saveData(image: image, title: titleStr, fileSize: JNDataUtil.shared.getFileSize(at: filePath), filePath: filePath)
         if id != nil {
             ProgressHUD.showSuccess("Save Success")

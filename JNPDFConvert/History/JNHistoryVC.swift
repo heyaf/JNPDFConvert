@@ -82,6 +82,7 @@ class JNHistoryVC: BaseViewController {
         UIView.animate(withDuration: 0.3) {
             self.tableView.y = kNavBarHeight + 70
         }
+        reloadFileData()
         
     }
     func setupUI() {
@@ -219,8 +220,9 @@ extension JNHistoryVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSo
         cell.configureData(with: pdfData)
         cell.backgroundColor = .hex("f9f9f9")
         cell.contentView.backgroundColor = .hex("f9f9f9")
-        if indexPath.row == 1 {
+        if let ID = pdfData["id"] as? String,ID == newFileId {
             cell.doAnimations()
+            newFileId = ""
         }
         return cell
     }
