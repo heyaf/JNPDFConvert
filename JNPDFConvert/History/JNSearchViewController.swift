@@ -26,19 +26,19 @@ class JNSearchViewController: UIViewController {
         return tableView
     }()
     
-    var pdfList = [
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+    var pdfList : [[String : Any]] = []
 //        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
 //        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
 //        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
 //        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-//        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-//        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-//        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
-    ]
+////        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+////        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+////        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+////        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+////        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+////        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+////        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
+//    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,7 +121,30 @@ class JNSearchViewController: UIViewController {
     @objc func cancelButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
-    
+    func searchResult(){
+        if let key = searchBar.text {
+            let arr = JNDataUtil.shared.filterByKeyword(keyword: key)
+            pdfList = arr
+            tableView.reloadData()
+        }
+        
+    }
+    func changeNameWithIndex(index : Int){
+        let pdfData = pdfList[index]
+        if let title = pdfData["title"] as? String ,let ID = pdfData["id"] as? String{
+            let popupView = JNUrlPopView(frame: self.view.bounds, title: "Name",placeholder: "Enter Name", confirmButtonText: "Confirm")
+            popupView.textField.text = title
+            // 设置确定按钮的回调
+            popupView.onConfirm = { inputText in
+                JNDataUtil.shared.updateTitle(forID: ID, newTitle: inputText ?? "")
+                self.searchResult()
+                
+            }
+            // 添加到视图中
+            AppUtil.getWindow()?.rootViewController?.view.addSubview(popupView)
+        }
+        
+    }
     
 }
 extension JNSearchViewController:UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate,EmptyDataSetSource, EmptyDataSetDelegate{
@@ -140,15 +163,44 @@ extension JNSearchViewController:UITableViewDelegate, UITableViewDataSource, UIS
         }
         
         let pdfData = pdfList[indexPath.row]
-        cell.configure(with: pdfData.0, date: pdfData.1, size: pdfData.2)
+        cell.configureData(with: pdfData)
         cell.backgroundColor = .hex("f9f9f9")
         cell.contentView.backgroundColor = .hex("f9f9f9")
+        let ID = pdfData["id"] as? String ?? ""
+        let pdfpath = pdfData["filePath"] as? String ?? ""
+        cell.selectActionBlock = { index in
+            switch index {
+            case 0:
+                self.changeNameWithIndex(index: indexPath.row)
+                break
+            case 1:
+                JNDataUtil.shared.deleteData(forID: ID)
+                self.searchResult()
+                break
+            case 2:
+                JNFileUtil().shareFile(from: pdfpath, viewController: self)
+                break
+            default:
+                break
+            }
+        }
         return cell
     }
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         let text = "No data".local
         let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.hex("#141416", alpha: 0.6)]
         return NSAttributedString(string: text, attributes: attributes as [NSAttributedString.Key : Any])
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let pdfData = pdfList[indexPath.row]
+
+        if let filePath = pdfData["filePath"] as? String,!filePath.isEmpty {
+            let detailVC = JNPDFDetailViewController()
+            detailVC.urlString = filePath
+            pushViewCon(detailVC)
+        }
+        
+        
     }
     ////空数据按钮图片
     func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
@@ -160,5 +212,6 @@ extension JNSearchViewController:UITableViewDelegate, UITableViewDataSource, UIS
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // 实时更新搜索内容
         // 这里可以实现搜索过滤功能
+        searchResult()
     }
 }

@@ -140,9 +140,10 @@ class JNConversationDetailVC: BaseViewController {
         let id = JNDataUtil.shared.saveData(image: image, title: titleStr, fileSize: JNDataUtil.shared.getFileSize(at: filePath), filePath: filePath)
         if id != nil {
             ProgressHUD.showSuccess("Save Success")
+            NotificationCenter.default.post(name:NSNotification.Name(rawValue: "Savedfile"),object: nil, userInfo: ["id":id ?? ""])
             AfterGCD(timeInval: 0.5) {
                 self.popToRootViewCon()
-                NotificationCenter.default.post(name:NSNotification.Name(rawValue: "Savedfile"),object: nil, userInfo: ["id":id ?? ""])
+                
             }
 
         }

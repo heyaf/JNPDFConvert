@@ -202,7 +202,22 @@ class JNHistoryVC: BaseViewController {
         pdfList = sortList // 直接赋值
         tableView.reloadData()
     }
-
+    func changeNameWithIndex(index : Int){
+        let pdfData = pdfList[index]
+        if let title = pdfData["title"] as? String ,let ID = pdfData["id"] as? String{
+            let popupView = JNUrlPopView(frame: self.view.bounds, title: "Name",placeholder: "Enter Name", confirmButtonText: "Confirm")
+            popupView.textField.text = title
+            // 设置确定按钮的回调
+            popupView.onConfirm = { inputText in
+                JNDataUtil.shared.updateTitle(forID: ID, newTitle: inputText ?? "")
+                self.reloadFileData()
+                
+            }
+            // 添加到视图中
+            AppUtil.getWindow()?.rootViewController?.view.addSubview(popupView)
+        }
+        
+    }
     
     
 }
@@ -229,7 +244,36 @@ extension JNHistoryVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSo
             cell.doAnimations()
             newFileId = ""
         }
+        let ID = pdfData["id"] as? String ?? ""
+        let pdfpath = pdfData["filePath"] as? String ?? ""
+        cell.selectActionBlock = { index in
+            switch index {
+            case 0:
+                self.changeNameWithIndex(index: indexPath.row)
+                break
+            case 1:
+                JNDataUtil.shared.deleteData(forID: ID)
+                self.reloadFileData()
+                break
+            case 2:
+                JNFileUtil().shareFile(from: pdfpath, viewController: self)
+                break
+            default:
+                break
+            }
+        }
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let pdfData = pdfList[indexPath.row]
+
+        if let filePath = pdfData["filePath"] as? String,!filePath.isEmpty {
+            let detailVC = JNPDFDetailViewController()
+            detailVC.urlString = filePath
+            pushViewCon(detailVC)
+        }
+        
+        
     }
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         let text = "No data".local

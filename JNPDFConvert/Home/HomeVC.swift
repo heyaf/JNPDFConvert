@@ -368,6 +368,23 @@ class HomeVC: BaseViewController {
         vc.images = images
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func changeNameWithIndex(index : Int){
+        let pdfData = pdfList[index]
+        if let title = pdfData["title"] as? String ,let ID = pdfData["id"] as? String{
+            let popupView = JNUrlPopView(frame: self.view.bounds, title: "Name",placeholder: "Enter Name", confirmButtonText: "Confirm")
+            popupView.textField.text = title
+            // 设置确定按钮的回调
+            popupView.onConfirm = { inputText in
+                JNDataUtil.shared.updateTitle(forID: ID, newTitle: inputText ?? "")
+                self.reloadFileData()
+                
+            }
+            // 添加到视图中
+            AppUtil.getWindow()?.rootViewController?.view.addSubview(popupView)
+        }
+        
+    }
 }
 extension HomeVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSource, EmptyDataSetDelegate,VNDocumentCameraViewControllerDelegate{
     // MARK: - UITableView DataSource & Delegate Methods
@@ -385,9 +402,37 @@ extension HomeVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSource,
         }
         
         let pdfData = pdfList[indexPath.row]
+        let ID = pdfData["id"] as? String ?? ""
+        let pdfpath = pdfData["filePath"] as? String ?? ""
         cell.configureData(with: pdfData)
-        
+        cell.selectActionBlock = { index in
+            switch index {
+            case 0:
+                self.changeNameWithIndex(index: indexPath.row)
+                break
+            case 1:
+                JNDataUtil.shared.deleteData(forID: ID)
+                self.reloadFileData()
+                break
+            case 2:
+                JNFileUtil().shareFile(from: pdfpath, viewController: self)
+                break
+            default:
+                break
+            }
+        }
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let pdfData = pdfList[indexPath.row]
+
+        if let filePath = pdfData["filePath"] as? String,!filePath.isEmpty {
+            let detailVC = JNPDFDetailViewController()
+            detailVC.urlString = filePath
+            pushViewCon(detailVC)
+        }
+        
+        
     }
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         let text = "No data".local
@@ -440,7 +485,9 @@ class PDFTableViewCell: UITableViewCell {
     
     let pdfIconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 2
+        imageView.layer.masksToBounds = true
         imageView.image = UIImage(named: "pdf_icon") // Place your PDF icon image here
         return imageView
     }()
@@ -467,7 +514,7 @@ class PDFTableViewCell: UITableViewCell {
        
         return button
     }()
-    
+    var selectActionBlock:((_ index:Int)->())?
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .white
@@ -538,6 +585,10 @@ class PDFTableViewCell: UITableViewCell {
         }
         if let image = data["image"] as? Data {
             pdfIconImageView.image = UIImage(data: image)
+        }else if let imageUrl = data["image"] as? String,imageUrl.hasSuffix(".ico"){
+            pdfIconImageView.kf.setImage(with: URL(string: imageUrl),placeholder: UIImage(named: "pdfImage_placeholder"))
+        }else{
+            pdfIconImageView.image = UIImage(named: "pdfImage_placeholder")
         }
         
         
@@ -554,17 +605,19 @@ class PDFTableViewCell: UITableViewCell {
         config.width = .fixed(220)
         let menuView = BTBubbleMenu(items: [item1, item2, item3], config: config)
         menuView.selectItemBlock = { item in
-           
+           var selectIndex = 0
             switch item.identifier {
             case "Delete":
+                selectIndex = 1
                 break
             case "Share":
+                selectIndex = 2
                 break
            
             default:
                 break
             }
-            
+            self.selectActionBlock?(selectIndex)
         }
         
         menuBubble.show(customView: menuView, direction: .auto, from: button, duration: nil)

@@ -13,6 +13,8 @@ class JNPDFDetailVC: BaseViewController {
     var pathString: URL?
     var titleStr: String!
     var headerView : JNPDFDetailHeaderView!
+    var fileId = ""
+    var image:String?
     override func viewDidLoad() {
         super.viewDidLoad()
         customNav.title = "Detail"
@@ -20,10 +22,8 @@ class JNPDFDetailVC: BaseViewController {
         // 设置界面
         setupWebView()
         setupGeneratePDFButton()
-//        view.backgroundColor = .RGB(241, 241, 245)
+        //        view.backgroundColor = .RGB(241, 241, 245)
         if let pathString = pathString {
-//            let pdfPath = URL(fileURLWithPath: pathString.path)
-
             // 确保路径有效且文件存在
             if FileManager.default.fileExists(atPath: pathString.path) {
                 webView.loadFileURL(pathString, allowingReadAccessTo: pathString.deletingLastPathComponent())
@@ -33,6 +33,13 @@ class JNPDFDetailVC: BaseViewController {
         } else {
             print("路径字符串为 nil")
         }
+        
+        if let pdfPath = pathString?.path {
+            let id = JNDataUtil.shared.saveData(image: image ?? [UIImage(named: "pdfImage_placeholder")], title: titleStr, fileSize: JNDataUtil.shared.getFileSize(at: pdfPath), filePath: pdfPath)
+            fileId = id ?? ""
+        }
+
+
         
     }
     
@@ -50,7 +57,10 @@ class JNPDFDetailVC: BaseViewController {
             popupView.onConfirm = { inputText in
                 self.titleStr = inputText ?? ""
                 self.headerView.changeTitle(title: self.titleStr)
-                
+                if !self.fileId.isEmpty {
+                    JNDataUtil.shared.updateTitle(forID: self.fileId, newTitle: inputText ?? "")
+
+                }
             }
             // 添加到视图中
             AppUtil.getWindow()?.rootViewController?.view.addSubview(popupView)
@@ -134,6 +144,10 @@ class JNPDFDetailVC: BaseViewController {
         
     }
     @objc func DeletePDFButtonTapped() {
+        guard fileId.isEmpty else {
+            return
+        }
+        JNDataUtil.shared.deleteData(forID: fileId)
         ProgressHUD.showSuccess("Delete Success")
         AfterGCD(timeInval: 1.0) {
             self.popToRootViewCon()

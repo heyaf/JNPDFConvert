@@ -72,8 +72,7 @@ class JNConversationVC: BaseViewController {
     @objc func convertButtonTapped() {
         // 处理点击转换的逻辑
         if let pdfPath = JNPDFGenerator.convertPDF(with: self.images, fileName: self.pdfName + ".pdf", border: margins, quality: CGFloat(quality)) {
-            let filetool = JNDataUtil.shared
-            let size = filetool.getFileSize(at: pdfPath)
+           
                 let VC = JNConversationDetailVC()
                 VC.titleStr = pdfName
                 VC.image = images[0]

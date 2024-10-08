@@ -16,33 +16,56 @@ class JNDataUtil {
     }
     
     // MARK: - 保存数据
-    func saveData(image: UIImage, title: String, fileSize: String, filePath: String) -> String? {
+    func saveData(image: Any, title: String, fileSize: String, filePath: String) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let currentTime = dateFormatter.string(from: Date())
         
-        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
-            print("图片转换失败")
+        var imageData: Data?
+        var imageUrl: String?
+        
+        // 判断传入的 image 参数类型
+        if let image = image as? UIImage {
+            // 如果是 UIImage 类型，将图片转换为 JPEG 数据
+            imageData = image.jpegData(compressionQuality: 0.8)
+            if imageData == nil {
+                print("图片转换失败")
+                return nil
+            }
+        } else if let imageURL = image as? String {
+            // 如果是 String 类型，则认为是图片的 URL，直接存储该 URL
+            imageUrl = imageURL
+        } else {
+            print("无效的图片类型")
             return nil
         }
         
         let uniqueID = generateUniqueID()
-        let newData: [String: Any] = [
+        var newData: [String: Any] = [
             "id": uniqueID,
-            "image": imageData,
             "title": title,
             "currentTime": currentTime,
             "fileSize": fileSize,
             "filePath": filePath
         ]
         
+        // 根据不同的情况添加数据
+        if let imageData = imageData {
+            newData["image"] = imageData
+        }
+        
+        if let imageUrl = imageUrl {
+            newData["image"] = imageUrl
+        }
+        
         var allData = UserDefaults.standard.array(forKey: userDefaultsKey) as? [[String: Any]] ?? []
-        allData.append(newData)
+        allData.insert(newData, at: 0)  // 将最新数据放在前面
         
         UserDefaults.standard.set(allData, forKey: userDefaultsKey)
         print("数据保存成功，ID: \(uniqueID)")
         return uniqueID
     }
+
     
     // MARK: - 读取所有数据
     func loadAllData() -> [[String: Any]] {
@@ -102,17 +125,55 @@ class JNDataUtil {
     // MARK: - 修改某一项的名字
     func updateTitle(forID id: String, newTitle: String) {
         var allData = loadAllData()
+        
         for (index, data) in allData.enumerated() {
             if let existingID = data["id"] as? String, existingID == id {
-                var updatedData = data
-                updatedData["title"] = newTitle
-                allData[index] = updatedData
-                print("标题已更新为: \(newTitle)")
+                // 获取文件路径
+                if let filePath = data["filePath"] as? String {
+                    // 解析旧文件路径
+                    let oldURL = URL(fileURLWithPath: filePath)
+                    let fileManager = FileManager.default
+
+                    // 生成新文件路径
+                    let newFileName = "\(newTitle)\(oldURL.pathExtension.isEmpty ? "" : ".\(oldURL.pathExtension)")"
+                    let newURL = oldURL.deletingLastPathComponent().appendingPathComponent(newFileName)
+
+                    do {
+                        // 重命名文件
+                        try fileManager.moveItem(at: oldURL, to: newURL)
+
+                        // 更新filePath
+                        var updatedData = data
+                        updatedData["title"] = newTitle
+                        updatedData["filePath"] = newURL.path
+                        allData[index] = updatedData
+                        print("文件重命名成功，新文件路径: \(newURL.path)")
+                    } catch {
+                        print("文件重命名失败: \(error)")
+                    }
+                }
                 break
             }
         }
+        // 保存更新后的数据
         UserDefaults.standard.set(allData, forKey: userDefaultsKey)
     }
+    // 根据关键字过滤标题包含该关键字的数据
+    func filterByKeyword(keyword: String) -> [[String: Any]] {
+        let allData = loadAllData()
+        
+        // 过滤出标题中包含关键字的数据，忽略大小写
+        let filteredData = allData.filter {
+            if let title = $0["title"] as? String {
+                return title.lowercased().contains(keyword.lowercased())
+            }
+            return false
+        }
+        
+        // 按时间倒序排列返回
+        return sortByTimeDescending(data: filteredData)
+    }
+
     
     // MARK: - 删除某一项
     func deleteData(forID id: String) {
@@ -122,18 +183,22 @@ class JNDataUtil {
         print("数据已删除，ID: \(id)")
     }
     
-    // MARK: - 按照最近时间规则取数据
+    // 按日期范围过滤数据，并按时间倒序排列
     func filterByDateRange(days: Int) -> [[String: Any]] {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let currentDate = Date()
         let cutoffDate = Calendar.current.date(byAdding: .day, value: -days, to: currentDate) ?? Date.distantPast
         
-        return loadAllData().filter {
+        let filteredData = loadAllData().filter {
             let dataDate = dateFormatter.date(from: $0["currentTime"] as? String ?? "") ?? Date.distantPast
             return dataDate >= cutoffDate
         }
+        
+        // 按时间倒序排列
+        return sortByTimeDescending(data: filteredData)
     }
+
     
     // 获取最近三天的数据
     func getRecentThreeDaysData() -> [[String: Any]] {

@@ -1,11 +1,18 @@
+//
+//  JNPDFDetailViewController.swift
+//  JNPDFConvert
+//
+//  Created by hebert on 2024/10/8.
+//
+
 import UIKit
 import WebKit
 
-class JNWebToPDFVC: BaseViewController {
+class JNPDFDetailViewController: BaseViewController {
     var webView: WKWebView!
     var progressView: UIProgressView!
-    var urlString: String?
-    var Icon:String?
+    var urlString: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         customNav.title = "Detail"
@@ -13,29 +20,33 @@ class JNWebToPDFVC: BaseViewController {
         // 设置界面
         setupWebView()
         setupProgressView()
-        setupGeneratePDFButton()
         
-        // 加载传入的 URL
-        if let urlString = urlString, let url = URL(string: urlString) {
-            let request = URLRequest(url: url)
+        // 将文件路径转换为 URL
+        let fileURL = URL(fileURLWithPath: urlString)
+        
+        // 检查文件是否存在
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            // 加载 PDF 文件
+            let request = URLRequest(url: fileURL)
             webView.load(request)
+        } else {
+            print("文件不存在: \(urlString ?? "")")
         }
-        
         // 添加观察者，监听进度变化
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
-        Icon = getUrlIcon()
     }
     
     // 设置 WKWebView
     func setupWebView() {
         webView = WKWebView()
         view.addSubview(webView)
-        
+        webView.scrollView.showsVerticalScrollIndicator = false
+
         // 使用 SnapKit 设置约束
         webView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(kNavBarHeight + 20)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-180) // 留出按钮位置
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-130) // 留出按钮位置
         }
         
         addShadowAndCornerRadiusToWebView()
@@ -70,50 +81,9 @@ class JNWebToPDFVC: BaseViewController {
             }
         }
     }
-    // 设置生成 PDF 的按钮
-    func setupGeneratePDFButton() {
-        let button = UIButton(type: .system)
-        button.setTitle("Generate PDF", for: .normal)
-        button.titleLabel?.font = boldSystemFont(ofSize: 18)
-        button.backgroundColor = MainColor
-        button.setTitleColor(.white, for: .normal)
-        button.addGradationColor(width: Float(kScreenWidth) - 40, height: 59)
-        button.layer.cornerRadius = 16
-        button.layer.masksToBounds = true
-
-        view.addSubview(button)
-        
-        // 使用 SnapKit 设置按钮的约束
-        button.snp.makeConstraints { make in
-            make.height.equalTo(59)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-30)
-        }
-        
-        // 按钮点击事件
-        button.addTarget(self, action: #selector(generatePDFButtonTapped), for: .touchUpInside)
-    }
     
-    // 生成 PDF 按钮的点击事件
-    @objc func generatePDFButtonTapped() {
-        guard let currentURL = webView.url else {
-            print("WebView 尚未加载任何内容")
-            return
-        }
-        
-        if #available(iOS 14, *) {
-            let config = WKPDFConfiguration()
-            webView.createPDF(configuration: config) { result in
-                switch result {
-                case .success(let data):
-                    self.savePDF(data: data)
-                case .failure(let error):
-                    print("生成 PDF 失败: \(error.localizedDescription)")
-                }
-            }
-        }
-    }
+    
+    
     
     // 为 WebView 添加四个方向的阴影和圆角
     func addShadowAndCornerRadiusToWebView() {
@@ -145,47 +115,16 @@ class JNWebToPDFVC: BaseViewController {
         webView.removeObserver(self, forKeyPath: "estimatedProgress")
     }
     
-    // 保存 PDF 文件到本地
-    func savePDF(data: Data) {
-        let filePath = getDocumentsDirectory().appendingPathComponent(String().generateImageString(geshi: "PDF") + ".pdf")
-        
-        do {
-            try data.write(to: filePath)
-            print("PDF 已保存至: \(filePath)")
-            previewPDF(at: filePath)
-            
-        } catch {
-            print("无法保存 PDF 文件: \(error.localizedDescription)")
-            
-        }
-        
-    }
+   
     // 获取 Documents 目录路径的方法
     func getDocumentsDirectory() -> URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
     
-    func previewPDF(at url: URL) {
-        let detailVC = JNPDFDetailVC()
-        detailVC.pathString = url
-        detailVC.backToRoot = true
-        detailVC.image = Icon
-        navigationController?.pushViewController(detailVC, animated: true)
-    }
-    func getUrlIcon() -> (String) {
- 
-        if let url = URL(string: urlString!), let scheme = url.scheme, let host = url.host {
-            let iconUrl = "\(scheme)://\(host)/favicon.ico"
-            return iconUrl
-        } else {
-            // 处理URL无效的情况
-            print("Invalid URL")
-        }
-        return ""
-    }
+    
 }
 
-extension JNWebToPDFVC: UIDocumentInteractionControllerDelegate {
+extension JNPDFDetailVC: UIDocumentInteractionControllerDelegate {
     func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
         return self
     }
