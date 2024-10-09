@@ -18,4 +18,6 @@ pod 'IQKeyboardManagerSwift', '6.3.0'
 pod 'LLCycleScrollView' 
 pod 'PEPhotoCropEditor'
 pod 'TZImagePickerController', '~> 1.7.7'
+pod 'lottie-ios'
+
 end

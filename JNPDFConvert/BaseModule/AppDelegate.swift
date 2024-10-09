@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tbBarControllerConfig = TabBarControllerConfig()
         let tab =  tbBarControllerConfig.tabBarController
         
-        window?.rootViewController = tab
+        window?.rootViewController = JNSplashViewController()
         window?.makeKeyAndVisible()
         
         
