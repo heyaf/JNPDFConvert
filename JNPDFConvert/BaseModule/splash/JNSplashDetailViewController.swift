@@ -73,7 +73,7 @@ class JNSplashDetailViewController: UIViewController {
         }
         
         // 设置副标题
-        subtitleLabel = UILabel(frame: CGRect(x: 20, y: titleLabel.bottom + 2, width: self.view.bounds.width - 40, height: 46))
+        subtitleLabel = UILabel(frame: CGRect(x: 20, y: titleLabel.bottom + 10, width: self.view.bounds.width - 40, height: 46))
         subtitleLabel.textAlignment = .center
         subtitleLabel.font = middleFont(ofSize: 18)
         subtitleLabel.text = subtitleText
@@ -81,10 +81,59 @@ class JNSplashDetailViewController: UIViewController {
         subtitleLabel.numberOfLines = 2
         subtitleLabel.textColor = .white
         self.view.addSubview(subtitleLabel)
+        if pageIndex == 0 {
+            // 创建并配置UILabel
+            let label = UILabel()
+            label.numberOfLines = 2 // 设置为多行
+            label.backgroundColor = .clear // 背景透明
+            label.isUserInteractionEnabled = true // 允许用户交互
+            label.textAlignment = .center
+            label.textColor = .white.withAlphaComponent(0.8)
+            label.font = middleFont(ofSize: 13)
+            // 设置富文本
+            let fullText = "By tapping \"Continue\", you indicate that you have read our Privacy Policy."
+            let attributedString = NSMutableAttributedString(string: fullText)
+            
+            // 定义需要下划线和点击的文本范围
+            let privacyPolicyRange = (fullText as NSString).range(of: "Privacy Policy")
+            
+            // 添加下划线样式
+            attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: privacyPolicyRange)
+            attributedString.addAttribute(.foregroundColor, value: UIColor.white.withAlphaComponent(0.8), range: privacyPolicyRange) // 设置文本颜色
+            
+            // 将富文本设置到UILabel
+            label.attributedText = attributedString
+            
+            // 添加点击手势
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped))
+            label.addGestureRecognizer(tapGesture)
+            
+            // 添加布局
+            view.addSubview(label)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.frame = CGRectMake(20, kScreenHeight - kBottomSafeHeight - 50, kScreenWidth - 40, 50)
+        }
         
         // 添加动画效果
         addAnimations()
         setupNextButton()
+    }
+    @objc func labelTapped(gesture: UITapGestureRecognizer) {
+        openUrl("https://sites.google.com/view/imageconvert-ios/privacy-policy")
+        }
+    public func openUrl(_ urlStr: String) {
+        guard let url = URL(string: urlStr) else {
+            print("无法创建URL: \(urlStr)")
+            return
+        }
+        
+        UIApplication.shared.open(url, options: [:]) { success in
+            if success {
+                print("成功打开 \(urlStr)")
+            } else {
+                print("无法打开 URL: \(urlStr)。请确保应用已正确安装。")
+            }
+        }
     }
     // MARK: - 设置"下一页"按钮
     func setupNextButton() {
@@ -110,6 +159,15 @@ class JNSplashDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         animationView.play()
+        
+        addAnimations()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        titleLabel.alpha = 0
+        titleLabel.top = kHeightScale*470 - 30
+        subtitleLabel.alpha = 0
+        subtitleLabel.top = titleLabel.bottom + 10
     }
     
     // MARK: - 点击"下一页"按钮的响应方法

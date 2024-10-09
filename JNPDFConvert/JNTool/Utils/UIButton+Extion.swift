@@ -108,12 +108,8 @@ extension UIButton {
         UIView.animate(withDuration: 0.15) {
             self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         } completion: { _ in
-            UIView.animate(withDuration: 0.15) {
-                self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-            } completion: { _ in
-                UIView.animate(withDuration: 0.1) {
-                    self.transform = .identity
-                }
+            UIView.animate(withDuration: 0.1) {
+                self.transform = .identity
             }
         }
     }

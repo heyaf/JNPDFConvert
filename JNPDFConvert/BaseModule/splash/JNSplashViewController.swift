@@ -1,14 +1,7 @@
-//
-//  JNSplashViewController.swift
-//  JNPDFConvert
-//
-//  Created by hebert on 2024/10/9.
-//
-
 import UIKit
 
-class JNSplashViewController: UIViewController , UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    
+class JNSplashViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+
     var pageViewController: UIPageViewController!
     let pageImages = ["bg_1", "bg_2", "bg_3", "bg_3"] // 背景图
     let gifs = ["splash1", "splash2", "splash3", "splash4"] // 动图
@@ -26,7 +19,6 @@ class JNSplashViewController: UIViewController , UIPageViewControllerDataSource,
         pageViewController.delegate = self
         
         // 设置第一页
-        
         if let startingViewController = viewControllerAtIndex(index: 0) {
             pageViewController.setViewControllers([startingViewController], direction: .forward, animated: true, completion: nil)
             
@@ -36,13 +28,13 @@ class JNSplashViewController: UIViewController , UIPageViewControllerDataSource,
             self.view.addSubview(pageViewController.view)
             pageViewController.didMove(toParent: self)
         }
-        // 禁用手势
+        
+//        // 禁用手势
 //        if let gestureRecognizers = pageViewController.view.gestureRecognizers {
-//                for gesture in gestureRecognizers {
-//                    gesture.isEnabled = false
-//                }
+//            for gesture in gestureRecognizers {
+//                gesture.isEnabled = false
 //            }
-
+//        }
     }
 
     // MARK: - 页面控制器数据源方法
@@ -58,15 +50,7 @@ class JNSplashViewController: UIViewController , UIPageViewControllerDataSource,
         contentVC.subtitleText = pageSubtitles[index]
         contentVC.pageIndex = index
         contentVC.nextBlock = {
-            self.currentIndex += 1
-                if self.currentIndex < self.pageTitles.count {
-                    if let nextViewController = self.viewControllerAtIndex(index: self.currentIndex) {
-                        self.pageViewController.setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
-                    }
-                } else {
-                    // 这里你可以处理用户到达最后一页后的操作，比如关闭引导页等
-                    print("Last page reached.")
-                }
+            self.goToNextPage()
         }
         return contentVC
     }
@@ -79,26 +63,39 @@ class JNSplashViewController: UIViewController , UIPageViewControllerDataSource,
         return currentIndex
     }
 
+    // 只在动画完成后更新 currentIndex
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed, let visibleViewController = pageViewController.viewControllers?.first as? JNSplashDetailViewController {
+            currentIndex = visibleViewController.pageIndex
+        }
+    }
+
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if currentIndex==0 {
+        let previousIndex = currentIndex - 1
+        if previousIndex < 0 {
             return nil
         }
-        currentIndex -= 1
-        let vc = viewControllerAtIndex(index: currentIndex)
-//        vc.addAnimations()
-        print("index = \(currentIndex),\(String(describing: vc?.titleText))")
-        return vc
+        return viewControllerAtIndex(index: previousIndex)
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if currentIndex == pageTitles.count - 1 {
+        let nextIndex = currentIndex + 1
+        if nextIndex >= pageTitles.count {
             return nil
         }
-        currentIndex += 1
-        let vc = viewControllerAtIndex(index: currentIndex)
-        print("index = \(currentIndex),\(String(describing: vc?.titleText))")
+        return viewControllerAtIndex(index: nextIndex)
+    }
 
-//        vc.addAnimations()
-        return vc
+    // MARK: - 切换到下一页
+    func goToNextPage() {
+        currentIndex += 1
+        let nextIndex = currentIndex
+        if nextIndex < pageTitles.count {
+            if let nextViewController = viewControllerAtIndex(index: nextIndex) {
+                pageViewController.setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+            }
+        } else {
+            print("Last page reached.")
+        }
     }
 }
