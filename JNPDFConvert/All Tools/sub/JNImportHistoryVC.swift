@@ -69,6 +69,9 @@ class JNImportHistoryVC: BaseViewController {
         }
         let vc = JNImportHistoryEditVC()
         vc.pdfList = filteredArray
+        vc.deleteBlock = { id in
+            self.selelctedArr = self.selelctedArr.filter { $0 != id }
+        }
         pushViewCon(vc)
     }
     

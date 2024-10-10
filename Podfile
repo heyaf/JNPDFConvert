@@ -19,5 +19,5 @@ pod 'LLCycleScrollView'
 pod 'PEPhotoCropEditor'
 pod 'TZImagePickerController', '~> 1.7.7'
 pod 'lottie-ios'
-
+pod 'YHLongPressDragSort', :git => 'https://github.com/yelinux/YHLongPressDragSort.git'
 end

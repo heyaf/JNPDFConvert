@@ -18,6 +18,7 @@ class JNImportHistoryEditVC: BaseViewController {
     }()
     var pdfList : [[String : Any]] = []
     let button = UIButton(type: .system)
+    var deleteBlock :((String) -> ())?
     override func viewDidLoad() {
         super.viewDidLoad()
         customNav.barBackgroundImage = UIImage(color: grayColor)
@@ -52,7 +53,17 @@ class JNImportHistoryEditVC: BaseViewController {
             make.trailing.equalToSuperview().offset(-20)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
-        
+        tableView.yh_enableLongPressDrag { IndexPath, CGPoint in
+            return IndexPath.row != self.pdfList.count;
+        } isDragMoveItem: { from, to in
+            if to.row != self.pdfList.count,from.row != self.pdfList.count{
+                let movedItem = self.pdfList.remove(at: from.row)
+                self.pdfList.insert(movedItem, at: to.row)
+                return true
+            }
+            return false
+        }
+
 
     }
     
@@ -85,6 +96,7 @@ extension JNImportHistoryEditVC :UITableViewDelegate, UITableViewDataSource,Empt
             cell.DeleteAction = {
                 self.pdfList.remove(at: indexPath.row)
                 tableView.reloadData()
+                self.deleteBlock?(pdfData["id"] as! String)
 //                    tableView.reloadSections(IndexSet(integer: 0), with: .none)
             }
             return cell
@@ -111,6 +123,11 @@ extension JNImportHistoryEditVC :UITableViewDelegate, UITableViewDataSource,Empt
         
         
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == pdfList.count {
+            popViewCon()
+        }
+    }
     
     // 允许 cell 拖动
         func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -119,8 +136,7 @@ extension JNImportHistoryEditVC :UITableViewDelegate, UITableViewDataSource,Empt
 
         // 更新数据源以反映拖动后的顺序
         func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-            let movedItem = pdfList.remove(at: sourceIndexPath.row)
-            pdfList.insert(movedItem, at: destinationIndexPath.row)
+            
         }
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         let text = "No data".local
