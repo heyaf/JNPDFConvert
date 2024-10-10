@@ -7,6 +7,9 @@
 
 import UIKit
 import VisionKit
+import UniformTypeIdentifiers
+import MobileCoreServices
+
 class HomeVC: BaseViewController {
     let dcVc = VNDocumentCameraViewController()
     // UI Elements
@@ -51,6 +54,7 @@ class HomeVC: BaseViewController {
 //        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB"),
 //        ("Pdf 202409081823", "May, 13 2024 18:23", "2.3 MB")
 //    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -64,7 +68,6 @@ class HomeVC: BaseViewController {
         reloadFileData()
     }
     func reloadFileData() {
-        let arr = JNDataUtil.shared.loadAllData()
         let sortList: [[String : Any]]
         
         switch selelctIndex {
@@ -256,7 +259,9 @@ class HomeVC: BaseViewController {
         
     }
     @objc func searchAction(){
-        
+        let searchVC = JNSearchViewController()
+        searchVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(searchVC, animated: true)
     }
     @objc func settingAction(){
         let setVC = JNSettingVC()
@@ -270,7 +275,7 @@ class HomeVC: BaseViewController {
         if gesture.view?.tag == 333 {
             imageAction()
         }else if gesture.view?.tag == 334 {
-            wordAction()
+            openDocumentPicker()
         }else if gesture.view?.tag == 335 {
             scanAction()
         }
@@ -317,8 +322,28 @@ class HomeVC: BaseViewController {
             
         }
     }
-    func wordAction(){
+
+    // 打开“文件”应用以选择 Word 文件
+    func openDocumentPicker() {
+        let documentPicker: UIDocumentPickerViewController
         
+        // 根据传入的参数设置支持的文件类型
+        var supportedTypes: [String] = []
+        
+            // Word 文件类型：.doc 和 .docx
+            if #available(iOS 14.0, *) {
+                let docTypes: [UTType] = [UTType("com.microsoft.word.doc")!, UTType("org.openxmlformats.wordprocessingml.document")!]
+                documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: docTypes, asCopy: true)
+            } else {
+                // iOS 14.0 之前使用 kUTType 常量
+                supportedTypes = [kUTTypeText as String, kUTTypeCompositeContent as String]
+                documentPicker = UIDocumentPickerViewController(documentTypes: supportedTypes, in: .import)
+            }
+       
+        
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false
+        present(documentPicker, animated: true, completion: nil)
     }
     func scanAction(){
         if #available(iOS 13.0, *) {
@@ -326,7 +351,7 @@ class HomeVC: BaseViewController {
             // 判断当前设备是否支持 VNDocumentCameraViewController
             if !VNDocumentCameraViewController.isSupported {
                 
-                let alertController = UIAlertController(title: "Confirm Delete", message: "", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Message", message: "", preferredStyle: .alert)
                 
                 if let view = alertController.view.subviews.first,
                    let view1 = view.subviews.first,
@@ -386,7 +411,7 @@ class HomeVC: BaseViewController {
         
     }
 }
-extension HomeVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSource, EmptyDataSetDelegate,VNDocumentCameraViewControllerDelegate{
+extension HomeVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSource, EmptyDataSetDelegate,VNDocumentCameraViewControllerDelegate,UIDocumentPickerDelegate{
     // MARK: - UITableView DataSource & Delegate Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -462,14 +487,50 @@ extension HomeVC :UITableViewDelegate, UITableViewDataSource,EmptyDataSetSource,
             let img = scan.imageOfPage(at: i)
             images.append(img)
         }
-        // 后续处理 `images` 数组
+        conversationAction(with: images)
     }
 
     @available(iOS 13.0, *)
     func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
         self.dcVc.dismiss(animated: true, completion: nil)
     }
-
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let selectedFileURL = urls.first else { return }
+        print("Selected file URL: \(selectedFileURL)")
+        
+        // 处理选择的文件
+        do {
+            let fileManager = FileManager.default
+            let destURL = fileManager.temporaryDirectory.appendingPathComponent(selectedFileURL.lastPathComponent)
+            if fileManager.fileExists(atPath: destURL.path) {
+                try fileManager.removeItem(at: destURL) // 确保目标路径没有同名文件
+            }
+            try fileManager.copyItem(at: selectedFileURL, to: destURL)
+            print("File copied to: \(destURL)")
+            
+            ProgressHUD.showLoading()
+            let urlPdf = JNFileToPDFVC()
+            urlPdf.filepath = destURL.absoluteString
+            urlPdf.filetype = 0
+            urlPdf.callback = { imageArr in
+                ProgressHUD.dismiss()
+                urlPdf.dismiss(animated: false)
+                self.conversationAction(with: imageArr)
+            }
+            urlPdf.failureCallback = { string in
+                ProgressHUD.showError("fail")
+                
+            }
+            urlPdf.startConversion()
+            urlPdf.modalPresentationStyle = .overFullScreen
+            self.present(urlPdf, animated: false) {
+                urlPdf.view.isHidden = true
+            }
+            
+        } catch {
+            print("文件复制失败: \(error)")
+        }
+    }
 }
 // Custom UITableViewCell
 class PDFTableViewCell: UITableViewCell {

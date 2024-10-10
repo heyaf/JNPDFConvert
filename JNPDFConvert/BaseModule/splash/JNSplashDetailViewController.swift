@@ -176,11 +176,8 @@ class JNSplashDetailViewController: UIViewController {
         sender.buttonaddAnimation()
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
         feedbackGenerator.impactOccurred()
-        if pageIndex < 3 {
-            AfterGCD(timeInval: 0.5) {
-                self.nextBlock?()
-            }
-//            self.nextBlock?()
+        AfterGCD(timeInval: 0.5) {
+            self.nextBlock?()
         }
     }
     // 动画效果：标题延迟1秒下移，副标题随后下移

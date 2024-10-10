@@ -8,23 +8,11 @@
 import UIKit
 import UniformTypeIdentifiers
 import MobileCoreServices
+import VisionKit
 
-class AllToolsVC: BaseViewController {
-    private lazy var cycleView: ZCycleView = {
-        let width = view.bounds.width - 20
-        let cycleView1 = ZCycleView()
-        cycleView1.scrollDirection = .horizontal
-        cycleView1.delegate = self
-        cycleView1.reloadItemsCount(3)
-        cycleView1.itemZoomScale = 1.2
-        cycleView1.itemSpacing = 10
-        cycleView1.initialIndex = 1
-        cycleView1.isAutomatic = false
-//        cycleView1.isInfinite = false
-        cycleView1.itemSize = CGSize(width: width - 150, height: (width - 150) / 2.3333)
-        return cycleView1
-    }()
-    
+class AllToolsVC: BaseViewController, UINavigationControllerDelegate {
+   
+    let dcVc = VNDocumentCameraViewController()
     // 数据源
     let sections = [
         ("Help you get started", [
@@ -134,7 +122,9 @@ class AllToolsVC: BaseViewController {
         
     }
     @objc func searchAction(){
-        
+        let searchVC = JNSearchViewController()
+        searchVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(searchVC, animated: true)
     }
     @objc func settingAction(){
         let setVC = JNSettingVC()
@@ -144,6 +134,11 @@ class AllToolsVC: BaseViewController {
         let vc = JNConversationVC()
         vc.images = images
         vc.imageNames = AppUtil().generateStringArray(count: images.count)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    func editimagesAction(with images:[UIImage]){
+        let vc = JNImagesEditVC()
+        vc.images = images
         navigationController?.pushViewController(vc, animated: true)
     }
     // 打开“文件”应用以选择 Word 文件
@@ -174,7 +169,27 @@ class AllToolsVC: BaseViewController {
                 supportedTypes = [kUTTypePresentation as String, kUTTypeCompositeContent as String]
                 documentPicker = UIDocumentPickerViewController(documentTypes: supportedTypes, in: .import)
             }
-        } else {
+        }else if type == 2{
+            if #available(iOS 14.0, *) {
+                        // iOS 14 及以后使用 UTType 常量，允许选择图片、Word、PPT 文件
+                        let supportedTypes: [UTType] = [
+                            UTType.image, // 图片类型 (.jpeg, .png, .heic 等)
+                            UTType(filenameExtension: "ppt")!, // PowerPoint 文件 .ppt
+                            UTType(filenameExtension: "pptx")!, // PowerPoint 文件 .pptx
+                            UTType(filenameExtension: "doc")!, // Word 文件 .doc
+                            UTType(filenameExtension: "docx")! // Word 文件 .docx
+                        ]
+                        documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: supportedTypes, asCopy: true)
+                    } else {
+                        // iOS 14 之前使用 kUTType 常量
+                        let supportedTypes = [
+                            kUTTypeImage as String, // 图片类型
+                            kUTTypePresentation as String, // PPT 文件类型
+                            kUTTypeCompositeContent as String, // Word 文件类型
+                        ]
+                        documentPicker = UIDocumentPickerViewController(documentTypes: supportedTypes, in: .import)
+                    }
+        }else {
             // 非法类型
             print("未知的文件类型选择")
             return
@@ -183,6 +198,59 @@ class AllToolsVC: BaseViewController {
         documentPicker.delegate = self
         documentPicker.allowsMultipleSelection = false
         present(documentPicker, animated: true, completion: nil)
+    }
+    func scanAction(){
+        if #available(iOS 13.0, *) {
+            
+            // 判断当前设备是否支持 VNDocumentCameraViewController
+            if !VNDocumentCameraViewController.isSupported {
+                
+                let alertController = UIAlertController(title: "Message", message: "", preferredStyle: .alert)
+                
+                if let view = alertController.view.subviews.first,
+                   let view1 = view.subviews.first,
+                   let view2 = view1.subviews.first {
+                    view2.backgroundColor = .hexString("#1E1E1E", alpha: 0.75)
+                }
+                
+                let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+                alertController.addAction(okAction)
+                
+                let str1 = "This device does not support it"
+                let titleText = NSMutableAttributedString(string: str1)
+                titleText.addAttributes([.font: UIFont.boldSystemFont(ofSize: 17), .foregroundColor: UIColor.white], range: NSRange(location: 0, length: str1.count))
+                
+                alertController.setValue(titleText, forKey: "attributedTitle")
+                
+                self.present(alertController, animated: true, completion: nil)
+                
+                return
+            }
+            
+           
+            dcVc.delegate = self
+            
+            self.present(dcVc, animated: true, completion: nil)
+        }
+    }
+    func cameraAction(){
+        // 检查设备是否有相机
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            imagePicker.allowsEditing = true // 如果你希望用户可以编辑照片
+            present(imagePicker, animated: true, completion: nil)
+        } else {
+            print("相机不可用")
+            // 提示用户相机不可用
+            let alert = UIAlertController(title: "Error", message: "Camera not available on this device", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
 }
 
@@ -220,6 +288,8 @@ extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
                             print("按钮点击: \(action)")
                             if action == 1 {
                                 self.conversationAction(with: imageArr)
+                            } else {
+                                self.editimagesAction(with: imageArr)
                             }
                         }
                         self.present(popupVC, animated: true, completion: nil)
@@ -237,7 +307,19 @@ extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
             urlToPdf()
         }else if indexPath.section == 0,indexPath.row == 1 {
             openDocumentPicker(for: 0)
+        }else if indexPath.section == 0,indexPath.row == 2 {
+            scanAction()
         }else if indexPath.section == 1,indexPath.row == 0 {
+            openDocumentPicker(for: 1)
+        }else if indexPath.section == 1,indexPath.row == 2 {
+            openDocumentPicker(for: 1)
+        }else if indexPath.section == 1,indexPath.row == 3 {
+            openDocumentPicker(for: 2)
+        }else if indexPath.section == 1,indexPath.row == 4 {
+            openDocumentPicker(for: 1)
+        }else if indexPath.section == 2,indexPath.row == 0 {
+            openDocumentPicker(for: 1)
+        }else if indexPath.section == 2,indexPath.row == 1 {
             openDocumentPicker(for: 1)
         }
     }
@@ -272,12 +354,25 @@ extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
         
     }
 }
-extension AllToolsVC: UIDocumentPickerDelegate {
+extension AllToolsVC: UIDocumentPickerDelegate ,VNDocumentCameraViewControllerDelegate,UIImagePickerControllerDelegate{
 
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let selectedFileURL = urls.first else { return }
         print("Selected file URL: \(selectedFileURL)")
-        
+        // 获取的是图片
+        let fileExtension = selectedFileURL.pathExtension.lowercased()
+        let fileName = selectedFileURL.lastPathComponent // 获取文件名
+
+        if ["jpg", "jpeg", "png", "heic"].contains(fileExtension) {
+            // 如果是图片，读取图片对象
+            if let image = UIImage(contentsOfFile: selectedFileURL.path) {
+                let vc = JNConversationVC()
+                vc.images = [image]
+                vc.imageNames = [fileName]
+                navigationController?.pushViewController(vc, animated: true)
+            }
+            return
+        }
         // 处理选择的文件
         do {
             let fileManager = FileManager.default
@@ -295,10 +390,7 @@ extension AllToolsVC: UIDocumentPickerDelegate {
             urlPdf.callback = { imageArr in
                 ProgressHUD.dismiss()
                 urlPdf.dismiss(animated: false)
-                self.images = imageArr
-                let vc = ImageGalleryViewController()
-                vc.images = imageArr
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.conversationAction(with: imageArr)
             }
             urlPdf.failureCallback = { string in
                 ProgressHUD.showError("fail")
@@ -318,24 +410,47 @@ extension AllToolsVC: UIDocumentPickerDelegate {
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         print("用户取消了选择")
     }
-}
-extension AllToolsVC:ZCycleViewProtocol{
-    func cycleViewRegisterCellClasses() -> [String: AnyClass] {
-        return ["CustomCollectionViewCell": CustomCollectionViewCell.self]
+    @available(iOS 13.0, *)
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+        
+        self.dcVc.dismiss(animated: true, completion: nil)
+        
+        if scan.pageCount < 1 {
+            return
+        }
+        
+        var images: [UIImage] = []
+        for i in 0..<scan.pageCount {
+            let img = scan.imageOfPage(at: i)
+            images.append(img)
+        }
+        conversationAction(with: images)
     }
 
-    func cycleViewConfigureCell(collectionView: UICollectionView, cellForItemAt indexPath: IndexPath, realIndex: Int) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
-        cell.imageView.image = images[realIndex]
-        return cell
+    @available(iOS 13.0, *)
+    func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
+        self.dcVc.dismiss(animated: true, completion: nil)
     }
-    
-    func cycleViewDidScrollToIndex(_ cycleView: ZCycleView, index: Int) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            // 获取拍摄的照片
+            if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+                self.conversationAction(with: [image])
+            } else if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                self.conversationAction(with: [image])
+
+            }
+            
+            // 关闭相机界面
+            picker.dismiss(animated: true, completion: nil)
+        }
+
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            // 用户取消了拍照
+            picker.dismiss(animated: true, completion: nil)
+        }
         
-    }
-    
-    
 }
+
 class CustomCollectionViewCell: UICollectionViewCell {
     
     let imageView: UIImageView = {

@@ -95,7 +95,11 @@ class JNSplashViewController: UIViewController, UIPageViewControllerDataSource, 
                 pageViewController.setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
             }
         } else {
-            print("Last page reached.")
+            let tbBarControllerConfig = TabBarControllerConfig()
+            let tab =  tbBarControllerConfig.tabBarController
+            
+            AppUtil.getWindow()?.rootViewController = tab
+            
         }
     }
 }

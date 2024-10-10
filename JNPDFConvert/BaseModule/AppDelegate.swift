@@ -16,10 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        let tbBarControllerConfig = TabBarControllerConfig()
-        let tab =  tbBarControllerConfig.tabBarController
         
-        window?.rootViewController = JNSplashViewController()
+        if StorageManager.shared.isFirstBoot {
+            window?.rootViewController = JNSplashViewController()
+            StorageManager.shared.isFirstBoot = false
+        }else{
+            let tbBarControllerConfig = TabBarControllerConfig()
+            let tab =  tbBarControllerConfig.tabBarController
+            window?.rootViewController = tab
+        }
         window?.makeKeyAndVisible()
         
         
