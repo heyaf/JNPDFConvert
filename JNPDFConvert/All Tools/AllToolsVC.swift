@@ -316,7 +316,7 @@ extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
         }else if indexPath.section == 1,indexPath.row == 3 {
             openDocumentPicker(for: 2)
         }else if indexPath.section == 1,indexPath.row == 4 {
-            openDocumentPicker(for: 1)
+            pushViewCon(JNImportDocumentViewController())
         }else if indexPath.section == 2,indexPath.row == 0 {
             openDocumentPicker(for: 1)
         }else if indexPath.section == 2,indexPath.row == 1 {

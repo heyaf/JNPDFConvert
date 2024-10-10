@@ -104,8 +104,7 @@
 		040A32B72CB614A2003A2059 /* splash2.json in Resources */ = {isa = PBXBuildFile; fileRef = 040A32B22CB614A2003A2059 /* splash2.json */; };
 		040A32B82CB614A2003A2059 /* splash3.json in Resources */ = {isa = PBXBuildFile; fileRef = 040A32B32CB614A2003A2059 /* splash3.json */; };
 		040A32B92CB614A2003A2059 /* splash4.json in Resources */ = {isa = PBXBuildFile; fileRef = 040A32B42CB614A2003A2059 /* splash4.json */; };
-		040A32BB2CB61F34003A2059 /* JNSplashDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32BA2CB61F34003A2059 /* JNSplashDetailVC.swift */; };
-		040A32BD2CB61F3F003A2059 /* JNSplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32BC2CB61F3F003A2059 /* JNSplashVC.swift */; };
+		040A32BF2CB77D0B003A2059 /* JNImportDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32BE2CB77D0B003A2059 /* JNImportDocumentViewController.swift */; };
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB32C9D227B00890024 /* JNUrlPopView.swift */; };
@@ -256,8 +255,7 @@
 		040A32B22CB614A2003A2059 /* splash2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash2.json; sourceTree = "<group>"; };
 		040A32B32CB614A2003A2059 /* splash3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash3.json; sourceTree = "<group>"; };
 		040A32B42CB614A2003A2059 /* splash4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash4.json; sourceTree = "<group>"; };
-		040A32BA2CB61F34003A2059 /* JNSplashDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSplashDetailVC.swift; sourceTree = "<group>"; };
-		040A32BC2CB61F3F003A2059 /* JNSplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSplashVC.swift; sourceTree = "<group>"; };
+		040A32BE2CB77D0B003A2059 /* JNImportDocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImportDocumentViewController.swift; sourceTree = "<group>"; };
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		0428AFB32C9D227B00890024 /* JNUrlPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNUrlPopView.swift; sourceTree = "<group>"; };
@@ -665,8 +663,6 @@
 			children = (
 				040A32AD2CB613CE003A2059 /* JNSplashViewController.swift */,
 				040A32AF2CB613F3003A2059 /* JNSplashDetailViewController.swift */,
-				040A32BA2CB61F34003A2059 /* JNSplashDetailVC.swift */,
-				040A32BC2CB61F3F003A2059 /* JNSplashVC.swift */,
 			);
 			path = splash;
 			sourceTree = "<group>";
@@ -701,6 +697,7 @@
 				040A31F22C9F13A9003A2059 /* ImageGalleryViewController.swift */,
 				040A321E2CA2B7EF003A2059 /* JNPDFDetailVC.swift */,
 				040A32A62CA95051003A2059 /* JNConversationDetailVC.swift */,
+				040A32BE2CB77D0B003A2059 /* JNImportDocumentViewController.swift */,
 			);
 			path = sub;
 			sourceTree = "<group>";
@@ -985,7 +982,6 @@
 				040A32832CA41D94003A2059 /* TextColorItem.m in Sources */,
 				040A320B2CA1C3EE003A2059 /* PickerViewUtils.swift in Sources */,
 				040A32072CA1C3EE003A2059 /* DurationDatePickerView.swift in Sources */,
-				040A32BD2CB61F3F003A2059 /* JNSplashVC.swift in Sources */,
 				040A32A02CA6BA54003A2059 /* JNImageNewSignVC.swift in Sources */,
 				0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */,
 				040A327E2CA41D94003A2059 /* ImageEditTitleView.m in Sources */,
@@ -1026,7 +1022,6 @@
 				0401C1BE2C95D44700542AB3 /* BaseViewController.swift in Sources */,
 				040A32802CA41D94003A2059 /* ImageMosaicToolBar.m in Sources */,
 				040A32822CA41D94003A2059 /* ImageTextView.m in Sources */,
-				040A32BB2CB61F34003A2059 /* JNSplashDetailVC.swift in Sources */,
 				04DC75AD2C9AE57D00A70D5C /* BTBubble+Location.swift in Sources */,
 				040A31F12C9F0710003A2059 /* GCD+Extion.swift in Sources */,
 				040A31F32C9F13A9003A2059 /* ImageGalleryViewController.swift in Sources */,
@@ -1080,6 +1075,7 @@
 				0401C1B72C95D30C00542AB3 /* StorageManager.swift in Sources */,
 				040A32812CA41D94003A2059 /* ImageRotateToolBar.m in Sources */,
 				04DC75AC2C9AE57D00A70D5C /* BTBubble+Animation.swift in Sources */,
+				040A32BF2CB77D0B003A2059 /* JNImportDocumentViewController.swift in Sources */,
 				0401C1D42C95DDDC00542AB3 /* AllToolsVC.swift in Sources */,
 				0401C1C02C95D55200542AB3 /* WRCustomNavigationBar.swift in Sources */,
 			);
