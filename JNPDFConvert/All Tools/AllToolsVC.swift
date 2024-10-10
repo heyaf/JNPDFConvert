@@ -318,7 +318,7 @@ extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
         }else if indexPath.section == 1,indexPath.row == 4 {
             pushViewCon(JNImportDocumentViewController())
         }else if indexPath.section == 2,indexPath.row == 0 {
-            openDocumentPicker(for: 1)
+            mergeAction()
         }else if indexPath.section == 2,indexPath.row == 1 {
             openDocumentPicker(for: 1)
         }
@@ -352,6 +352,17 @@ extension AllToolsVC:UICollectionViewDelegate, UICollectionViewDataSource{
         // 添加到视图中
         AppUtil.getWindow()?.rootViewController?.view.addSubview(popupView)
         
+    }
+    func mergeAction(){
+        let popupView = JNImportChooseView(frame: self.view.bounds, title: "Import File")
+        
+        popupView.onConfirm = { index in
+            if index == 0 {
+                self.pushViewCon(JNImportHistoryVC())
+            }
+        }
+        // 添加到视图中
+        AppUtil.getWindow()?.rootViewController?.view.addSubview(popupView)
     }
 }
 extension AllToolsVC: UIDocumentPickerDelegate ,VNDocumentCameraViewControllerDelegate,UIImagePickerControllerDelegate{

@@ -105,6 +105,9 @@
 		040A32B82CB614A2003A2059 /* splash3.json in Resources */ = {isa = PBXBuildFile; fileRef = 040A32B32CB614A2003A2059 /* splash3.json */; };
 		040A32B92CB614A2003A2059 /* splash4.json in Resources */ = {isa = PBXBuildFile; fileRef = 040A32B42CB614A2003A2059 /* splash4.json */; };
 		040A32BF2CB77D0B003A2059 /* JNImportDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32BE2CB77D0B003A2059 /* JNImportDocumentViewController.swift */; };
+		040A32C12CB7C101003A2059 /* JNImportChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32C02CB7C101003A2059 /* JNImportChooseView.swift */; };
+		040A32C32CB7CB56003A2059 /* JNImportHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32C22CB7CB56003A2059 /* JNImportHistoryVC.swift */; };
+		040A32C52CB7D54A003A2059 /* JNImportHistoryEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A32C42CB7D54A003A2059 /* JNImportHistoryEditVC.swift */; };
 		0428AFAF2C9C16A000890024 /* PopupSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */; };
 		0428AFB12C9D197C00890024 /* JNSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB02C9D197C00890024 /* JNSearchViewController.swift */; };
 		0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428AFB32C9D227B00890024 /* JNUrlPopView.swift */; };
@@ -256,6 +259,9 @@
 		040A32B32CB614A2003A2059 /* splash3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash3.json; sourceTree = "<group>"; };
 		040A32B42CB614A2003A2059 /* splash4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash4.json; sourceTree = "<group>"; };
 		040A32BE2CB77D0B003A2059 /* JNImportDocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImportDocumentViewController.swift; sourceTree = "<group>"; };
+		040A32C02CB7C101003A2059 /* JNImportChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImportChooseView.swift; sourceTree = "<group>"; };
+		040A32C22CB7CB56003A2059 /* JNImportHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImportHistoryVC.swift; sourceTree = "<group>"; };
+		040A32C42CB7D54A003A2059 /* JNImportHistoryEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImportHistoryEditVC.swift; sourceTree = "<group>"; };
 		0428AFAE2C9C16A000890024 /* PopupSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectionView.swift; sourceTree = "<group>"; };
 		0428AFB02C9D197C00890024 /* JNSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNSearchViewController.swift; sourceTree = "<group>"; };
 		0428AFB32C9D227B00890024 /* JNUrlPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNUrlPopView.swift; sourceTree = "<group>"; };
@@ -685,6 +691,7 @@
 				040A31F92CA15C0F003A2059 /* JNConversationVC.swift */,
 				040A31FD2CA1B610003A2059 /* JNConversationSliderView.swift */,
 				040A32202CA2BBB3003A2059 /* JNPDFDetailHeaderView.swift */,
+				040A32C02CB7C101003A2059 /* JNImportChooseView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -698,6 +705,8 @@
 				040A321E2CA2B7EF003A2059 /* JNPDFDetailVC.swift */,
 				040A32A62CA95051003A2059 /* JNConversationDetailVC.swift */,
 				040A32BE2CB77D0B003A2059 /* JNImportDocumentViewController.swift */,
+				040A32C22CB7CB56003A2059 /* JNImportHistoryVC.swift */,
+				040A32C42CB7D54A003A2059 /* JNImportHistoryEditVC.swift */,
 			);
 			path = sub;
 			sourceTree = "<group>";
@@ -985,11 +994,13 @@
 				040A32A02CA6BA54003A2059 /* JNImageNewSignVC.swift in Sources */,
 				0428AFB42C9D227B00890024 /* JNUrlPopView.swift in Sources */,
 				040A327E2CA41D94003A2059 /* ImageEditTitleView.m in Sources */,
+				040A32C12CB7C101003A2059 /* JNImportChooseView.swift in Sources */,
 				040A31ED2C9F0548003A2059 /* ZCycleLayout.swift in Sources */,
 				040A32752CA41D94003A2059 /* ZQImageMosaicController.m in Sources */,
 				040A32872CA41D94003A2059 /* XLMosaicView.m in Sources */,
 				040A32722CA41D94003A2059 /* ZQBrightnessController.m in Sources */,
 				0401C1C42C95D6BD00542AB3 /* VC+Extion.swift in Sources */,
+				040A32C52CB7D54A003A2059 /* JNImportHistoryEditVC.swift in Sources */,
 				04934BCF2C95814F00A05D31 /* ViewController.swift in Sources */,
 				0401C1C92C95DB5500542AB3 /* TabBarConfigure.swift in Sources */,
 				0401C1AA2C95CE2300542AB3 /* UIView+Extion.swift in Sources */,
@@ -1057,6 +1068,7 @@
 				040A32792CA41D94003A2059 /* WaterMarkPicModel.m in Sources */,
 				040A32882CA41D94003A2059 /* WaterMarkControl.m in Sources */,
 				040A327C2CA41D94003A2059 /* ImageCropRatioChooseView.m in Sources */,
+				040A32C32CB7CB56003A2059 /* JNImportHistoryVC.swift in Sources */,
 				040A31F82CA12060003A2059 /* JNPictureChooseVC.swift in Sources */,
 				040A327B2CA41D94003A2059 /* CropRatioItem.m in Sources */,
 				040A32912CA56B6A003A2059 /* AppImageUtil.swift in Sources */,
